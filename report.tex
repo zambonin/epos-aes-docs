@@ -117,16 +117,25 @@ As operações são descritas em detalhe abaixo, juntamente com a rotina de expa
     \item[\textsc{ShiftRows}] Para cada linha da matriz estado é realizado um deslocamento circular para a esquerda, o numero de bits deslocados pode ser representado por $deslocamento = numeroDaColuna - 1$
     \item[\textsc{MixColumns}] Esta operação é definida pela multiplicação da matriz estado por uma matriz de mesmo tamanho definida pelo polinomio $c = (00000011)*s^{3}+(00000001)*s^{2}+(00000001)*s+(00000010)$ a matriz resultante desta multiplicação é dito como o novo valor da matriz estado.
     \item[\textsc{AddRoundKey}] É feito um XOR bit a bit entre o estado e o bloco da chave referente a rodada.
-\end{enumerate}
-
-\begin{itemize}
-
 \item Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
     \begin{enumerate}
     \item A subfunção RotWord a qual faz uma troca de bytes na, onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. 
     \item A subfunção SubWord substitui cada byte pelo valor respectivo na caixa S-Box. 
     \item Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito.
     \end{enumerate} 
+
+
+
+\end{enumerate}
+
+\begin{it\item Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
+    \begin{enumerate}
+    \item A subfunção RotWord a qual faz uma troca de bytes na, onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. 
+    \item A subfunção SubWord substitui cada byte pelo valor respectivo na caixa S-Box. 
+    \item Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito.
+    \end{enumerate} 
+
+emize}
 
 \item Na primeira rodada temos o estado definido como a mensagem dividida em blocos de 16bytes, e é feito um XOR bit a bit entre os bytes do estado e a chave da primeira rodada(AddRoundKey).
     \begin{enumerate}
