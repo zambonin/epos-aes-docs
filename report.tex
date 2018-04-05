@@ -29,31 +29,34 @@ O AES cifra a chave através de operações de adição, multiplicação e divis
 
 As operações realizadas por ele, em ordem, são:
 
+\begin{itemize}
 
+XOR bit a bit entre a chave e a mensagem
+
+Substituição de sucessões (Nibble Substituition) com caixas S
+
+Deslocamento Circular
+
+Embaralhamento das Colunas
+
+XOR bit a bit entre a chave expandida e a mensagem
+
+Substituição de sucessões com caixas S
+
+Deslocamento Circular
+
+XOR bit a bit entre a chave expandida e a mensagem
+
+\end{itemize}
 -O processo de cifra é feito, ordenadamente, através de: 
-1.XOR bit a bit entre a chave e a mensagem
-2.Substituição de sucessões (Nibble Substituition) com caixas S
-3.Deslocamento Circular
-4.Embaralhamento das Colunas
-5.XOR bit a bit entre a chave expandida e a mensagem
-6.Substituição de sucessões com caixas S
-7.Deslocamento Circular
-8.XOR bit a bit entre a chave expandida e a mensagem
-
-
-COMO O AES FUNCIONA:
-
-1.Derive the set of round keys from the cipher key.
-
-2.Initialize the state array with the block data (plaintext).
-
-3.Add the initial round key to the starting state array.
-
-4.Perform nine rounds of state manipulation.
-
-5.Perform the tenth and final round of state manipulation.
-
-6.Copy the final state array out as the encrypted data (ciphertext).
+XOR bit a bit entre a chave e a mensagem
+Substituição de sucessões (Nibble Substituition) com caixas S
+Deslocamento Circular
+Embaralhamento das Colunas
+XOR bit a bit entre a chave expandida e a mensagem
+Substituição de sucessões com caixas S
+Deslocamento Circular
+XOR bit a bit entre a chave expandida e a mensagem
 
 
 \section*{Criptografia assimétrica}
