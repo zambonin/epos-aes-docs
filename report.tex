@@ -117,8 +117,7 @@ As operações são descritas em detalhe abaixo, juntamente com a rotina de expa
     \item[\textsc{SubBytes}] Realiza-se a substituição de cada elemento da matriz de estado pelo seu valor correspondente em uma \emph{substitution-box} (\emph{S-box}), onde os quatro bits mais à esquerda e direita, respectivamente, representam a linha e a coluna do elemento na
     \emph{S-box}.
     
-    \item[\textsc{MixColumns}] Cada coluna da matriz de estado é multiplicada pelo polinômio
-        c
+    \item[\textsc{MixColumns}] Cada coluna da matriz de estado é m
     
     Esta operação é definida pela multiplicação da matriz estado por uma matriz de mesmo tamanho definida pelo polinomio $c = (00000011) \cdot s^{3}+(00000001) \cdot s^{2}+(00000001)*s+(00000010)$ a matriz resultante desta multiplicação é dito como o novo valor da matriz estado.
     \item[\textsc{AddRoundKey}] É feito um XOR bit a bit entre o estado e o bloco da chave referente a rodada.
