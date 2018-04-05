@@ -127,7 +127,7 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 A expansão de chaves consiste da criação de um conjunto de palavras $K_e$ de 32 bits.
 Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras suficientes para utilização em todas as rodadas do algoritmo, então $t = \ell(n_r + 1)$.
 Portanto, $K_e = \{k_0, \dots, k_{t - 1}\}$. Inicialmente, $\{k_0, \dots, k_{\ell - 1}\} = K$.
-Então, $K = \{k_0, \dots, k_{\frac{n}{32} - 1}$, e $\forall i >= $ 
+Então, $\forall i >= \ell, K_{e_{i}} = K_{e_{i-1}} \oplus K_{e_{i-4}}$,  
 
 
     % \item[\textsc{KeyExpansion}] Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
