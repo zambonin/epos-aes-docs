@@ -129,7 +129,7 @@ As operações são descritas em detalhe abaixo, juntamente com a rotina de expa
 
 \end{enumerate}
 
-A expansão de chave acontece da seguinte maneira:
+A expansão de chave consiste de um algoritmo que recebe uma chave de $n = \{128, 192, 256\}$ bits e retorna matrizes de $4 \times 4$ bytes para cada rodada do algoritmo, incluindo a introdutória.
 
     \item[\textsc{KeyExpansion}] Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
     \begin{enumerate}
