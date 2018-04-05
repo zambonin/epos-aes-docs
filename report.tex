@@ -125,7 +125,7 @@ As operações realizadas por ele, em ordem, são:
         \item $estado[1] = estado[0] XOR ChaveRodada[0]$
     \end{enumerate}
 
-\item Nas rodadas consequentes até a penultima é feito uma troca de cada byte do estado atual pelo valor correspondente nas caixa S, 
+\item Nas rodadas consequentes até a penultima é feito uma troca de cada byte do estado atual pelo valor correspondente nas caixa S, em seguida é feita um deslocamento circular, no qual o estado é escrito em forma matricial e as suas linhas são deslocadas de forma circular em 0,1,2 e 3 para a esqueda
 
 KeyExpansions—round keys are derived from the cipher key using Rijndael's key schedule. AES requires a separate 128-bit round key block for each round plus one more.
 
