@@ -137,15 +137,21 @@ Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras sufici
 Assim, uma função que criptografa uma mensagem $m$ e retorna um texto cifrado $c$ pode ser
 representada como
 
-\begin{algorithmic}
-\If {$i\geq maxval$}
-    \State $i\gets 0$
-\Else
-    \If {$i+k\leq maxval$}
-        \State $i\gets i+k$
-    \EndIf
-\EndIf
-\end{algorithmic}
+\begin{algorithm}[H]
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+   go to next section\;
+   current section becomes this one\;
+   }{
+   go back to the beginning of current section\;
+  }
+ }
+ \caption{How to write algorithms}
+\end{algorithm}
 
 
 $C = E(m, K)$. Para que a cifra seja caracterizada como simétrica, é preciso criar uma função $m = D(C, K)$. Isto pode ser obtido da seguinte maneira: 
