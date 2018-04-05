@@ -106,7 +106,7 @@ utiliza uma função de compressão única, obtida a partir de uma cifra de bloc
 
 O AES é uma cifra de blocos que opera sobre uma matriz de estado de $4 \times 4$ bytes. Estas operações são caracterizadas por adições, multiplicações e divisões sobre um corpo finito\footnote{Operações nesta estrutura algébrica são similares a...}
 $\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. Seu funcionamento é denominado
-iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas, depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, 10 rodadas são necessárias.
+iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas ($n_r$), depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, $n_r = 10$ rodadas são necessárias.
 
 As operações realizadas em cada rodada são denominadas \textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}. Note que existe uma rodada adicional introdutória
 composta apenas de \textsc{AddRoundKey}, para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignorado na última rodada, a fim de habilitar a reversibilidade da cifra.
@@ -129,7 +129,10 @@ As operações são descritas em detalhe abaixo, juntamente com a rotina de expa
 
 \end{enumerate}
 
-A expansão de chaves consiste de um algoritmo que recebe uma chave inicial de $n = \{128, 192, 256\}$ bits e retorna matrizes de tamanho suficiente para cada rodada do algoritmo, incluindo a introdutória. A chave inicial é dividida em palavras de $32$ bits, e operações são aplicadas nestas com o intuito de expandi-la. Cada conjunto de $4$ palavras será utilizado nas rodadas do algoritmo principal.
+A expansão de chaves consiste de um procedimento que recebe a chave inicial do algoritmo,
+e retorna 4(
+
+A expansão de chaves consiste de um algoritmo que recebe uma chave inicial de $n = \{128, 192, 256\}$ bits e retorna matrizes de tamanho suficiente para cada rodada do algoritmo, incluindo a introdutória. A chave inicial é dividida em palavras de $32$ bits, e diferentes operações são aplicadas nestas, relacionadas com seu 
 
 
     \item[\textsc{KeyExpansion}] Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
