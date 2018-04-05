@@ -131,7 +131,10 @@ As operações são descritas em detalhe abaixo, juntamente com a rotina de expa
 
 A expansão de chaves consiste de um procedimento que recebe a chave inicial do algoritmo,
 e retorna um conjunto de $4(n_r + 1)$ palavras de 32 bits, denominado de chave expandida.
-As quatro primeiras palavras são compostas
+Cada conjunto de 4 palavras sucessivas é utilizado em uma rodada do algoritmo.
+As primeiras entradas deste conjunto são populadas pela divisão da chave inicial em
+palavras de valor suficiente. 
+
 
 A expansão de chaves consiste de um algoritmo que recebe uma chave inicial de $n = \{128, 192, 256\}$ bits e retorna matrizes de tamanho suficiente para cada rodada do algoritmo, incluindo a introdutória. A chave inicial é dividida em palavras de $32$ bits, e diferentes operações são aplicadas nestas, relacionadas com seu 
 
