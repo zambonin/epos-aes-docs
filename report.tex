@@ -108,7 +108,8 @@ O AES é uma cifra de blocos que opera sobre uma matriz de estado de $4 \times 4
 $\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. Seu funcionamento é denominado
 iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas, depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, 10 rodadas são necessárias.
 
-As operações realizadas em cada rodada são \textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}. Note que a matriz de estado é inicializada com uma modificação
+As operações realizadas em cada rodada são \textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}. Note que a matriz de estado é inicializada
+com uma aplicação da etapa \textsc{AddRoundKey}
 composta apenas de \textsc{AddRoundKey}, para que o estado inicial seja modificado, e na última rodada \textsc{MixColumns} não é realizado --- isto 
 
 \begin{itemize}
@@ -122,8 +123,8 @@ composta apenas de \textsc{AddRoundKey}, para que o estado inicial seja modifica
 
 \item Na primeira rodada temos o estado definido como a mensagem dividida em blocos de 16bytes, e é feito um XOR bit a bit entre os bytes do estado e a chave da primeira rodada(AddRoundKey).
     \begin{enumerate}
-        \item $estado[0] = mensagem$
-        \item $estado[1] = estado[0] XOR ChaveRodada[0]$
+        \item $estado[0] = $
+        \item $estado[1] = mensagem XOR ChaveRodada[0]$
     \end{enumerate}
 
 \item Nas rodadas consequentes até a penultima é feito uma troca de cada byte do estado atual pelo valor correspondente nas caixa S, em seguida é feita um deslocamento circular, no qual o estado é escrito em forma matricial e as suas linhas são deslocadas de forma circular em 0,1,2 ou 3 para a esquerda, então é feito o embaralhamento das colunas do estado em forma de matriz, cada byte da coluna é mapeado para um novo valor o qual é obtido atrvés de uma função onde ocorre uma multiplicação entre state e uma matriz específica, cada elemento do produto das matrizes é a soma dos produtos dos elementos de uma linha e uma coluna.
