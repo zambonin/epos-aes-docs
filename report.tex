@@ -125,7 +125,7 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 
 \end{enumerate}
 
-A expansão de chaves consiste da criação de um conjunto de palavras $K_e$ de 32 bits.
+A expansão de chaves \textsc{KeyExpansion} consiste da criação de um conjunto de palavras $K_e$ de 32 bits.
 Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras suficientes para utilização em todas as rodadas do algoritmo, então $t = \ell(n_r + 1)$ e $K^e = \{k_0, \dots, k_{t - 1}\}$. Também defina $rot(x)$ como o deslocamento circular à esquerda de 8 bits da palavra $x$, e a lista de constantes $RC$ com elementos em $\mathbb{F}_{2^{8}}$ definida pela recursão $RC_0 = x^0, RC_1 = x^1, RC_j = x^{j-1} \cdot RC_{j-1}, j > 2$. Inicialmente, $\{k_0, \dots, k_{\ell - 1}\} = K$, e $\forall i \geq \ell, K^{e}_{i} = K^{e}_{i - \ell} \oplus \mathbf{k}$. A palavra $\mathbf{k}$ é decidida de acordo com as restrições (mutualmente exclusivas) abaixo.
 
 \begin{itemize}
@@ -136,29 +136,29 @@ Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras sufici
 \end{itemize}
 
 Assim, uma função que criptografa uma mensagem $m$ e retorna um texto cifrado $c$ pode ser
-representada como
+representada pelo pseudocódigo abaixo. Note que \textsc{KeyExpansion} retorna palavras organizadas em conjuntos de tamanho suficiente para que sejam operadas com $A$.
 
 \begin{algorithm}[H]
- \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
- \KwResult{$c$, o texto cifrado resultante}
+    \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
+    $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
+    $A \longleftarrow \textsc{AddRoundKey}(m, K^{e}_{0})$\;
+    
+    \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
+        $A \longleftarrow \textsc{SubBytes}(A)$\;
+        $A \longleftarrow \textsc{ShiftRows}(A)$\;
+        $A \longleftarrow \textsc{MixColumns}(A)$\;
+        $A \longleftarrow \textsc{AddRoundKey}(A, K^{e}_{i})$\;
+    }
+ 
+    $A \longleftarrow \textsc{SubBytes}(A)$\;
+    $A \longleftarrow \textsc{ShiftRows}(A)$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A, K^{e}_{n_r})$\;
 
- $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
- $A \longleftarrow \textsc{AddRoundKey}(m, K^{e}_{0})$\;
- 
- \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
-   $A \longleftarrow \textsc{SubBytes}(A)$\;
-   $A \longleftarrow \textsc{ShiftRows}(A)$\;
-   $A \longleftarrow \textsc{MixColumns}(A)$\;
-   $A \longleftarrow \textsc{AddRoundKey}(A, K^{e}_{i})$\;
- }
- 
- $A \longleftarrow \textsc{SubBytes}(A)$\;
- $A \longleftarrow \textsc{ShiftRows}(A)$\;
- $A \longleftarrow \textsc{AddRoundKey}(A, K^{e}_{n_r})$\;
+    $c \longleftarrow A$\;
+    \KwResult{$c$, o texto cifrado resultante}
 \end{algorithm}
 
-
-$C = E(m, K)$. Para que a cifra seja caracterizada como simétrica, é preciso criar uma função $m = D(C, K)$. Isto pode ser obtido da seguinte maneira: 
+Para que a cifra seja caracterizada como simétrica, é preciso criar uma função $m = D(C, K)$. Isto pode ser obtido da seguinte maneira: 
 
 este processo, $K_e$
 % explicar como descriptografa
