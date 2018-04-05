@@ -158,10 +158,7 @@ representada pelo pseudocódigo abaixo. Note que \textsc{KeyExpansion} retorna p
     \KwResult{$c$, o texto cifrado resultante}
 \end{algorithm}
 
-Para que a cifra seja caracterizada como simétrica, é preciso criar uma função $m = D(C, K)$. Isto pode ser obtido da seguinte maneira: 
-
-este processo, $K_e$
-% explicar como descriptografa
+Para que a cifra seja caracterizada como simétrica, é preciso criar uma função que faça o inverso do procedimento acima. Tome \textsc{InvShiftRows} como 
 
 
     % \item[\textsc{KeyExpansion}] Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
