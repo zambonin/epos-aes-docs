@@ -113,7 +113,7 @@ composta apenas de \textsc{AddRoundKey}, para que o estado inicial seja modifica
 As operações são descritas em detalhe abaixo, juntamente com a rotina de expansão de chave.
 
 \begin{enumerate}
-    \item[\textsc{SubBytes}] Realiza-se a troca de cada elemento da matriz de estado pelo seu valor correspondente em uma S-Box\footnote{explicar}, onde, para cada byte os 4 bits mais a esquerda representam a linha da S-Box e os 4 mais a direita representam a coluna.
+    \item[\textsc{SubBytes}] Realiza-se a troca de cada elemento da matriz de estado pelo seu valor correspondente em uma \emph{S-Box}\footnote{explicar}, onde, para cada byte os 4 bits mais a esquerda representam a linha da S-Box e os 4 mais a direita representam a coluna.
     \item[\textsc{ShiftRows}] Para cada linha da matriz de estado é realizado um deslocamento circular para a esquerda, o numero de bits deslocados pode ser representado por $deslocamento = numeroDalinha - 1$
     \item[\textsc{MixColumns}] Esta operação é definida pela multiplicação da matriz estado por uma matriz de mesmo tamanho definida pelo polinomio $c = (00000011) \cdot s^{3}+(00000001) \cdot s^{2}+(00000001)*s+(00000010)$ a matriz resultante desta multiplicação é dito como o novo valor da matriz estado.
     \item[\textsc{AddRoundKey}] É feito um XOR bit a bit entre o estado e o bloco da chave referente a rodada.
