@@ -68,7 +68,7 @@ As operações realizadas por ele, em ordem, são:
 
 \begin{itemize}
 
-Derivar as chaves de cada rodada a partir da chave inicial: A primeira etapa do algoritmo é copiar as 4 palavras da chave de entrada para as primeiras posições da chave expandida, e consequentemente o restante da chave vai sendo gerado, 4 palavras por vez. Cada palavra inserida depende da palavra imediatamente anterior e da palavra que foi inserida 4 posições atrás. Caso a posição da palavra a ser adicionada não seja múltipla de 4, a palavra é gerada com um simples XOR entre as palavras da qual depende. Se a posição for múltipla de 4 a palavra é gerada através da função.
+Derivar as chaves de cada rodada a partir da chave inicial: O algoritmo é copiar as 4 palavras da chave de entrada para as primeiras posições da chave expandida, e consequentemente o restante da chave vai sendo gerado, 4 palavras por vez. Cada palavra inserida depende da palavra imediatamente anterior e da palavra que foi inserida 4 posições atrás. Caso a posição da palavra a ser adicionada não seja múltipla de 4, a palavra é gerada com um simples XOR entre as palavras da qual depende. Se a posição for múltipla de 4 a palavra é gerada através da função.
 A subfunção RotWord faz uma troca de bytes na palavra onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. A subfunção SubWord substitui cada byte da palavra pelo valor respectivo na caixa S-Box. Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito .
 
 
