@@ -107,20 +107,20 @@ utiliza uma função de compressão única, obtida a partir de uma cifra de bloc
 O AES é uma cifra de blocos que opera, a partir de uma chave $K$ de tamanho $n = \{128, 192, 256\}$, sobre uma matriz de estado $A$ de dimensões $4 \times 4$, onde $A_{i,j} \in \mathbb{F}_{2^{8}}$\footnote{Definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. Adições e multiplicações em corpos da forma $\mathbb{F}_{2^n}$ são, respectivamente, representadas por operações \texttt{AND} e \texttt{XOR}, e coeficientes de polinômios podem ser apenas $0$ ou $1$, tornando esta estrutura convidativa para operações computacionais.}, $0 \leq i, j < 3$. Seu funcionamento é denominado iterativo, consistindo em aplicações sequenciais de quatro operações (\textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}) sobre $A$. A quantidade destas aplicações, denominadas rodadas ($n_r$), depende diretamente do tamanho da chave: $n = 128 \rightarrow n_r = 10, n = 192 \rightarrow n_r = 12, n = 256 \rightarrow n_r = 14$.
 
 Note que existe uma rodada adicional introdutória composta apenas de \textsc{AddRoundKey},
-para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignorado na última rodada, a fim de facilitar a reversibilidade da cifra. As operações são descritas em detalhe abaixo, juntamente com a rotina de expansão de chave.
+para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignorado na última rodada, a fim de facilitar a reversibilidade da cifra. As operações são descritas em detalhe abaixo, juntamente com a rotina de expansão de chave. Uma
 
 \begin{enumerate}
 
     \item[\textsc{SubBytes}] Realiza-se a substituição de cada elemento da matriz de estado
         pelo seu valor correspondente em uma \emph{substitution-box} (\emph{S-box}), onde os quatro bits mais à esquerda e direita, respectivamente, representam a linha e a coluna do elemento na \emph{S-box}.
 
-    \item[\textsc{ShiftRows}] Cada linha da matriz $A_i$ é deslocada circularmente à esquerda     $i$ vezes.
+    \item[\textsc{ShiftRows}] Cada linha de $A$, $A_i$, é deslocada circularmente à esquerda     $i$ vezes.
 
-    \item[\textsc{MixColumns}] Cada coluna da matriz $A_j$ é multiplicada pelo polinômio
+    \item[\textsc{MixColumns}] Cada coluna de $A$, $A_j$, é multiplicada pelo polinômio
         $c = 03 \cdot s^{3} + 01 \cdot s^{2} + 01 \cdot s + 02$, módulo $x^{4} + 1$.
 
-    \item[\textsc{AddRoundKey}] A operação \texttt{XOR} bit a bit é aplicada entre $A$ e a
-        matriz de estado e o bloco da chave referente à rodada.
+    \item[\textsc{AddRoundKey}] A operação \texttt{XOR} bit a bit é aplicada entre $A$ e o
+        bloco da chave referente à rodada.
 
 \end{enumerate}
 
