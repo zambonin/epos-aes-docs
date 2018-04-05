@@ -3,7 +3,8 @@
 \usepackage[a4paper, margin=3cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amsfonts, enumitem, tikz, parskip, url, algorithm2e}
+\usepackage[portuguese, onelanguage]{algorithm2e}
+\usepackage{amsmath, amsfonts, enumitem, tikz, parskip, url}
 
 \newcommand{\hh}{$\mathcal{H}$}
 \newcommand{\hash}[2][]{\mathcal{H}^{#1}(#2)}
@@ -138,7 +139,7 @@ Assim, uma função que criptografa uma mensagem $m$ e retorna um texto cifrado 
 representada como
 
 \begin{algorithm}[H]
- \KwData{this text}
+ \KwData{$m$, o texto a ser cifrado}
  \KwResult{how to write algorithm with \LaTeX2e }
  initialization\;
  \While{not at end of this document}{
@@ -150,7 +151,6 @@ representada como
    go back to the beginning of current section\;
   }
  }
- \caption{How to write algorithms}
 \end{algorithm}
 
 
