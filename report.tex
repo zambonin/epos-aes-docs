@@ -108,7 +108,7 @@ O AES é uma cifra de blocos que opera sobre uma matriz de estado de $4 \times 4
 $\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. Seu funcionamento é denominado
 iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas, depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, 10 rodadas são necessárias.
 
-As operações realizadas em cada rodada são \textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}. Note que existe uma rodada adicional
+As operações realizadas em cada rodada são \textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}. Note que a matriz de estado é inicializada com uma modificação
 composta apenas de \textsc{AddRoundKey}, para que o estado inicial seja modificado, e na última rodada \textsc{MixColumns} não é realizado --- isto 
 
 \begin{itemize}
