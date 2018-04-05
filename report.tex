@@ -127,10 +127,11 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 A expansão de chaves consiste da criação de um conjunto de palavras $K_e$ de 32 bits.
 Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras suficientes para utilização em todas as rodadas do algoritmo, então $t = \ell(n_r + 1)$.
 Portanto, $K_e = \{k_0, \dots, k_{t - 1}\}$. Inicialmente, $\{k_0, \dots, k_{\ell - 1}\} = K$.
-Então, $\forall i \geq \ell, K_{e_{i}} = K_{e_{i-4}} \oplus \mathbf{k}$. A palavra $\mathbf{k}$ é decidida de acordo com as seguintes restrições. Tome $rot(x)$ como o deslocamento circular à esquerda de 8 bits.
+Então, $\forall i \geq \ell, K_{e_{i}} = K_{e_{i-4}} \oplus \mathbf{k}$. A palavra $\mathbf{k}$ é decidida de acordo com as seguintes restrições. Tome $rot(x)$ como o deslocamento circular à esquerda de 8 bits da palavra $x$.
 
 \begin{itemize}
-    \item $i \equiv 0\pmod{4} \rightarrow \mathbf{k} = \textsc{SubBytes}(rot(K_{e_{i - 1}}))$
+    \item $i \equiv 0\pmod{4} \rightarrow \mathbf{k} = \textsc{SubBytes}(rot(K_{e_{i - 1}})) \oplus 2^{i-1} \in \mathbb{F}_{2^8}$;
+    \item 
 \end{itemize}
 
 
