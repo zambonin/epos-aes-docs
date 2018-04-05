@@ -150,12 +150,12 @@ representada como
    $A \longleftarrow \textsc{ShiftRows}(A)$\;
    $A \longleftarrow \textsc{MixColumns}(A)$\;
    $A \longleftarrow \textsc{AddRoundKey}(A,
-    \{K_{e_{\ell \times i}}, \dots, K_{e_{\ell \times (i + 1)}}\})$\;
+    \{K_{e_{\ell \times i}}, \dots, K_{e_{i + 1}})$\;
  }
  
  $A \longleftarrow \textsc{SubBytes}(A)$\;
  $A \longleftarrow \textsc{ShiftRows}(A)$\;
- $A \longleftarrow \textsc{AddRoundKey}(A, \{K_{e}\})$\;
+ $A \longleftarrow \textsc{AddRoundKey}(A, K_{n_r})$\;
 \end{algorithm}
 
 
