@@ -132,8 +132,10 @@ Então, $\forall i \geq \ell, K_{e_{i}} = K_{e_{i - \ell}} \oplus \mathbf{k}$. A
 \begin{itemize}
     \item $i \equiv 0 \pmod{4} \rightarrow \mathbf{k}
         = \textsc{SubBytes}(rot(K_{e_{i - 1}})) \oplus RC_{\frac{i}{\ell}}$;
-    \item $\ell = 8 \land i \equiv 4 \pmod{8} \rightarrow \mathbf{k} =  $ 
+    \item $\ell = 8 \land i \equiv 4 \pmod{8} \rightarrow \mathbf{k} = $ 
 \end{itemize}
+
+% explicar como descriptografa
 
 
     % \item[\textsc{KeyExpansion}] Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
