@@ -17,6 +17,9 @@
 
 
 \section*{Introdução}
+
+
+
 % * motivação da criptografia pós-quântica
 % * distinção entre subáreas
 
@@ -25,13 +28,13 @@
 
 \subsection*{O algoritmo AES}
 
-O AES cifra a chave através de operações de adição, multiplicação e divisão sobre um corpo finito $\mathbb{F}_{2^{8}}$ em relação a um polinomio irredutivel m, onde $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. 
+O AES cifra de bloco, ou seja o numero de bytes cifrados a cada ciclo é fixo, a chave através de operações de adição, multiplicação e divisão sobre um corpo finito $\mathbb{F}_{2^{8}}$ em relação a um polinomio irredutivel m, onde $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. 
 
 As operações realizadas por ele, em ordem, são:
 
 \begin{itemize}
 
-XOR bit a bit entre a chave e a mensagem
+XOR bit a bit entre a chave e a mensagem:
 
 Substituição de sucessões (Nibble Substituition) com caixas S
 
