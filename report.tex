@@ -125,8 +125,7 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 \end{enumerate}
 
 A expansão de chaves consiste da criação de um conjunto de palavras $K_e$ de 32 bits.
-Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras suficientes para utilização em todas as rodadas do algoritmo, então $t = \ell(n_r + 1)$. Também defina $rot(x)$ como o deslocamento circular à esquerda de 8 bits da palavra $x$, e a lista de constantes $RC$ com elementos em $\mathbb{F}_{2^{8}}$ definida pela recursão $RC_0 = x^0, RC_1 = x^1, RC_j = x^{j-1} \cdot RC_{j-1}, j > 2$. $K_e = \{k_0, \dots, k_{t - 1}\}$. Inicialmente, $\{k_0, \dots, k_{\ell - 1}\} = K$.
-Então, $\forall i \geq \ell, K_{e_{i}} = K_{e_{i - \ell}} \oplus \mathbf{k}$. A palavra $\mathbf{k}$ é decidida de acordo com as restrições (mutualmente exclusivas) abaixo.
+Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras suficientes para utilização em todas as rodadas do algoritmo, então $t = \ell(n_r + 1)$ e $K_e = \{k_0, \dots, k_{t - 1}\}$. Também defina $rot(x)$ como o deslocamento circular à esquerda de 8 bits da palavra $x$, e a lista de constantes $RC$ com elementos em $\mathbb{F}_{2^{8}}$ definida pela recursão $RC_0 = x^0, RC_1 = x^1, RC_j = x^{j-1} \cdot RC_{j-1}, j > 2$. Inicialmente, $\{k_0, \dots, k_{\ell - 1}\} = K$, e $\forall i \geq \ell, K_{e_{i}} = K_{e_{i - \ell}} \oplus \mathbf{k}$. A palavra $\mathbf{k}$ é decidida de acordo com as restrições (mutualmente exclusivas) abaixo.
 
 \begin{itemize}
     \item $i \equiv 0 \pmod{4} \rightarrow \mathbf{k}
