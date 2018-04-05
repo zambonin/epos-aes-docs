@@ -104,11 +104,14 @@ utiliza uma função de compressão única, obtida a partir de uma cifra de bloc
 
 \subsection{AES --- \emph{Advanced Encryption Standard}}
 
+O AES é uma cifra de blocos que opera sobre uma matriz de $4 \times 4$ bytes iterativamente. Estas operações são caracterizadas por adições, multiplicações e divisões sobre um corpo finito
+$\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$
+\footnote{Operações nesta estrutura algébrica são similares a...}.
+
 O AES é um algoritmo cryptografico(???) simétrica de blocos, ou seja o numero de bytes cifrados a cada para uma chave é fixo em 16bytes, e faz as suas operações de adição, multiplicação e divisão sobre um corpo finito $\mathbb{F}_{2^{8}}$ em relação a um polinomio irredutivel m, onde $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. 
 A sua cifra á feita através da repetição de determinado passos do seu algoritmo multiplas vezes, os quais chamamos de 'rodada', o numero de rodadas varia em relação ao tamanho da chave, 16bytes->10 rodadas, 24bytes->12 rodadas, 32bytes->14 rodadas. *do your magic*
 
 
-Ele é uma crifra iterativa, onde as principais operações são:
 
 
 \begin{itemize}
