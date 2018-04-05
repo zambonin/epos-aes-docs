@@ -104,11 +104,11 @@ utiliza uma função de compressão única, obtida a partir de uma cifra de bloc
 
 \subsection{AES --- \emph{Advanced Encryption Standard}}
 
-O AES é uma cifra de blocos que opera sobre uma matriz de estado $A$,
+O AES é uma cifra de blocos que opera sobre uma matriz de estado $A$ a partir de uma chave $K$,
 de dimensões $4 \times 4$, onde $A_{i,j} \in \mathbb{F}_{2^{8}}$\footnote{Definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. Adições e multiplicações em corpos da forma $\mathbb{F}_{2^n}$ são, respectivamente, representadas por operações \texttt{AND} e \texttt{XOR}, e coeficientes de polinômios podem ser apenas $0$ ou $1$, tornando esta estrutura convidativa para operações computacionais.}, $0 \leq i, j < 3$. Seu funcionamento é denominado
-iterativo, consistindo na aplicação de uma sequência de quatro operações () $A$. A quantidade destas aplicações, denominadas rodadas ($n_r$), depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, $n_r = 10$.
+iterativo, consistindo na aplicação de uma sequência de quatro operações (\textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}) sobre $A$. A quantidade destas aplicações, denominadas rodadas ($n_r$), depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, $n_r = 10$.
 
-As operações realizadas em cada rodada são denominadas \textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}. Note que existe uma rodada adicional introdutória
+As operações realizadas em cada rodada são denominadas . Note que existe uma rodada adicional introdutória
 composta apenas de \textsc{AddRoundKey}, para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignorado na última rodada, a fim de habilitar a reversibilidade da cifra.
 As operações são descritas em detalhe abaixo, juntamente com a rotina de expansão de chave.
 
