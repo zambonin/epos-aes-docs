@@ -7,7 +7,7 @@
 \usepackage{url}
 \usepackage{amsfonts}
 
-\title{Esquemas de assinatura digital pós-quânticos baseados em AES}
+\title{Esquemas de assinatura digital pós-quânticos \\ baseados em AES}
 \author{Gustavo Zambonin \\ \texttt{gustavo.zambonin@grad.ufsc.br} \and Marcello da Silva Klingelfus Junior \\ \texttt{marcello.klingelfus@grad.ufsc.br}}
 \date{}
 
@@ -18,7 +18,37 @@
 
 \section*{Introdução}
 
-
+A aplicação de protocolos criptográficos é essencial no contexto da
+validação e proteção de quaisquer comunicações realizadas por um conjunto
+de entidades, sejam estas dispositivos eletrônicos ou indivíduos, em virtude
+da possível criticalidade e sensibilidade atribuídas aos dados transmitidos.
+Esquemas de assinatura digital são comumente utilizados para assegurar este
+processo de maneira formal (GOLDREICH, 2004a), através da autenticidade
+e não-repúdio do remetente e certeza da integridade dos dados em, a fim de
+traduzir o resguardo provido por uma assinatura de próprio punho no mundo real.
+Na prática, a maior parte destes esquemas utilizam como alicerce al-
+gorítmico criptossistemas assimétricos baseados em problemas ‘’difíceis‘’ da
+teoria dos números, como a fatoração de inteiros ou resolução do logaritmo
+discreto, ambos para números grandes. Este fato provê a segurança necessária
+para os esquemas em computadores clássicos (eletrônicos), por conta da ine-
+xistência de algoritmos que resolvem estes problemas em tempo polinomial,
+até o momento.  Entretanto, em computadores quânticos, algoritmos dessa
+forma já existem - em especial, o algoritmo de Shor (SHOR, 1997) - efetiva-
+mente tornando estes esquemas clássicos inseguros neste novo contexto.
+Para combater esta situação, a criptografia pós-quântica encarrega-se
+de buscar algoritmos criptográficos cuja segurança é considerada suficiente
+mesmo utilizando-se de um computador quântico e ataques especializados,
+como o algoritmo de Grover (GROVER, 1996). Esta área conta com diver-
+sas abordagens diferentes: a criptografia baseada em reticulados, polinômios
+multivariados sobre um corpo finito, códigos de correção de erros, morfis-
+mos entre curvas elípticas supersingulares e criptossistemas simétricos. En-
+tretanto, reduções de segurança formais não existem para alguns destes méto-
+dos, e para outros, o tamanho das chaves impossibilita a utilização destes em
+aplicações práticas.
+Não obstante, uma abordagem distinta de esquema de assinatura digi-
+tal resistente a computadores quânticos pode ser obtida apenas com funções
+de resumo criptográfico, construídas a partir de funções de mão única (KATZ;
+KOO, 2005). 
 
 % * motivação da criptografia pós-quântica
 % * distinção entre subáreas
@@ -29,13 +59,13 @@
 \subsection*{O algoritmo AES}
 
 O AES é um algoritmo cryptografico(???) simétrica de blocos, ou seja o numero de bytes cifrados a cada para uma chave é fixo em 16bytes, e faz as suas operações de adição, multiplicação e divisão sobre um corpo finito $\mathbb{F}_{2^{8}}$ em relação a um polinomio irredutivel m, onde $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. 
-A sua cifra á feita através da repetição de determinado passos do seu algoritmo multiplas vezes, os quais chamamos de 'rodada', o numero de rodadas varia em relação ao tamanho da chave, 16by->10 rodadas, 24bytes->12 rodadas, 32bytes->14 rodadas. 
+A sua cifra á feita através da repetição de determinado passos do seu algoritmo multiplas vezes, os quais chamamos de 'rodada', o numero de rodadas varia em relação ao tamanho da chave, 16bytes->10 rodadas, 24bytes->12 rodadas, 32bytes->14 rodadas. *do your magic*
 
 
 As operações realizadas por ele, em ordem, são:
 
 \begin{itemize}
-
+Derivar as chaves de cada rodada apartir da chave inicial: 
 
 
 \end{itemize}
