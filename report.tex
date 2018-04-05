@@ -143,7 +143,7 @@ representada como
  \KwResult{$c$, o texto cifrado resultante}
 
  $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
- $A \longleftarrow \textsc{AddRoundKey}(m, \{K_{e_0}, \dots, K_{e_{\ell - 1}}\})$\;
+ $A \longleftarrow \textsc{AddRoundKey}(m, K_{e_0})$\;
  
  \For{$i \leftarrow 0$ \KwTo $n_r - 2$}{
    $A \longleftarrow \textsc{SubBytes}(A)$\;
