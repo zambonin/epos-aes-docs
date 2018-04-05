@@ -25,7 +25,20 @@
 
 \subsection*{O algoritmo AES}
 
-O AES cifra a chave através de operações de adição, multiplicação e divisão sobre um corpo finito $\mathbb{F}_{2^{8}}$ em relação a um polinomio irredutivel 
+O AES cifra a chave através de operações de adição, multiplicação e divisão sobre um corpo finito $\mathbb{F}_{2^{8}}$ em relação a um polinomio irredutivel m, onde $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. 
+
+As operações realizadas por ele, em ordem, são:
+
+
+-O processo de cifra é feito, ordenadamente, através de: 
+1.XOR bit a bit entre a chave e a mensagem
+2.Substituição de sucessões (Nibble Substituition) com caixas S
+3.Deslocamento Circular
+4.Embaralhamento das Colunas
+5.XOR bit a bit entre a chave expandida e a mensagem
+6.Substituição de sucessões com caixas S
+7.Deslocamento Circular
+8.XOR bit a bit entre a chave expandida e a mensagem
 
 
 COMO O AES FUNCIONA:
@@ -49,6 +62,6 @@ COMO O AES FUNCIONA:
 
 \section*{O esquema Winternitz}
 % * como plugar o AES nele
-% * esq
+% * esquemas posteriores
 
 \end{document}
