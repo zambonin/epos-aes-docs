@@ -136,12 +136,13 @@ Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras sufici
 \end{itemize}
 
 Assim, uma função que criptografa uma mensagem $m$ e retorna um texto cifrado $c$ pode ser
-representada pelo pseudocódigo abaixo. Note que \textsc{KeyExpansion} retorna palavras organizadas em conjuntos de tamanho suficiente para que sejam operadas com $A$.
+representada pelo pseudocódigo abaixo.
 
 \begin{algorithm}[H]
     \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
+    $A \longleftarrow m$\;
     $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
-    $A \longleftarrow \textsc{AddRoundKey}(m, K^{e}_{0})$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A, K^{e}_{0})$\;
     
     \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
         $A \longleftarrow \textsc{SubBytes}(A)$\;
