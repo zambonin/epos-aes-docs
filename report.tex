@@ -15,40 +15,42 @@
 
 \maketitle
 
+\section{Introdução}
 
-\section*{Introdução}
-
-A aplicação de protocolos criptográficos é essencial no contexto da
-validação e proteção de quaisquer comunicações realizadas por um conjunto
-de entidades, sejam estas dispositivos eletrônicos ou indivíduos, em virtude
-da possível criticalidade e sensibilidade atribuídas aos dados transmitidos.
-Esquemas de assinatura digital são comumente utilizados para assegurar este
-processo de maneira formal (GOLDREICH, 2004a), através da autenticidade
-e não-repúdio do remetente e certeza da integridade dos dados em, a fim de
+A aplicação de protocolos criptográficos é essencial no contexto da validação e
+proteção de quaisquer comunicações realizadas por um conjunto de entidades,
+sejam estas dispositivos eletrônicos ou indivíduos, em virtude da possível
+criticalidade e sensibilidade atribuídas aos dados transmitidos. Esquemas de
+assinatura digital são comumente utilizados para assegurar este processo de
+maneira formal \cite{Goldreich:2004:FCV:975541}, através da autenticidade e
+não-repúdio do remetente e certeza da integridade dos dados em, a fim de
 traduzir o resguardo provido por uma assinatura de próprio punho no mundo real.
-Na prática, a maior parte destes esquemas utilizam como alicerce al-
-gorítmico criptossistemas assimétricos baseados em problemas ‘’difíceis‘’ da
-teoria dos números, como a fatoração de inteiros ou resolução do logaritmo
-discreto, ambos para números grandes. Este fato provê a segurança necessária
-para os esquemas em computadores clássicos (eletrônicos), por conta da ine-
-xistência de algoritmos que resolvem estes problemas em tempo polinomial,
-até o momento.  Entretanto, em computadores quânticos, algoritmos dessa
-forma já existem - em especial, o algoritmo de Shor (SHOR, 1997) - efetiva-
-mente tornando estes esquemas clássicos inseguros neste novo contexto.
-Para combater esta situação, a criptografia pós-quântica encarrega-se
-de buscar algoritmos criptográficos cuja segurança é considerada suficiente
-mesmo utilizando-se de um computador quântico e ataques especializados,
-como o algoritmo de Grover (GROVER, 1996). Esta área conta com diver-
-sas abordagens diferentes: a criptografia baseada em reticulados, polinômios
-multivariados sobre um corpo finito, códigos de correção de erros, morfis-
-mos entre curvas elípticas supersingulares e criptossistemas simétricos. En-
-tretanto, reduções de segurança formais não existem para alguns destes méto-
-dos, e para outros, o tamanho das chaves impossibilita a utilização destes em
-aplicações práticas.
-Não obstante, uma abordagem distinta de esquema de assinatura digi-
-tal resistente a computadores quânticos pode ser obtida apenas com funções
-de resumo criptográfico, construídas a partir de funções de mão única (KATZ;
-KOO, 2005). 
+
+Na prática, a maior parte destes esquemas utilizam como alicerce algorítmico
+criptossistemas assimétricos baseados em problemas `'difíceis`' da teoria
+dos números, como a fatoração de inteiros ou resolução do logaritmo discreto,
+ambos para números grandes. Este fato provê a segurança necessária para os
+esquemas em computadores clássicos (eletrônicos), por conta da inexistência de
+algoritmos que resolvem estes problemas em tempo polinomial, até o momento.
+Entretanto, em computadores quânticos, algoritmos dessa forma já existem - em
+especial, o algoritmo de Shor \cite{Shor:1997:PAP:264393.264406} - efetivamente
+tornando estes esquemas clássicos inseguros neste novo contexto.
+
+Para combater esta situação, a criptografia pós-quântica encarrega-se de buscar
+algoritmos criptográficos cuja segurança é considerada suficiente mesmo
+utilizando-se de um computador quântico e ataques especializados, como o
+algoritmo de Grover \cite{Grover:1996:FQM:237814.237866}. Esta área conta com
+diversas abordagens diferentes: a criptografia baseada em reticulados,
+polinômios multivariados sobre um corpo finito, códigos de correção de erros,
+morfismos entre curvas elípticas supersingulares, criptossistemas simétricos.
+Entretanto, reduções de segurança formais não existem para alguns destes
+métodos, e para outros, o tamanho das chaves impossibilita a utilização destes
+em aplicações práticas.
+
+Não obstante, uma abordagem distinta de esquema de assinatura digital
+resistente a computadores quânticos pode ser obtida apenas com funções de
+resumo criptográfico, construídas a partir de funções de mão única
+\cite{cryptoeprint:2005:328}.
 
 % * motivação da criptografia pós-quântica
 % * distinção entre subáreas
@@ -65,7 +67,10 @@ A sua cifra á feita através da repetição de determinado passos do seu algori
 As operações realizadas por ele, em ordem, são:
 
 \begin{itemize}
-Derivar as chaves de cada rodada apartir da chave inicial: 
+
+Derivar as chaves de cada rodada a partir da chave inicial: A primeira etapa do algoritmo é copiar as 4 palavras da chave de entrada para as primeiras posições da chave expandida, e consequentemente o restante da chave vai sendo gerado, 4 palavras por vez. Cada palavra inserida depende da palavra imediatamente anterior e da palavra que foi inserida 4 posições atrás. Caso a posição da palavra a ser adicionada não seja múltipla de 4, a palavra é gerada com um simples XOR entre as palavras da qual depende. Se a posição for múltipla de 4 a palavra é gerada através da função.
+A subfunção RotWord faz uma troca de bytes na palavra onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. A subfunção SubWord substitui cada byte da palavra pelo valor respectivo na caixa S-Box. Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito .
+
 
 
 \end{itemize}
@@ -87,5 +92,8 @@ XOR bit a bit entre a chave expandida e a mensagem
 \section*{O esquema Winternitz}
 % * como plugar o AES nele
 % * esquemas posteriores
+
+\bibliographystyle{alpha}
+\bibliography{report} 
 
 \end{document}
