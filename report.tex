@@ -124,16 +124,8 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 
 \end{enumerate}
 
-A expansão de chaves consiste da criação de um conjunto de tamanho $t = \frac{n}{32}(n_r + 1)$, denominado $K_e = \{k_0, \dots, k_{t - 1}\}$. Este tamanho é baseado na divisão de $K$ em palavras de 32 bits e na necessidade de chaves distintas para cada rodada do algoritmo.
-
-A expansão de chaves consiste de um procedimento que recebe a chave inicial
-do algoritmo, de tamanho $n = \{128, 192, 256\}$, e retorna um conjunto
-de $4(n_r + 1)$ palavras de 32 bits, denominado de chave expandida.
-Cada conjunto de 4 palavras sucessivas é utilizado em uma rodada do algoritmo.
-As primeiras $n / 32$ entradas deste conjunto são populadas pela divisão da
-chave inicial. Todas as palavras posteriores consecutivas são construídas da
-seguinte maneira: se o índice da palavra no conjunto divide $n$
-
+A expansão de chaves consiste da criação de um conjunto de tamanho $t = \frac{n}{32}(n_r + 1)$, denominado $K_e = \{k_0, \dots, k_{t - 1}\}$. Este tamanho é baseado na divisão de $K$ em palavras de 32 bits e na necessidade de chaves distintas para cada rodada do algoritmo. Então,
+$K = \{k_0, \dots, k_{\frac{n}{32} - 1}$, e para 
 
 
     % \item[\textsc{KeyExpansion}] Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
