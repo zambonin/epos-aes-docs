@@ -117,7 +117,7 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
     \item[\textsc{ShiftRows}] Cada linha de $A$, $A_i$, é deslocada circularmente à esquerda     $i$ vezes.
 
     \item[\textsc{MixColumns}] Cada coluna de $A$, $A_j$, é multiplicada pelo polinômio
-        $c = 03 \cdot s^{3} + 01 \cdot s^{2} + 01 \cdot s + 02$, módulo $x^{4} + 1$.
+        $c = 03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02$, módulo $x^{4} + 1$.
 
     \item[\textsc{AddRoundKey}] A operação \texttt{XOR} bit a bit é aplicada entre $A$ e o
         bloco da chave referente à rodada.
@@ -125,8 +125,7 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 \end{enumerate}
 
 A expansão de chaves consiste da criação de um conjunto de palavras $K_e$ de 32 bits, inicialmente baseado na chave $K$. Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras suficientes para todas as rodadas do algoritmo, então $t = \ell(n_r + 1)$.
-Portanto, $K_e = \{k_0, \dots, k_{t - 1}\}$. Inicialmente, $K$ é dividido e as primeiras $\ell$ palavras de
-$K_e$ recebem 
+Portanto, $K_e = \{k_0, \dots, k_{t - 1}\}$. Inicialmente, $\{k_0, \dots, k_{\ell - 1}\} = K$.
 
 
 $t = \frac{n}{32}(n_r + 1)$, denominado $K_e = \{k_0, \dots, k_{t - 1}\}$. Este tamanho é baseado na divisão de $K$ em palavras de 32 bits e na necessidade de chaves distintas para cada rodada do algoritmo. Então,
