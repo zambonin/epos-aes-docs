@@ -141,11 +141,15 @@ representada como
 \begin{algorithm}[H]
  \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
  \KwResult{$c$, o texto cifrado resultante}
- $A \longleftarrow m$\;
+
  $K_e \longleftarrow \textsc{KeyExpansion}(K)$\;
- $A \longleftarrow \textsc{AddRoundKey}(m, K_{e_0})$\;
+ $A \longleftarrow \textsc{AddRoundKey}(m, \{K_{e_0}, \dots, K_{e_{\ell - 1}}\})$\;
  
- \For{$i \leftarrow 0$ \KwTo $n_r$}{
+ \For{$i \leftarrow 0$ \KwTo $n_r - 2$}{
+   $A \longleftarrow \textsc{SubBytes}(A)$\;
+   $A \longleftarrow \textsc{ShiftRows}(A)$\;
+   $A \longleftarrow \textsc{MixColumns}(A)$\;
+   $A \longleftarrow \textsc{AddRoundKey}(A, \{K_{e_}\})$\;
  }
  
  
