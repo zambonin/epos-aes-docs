@@ -115,8 +115,8 @@ As operações são descritas em detalhe abaixo, juntamente com a rotina de expa
 \begin{enumerate}
     \item[\textsc{SubBytes}] Realizasse a troca de cada byte da matriz de estado pelo seu valor correspondente em uma S-Box, onde, para cada byte os 4 bits mais a esquerda representam a linha da S-Box e os 4 mais a direita representam a coluna.
     \item[\textsc{ShiftRows}] Para cada linha da matriz estado é realizado um deslocamento circular para a esquerda, o numero de bits deslocados pode ser representado por $deslocamento = numeroDaColuna - 1$
-    \item[\textsc{MixColumns}] Esta operação é definida pela multiplicação da matriz estado por uma matriz de mesmo tamanho definida pelo polinomio $c = x03*s^{3}+x01*s^{2}+x01*s+x02$ a matriz resultado desta multiplicação é dito como o novo valor da matriz estado.
-    \item[\textsc{AddRoundKey}] 
+    \item[\textsc{MixColumns}] Esta operação é definida pela multiplicação da matriz estado por uma matriz de mesmo tamanho definida pelo polinomio $c = (00000011)*s^{3}+(00000001)*s^{2}+(00000001)*s+(00000010)$ a matriz resultante desta multiplicação é dito como o novo valor da matriz estado.
+    \item[\textsc{AddRoundKey}] É feito um XOR bit a bit entre o estado e a chave da primeira rodada(AddRoundKey)
 \end{enumerate}
 
 \begin{itemize}
