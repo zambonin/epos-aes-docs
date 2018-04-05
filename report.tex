@@ -112,9 +112,14 @@ As operações realizadas por ele, em ordem, são:
 
 \begin{itemize}
 
-\item Derivar as chaves de cada rodada a partir da chave inicial: O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através da função RotWord-> SubWord -> Rcon. A subfunção RotWord a qual faz uma troca de bytes na, onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. A subfunção SubWord substitui cada byte pelo valor respectivo na caixa S-Box. Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito.
+\item Derivar as chaves de cada rodada a partir da chave inicial: O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através da função RotWord-> SubWord -> Rcon. 
+    \begin{enumerate}
+    \item A subfunção RotWord a qual faz uma troca de bytes na, onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. 
+    \item A subfunção SubWord substitui cada byte pelo valor respectivo na caixa S-Box. 
+    \item Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito.
+    \end{enumerate} 
 
-\item 
+\item  
 
 
 \end{itemize}
