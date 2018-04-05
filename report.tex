@@ -124,7 +124,7 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 
 \end{enumerate}
 
-A expansão de chaves consiste da criação de um conjunto de tamanho $t = \frac{n}{32}(n_r + 1)$. Este número é derivado, $K_e = \{k_0, \dots, k_{t - 1}\}$.
+A expansão de chaves consiste da criação de um conjunto de tamanho $t = \frac{n}{32}(n_r + 1)$, denominado $K_e = \{k_0, \dots, k_{t - 1}\}$. Este tamanho é baseado na divisão de $K$ em palavras de 32 bits e na necessidade de chaves distintas para cada rodada do algoritmo.
 
 A expansão de chaves consiste de um procedimento que recebe a chave inicial
 do algoritmo, de tamanho $n = \{128, 192, 256\}$, e retorna um conjunto
