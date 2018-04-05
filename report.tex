@@ -140,23 +140,26 @@ representada pelo pseudocódigo abaixo.
 
 \begin{algorithm}[H]
     \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
+    \KwResult{$c$, o texto cifrado resultante}
+
     $A \longleftarrow m$\;
     $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
-    $A \longleftarrow \textsc{AddRoundKey}(A, K^{e}_{0})$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A, \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
     
     \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
         $A \longleftarrow \textsc{SubBytes}(A)$\;
         $A \longleftarrow \textsc{ShiftRows}(A)$\;
         $A \longleftarrow \textsc{MixColumns}(A)$\;
-        $A \longleftarrow \textsc{AddRoundKey}(A, K^{e}_{i})$\;
+        $A \longleftarrow \textsc{AddRoundKey}(A,
+            \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell}\})$\;
     }
  
     $A \longleftarrow \textsc{SubBytes}(A)$\;
     $A \longleftarrow \textsc{ShiftRows}(A)$\;
-    $A \longleftarrow \textsc{AddRoundKey}(A, K^{e}_{n_r})$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A,
+        \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot (\ell - 1)}\})$\;
 
     $c \longleftarrow A$\;
-    \KwResult{$c$, o texto cifrado resultante}
 \end{algorithm}
 
 Para que a cifra seja caracterizada como simétrica, é preciso criar uma função que faça o inverso do procedimento acima. Tome \textsc{InvShiftRows} como 
