@@ -105,11 +105,11 @@ utiliza uma função de compressão única, obtida a partir de uma cifra de bloc
 \subsection{AES --- \emph{Advanced Encryption Standard}}
 
 O AES é uma cifra de blocos que opera sobre uma matriz de estado $A$,
-de dimensões $4 \times 4$, onde $A_{i,j} \in \mathbb{F}_{2^{8}}$\footnote{Definido pelo polinômio irredutível }, $0 \leq i, j < 3$,
+de dimensões $4 \times 4$, onde $A_{i,j} \in \mathbb{F}_{2^{8}}$\footnote{Definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. Adições e multiplicações em corpos da forma \mathbb{F}_{2^n} são, respectivamente,  convencionalmente representadas por }, $0 \leq i, j < 3$,
 
 
 de $4 \times 4$ bytes. Estas operações são caracterizadas por adições, multiplicações e divisões sobre um corpo finito\footnote{Operações nesta estrutura algébrica são similares a...}
-$\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. Seu funcionamento é denominado
+$\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível . Seu funcionamento é denominado
 iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas ($n_r$), depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, $n_r = 10$.
 
 As operações realizadas em cada rodada são denominadas \textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}. Note que existe uma rodada adicional introdutória
