@@ -142,26 +142,20 @@ representada como
  \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
  \KwResult{$c$, o texto cifrado resultante}
 
- $K_e \longleftarrow \textsc{KeyExpansion}(K)$\;
+ $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
  $A \longleftarrow \textsc{AddRoundKey}(m, \{K_{e_0}, \dots, K_{e_{\ell - 1}}\})$\;
  
  \For{$i \leftarrow 0$ \KwTo $n_r - 2$}{
    $A \longleftarrow \textsc{SubBytes}(A)$\;
    $A \longleftarrow \textsc{ShiftRows}(A)$\;
    $A \longleftarrow \textsc{MixColumns}(A)$\;
-   $A \longleftarrow \textsc{AddRoundKey}(A, \{K_{e_}\})$\;
+   $A \longleftarrow \textsc{AddRoundKey}(A,
+    \{K_{e_{\ell \times i}}, \dots, K_{e_{\ell \times (i + 1)}}\})$\;
  }
  
- 
- \While{not at end of this document}{
-  read current\;
-  \eIf{understand}{
-   go to next section\;
-   current section becomes this one\;
-   }{
-   go back to the beginning of current section\;
-  }
- }
+ $A \longleftarrow \textsc{SubBytes}(A)$\;
+ $A \longleftarrow \textsc{ShiftRows}(A)$\;
+ $A \longleftarrow \textsc{AddRoundKey}(A, \{K_{e}\})$\;
 \end{algorithm}
 
 
