@@ -43,12 +43,15 @@ algoritmo de Grover \cite{Grover:1996:FQM:237814.237866}. Esta área conta com
 diversas abordagens diferentes: a criptografia baseada em reticulados,
 polinômios multivariados sobre um corpo finito, códigos de correção de erros,
 morfismos entre curvas elípticas supersingulares, criptossistemas simétricos.
-e funções de resumo criptográfico. Em especial, é possível mesclar as duas
-últimas opções a fim de aproveitar, respectivamente, o desempenho e a
-simplicidade destas.
+e funções de resumo criptográfico. Em especial, esta última opção apresenta
+grande versatilidade, visto que os esquemas não necessitam de funções
+específicas para seu funcionamento.
 
-% * motivação da criptografia pós-quântica
-% * distinção entre subáreas
+
+Em especial, é possível mesclar as duas
+últimas opções a fim de aproveitar, respectivamente, o desempenho e a
+simplicidade destas. Esta possibilidade será abordada neste trabalho a fim de
+demonstrar a flexibilidade 
 
 \section*{Criptografia simétrica}
 % * por que já é pós-quântico?
@@ -63,8 +66,7 @@ As operações realizadas por ele, em ordem, são:
 
 \begin{itemize}
 
-Derivar as chaves de cada rodada a partir da chave inicial: O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inserido depende da palavra imediatamente anterior e da palavra que foi inserida 4 posições atrás. Caso a posição da palavra a ser adicionada não seja múltipla de 4, a palavra é gerada com um simples XOR entre as palavras da qual depende. Se a posição for múltipla de 4 a palavra é gerada através da função.
-A subfunção RotWord faz uma troca de bytes na palavra onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. A subfunção SubWord substitui cada byte da palavra pelo valor respectivo na caixa S-Box. Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito .
+Derivar as chaves de cada rodada a partir da chave inicial: O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada palavra de 8bits inserida depende da palavra imediatamente anterior e da palavra que foi inserida 4 posições atrás. Caso a posição da palavra a ser adicionada não seja múltipla de 4, a palavra é gerada com um simples XOR entre as palavras da qual depende. Se a posição for múltipla de 4 a palavra é gerada através da função. A subfunção RotWord faz uma troca de bytes na palavra onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. A subfunção SubWord substitui cada byte da palavra pelo valor respectivo na caixa S-Box. Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito .
 
 
 
