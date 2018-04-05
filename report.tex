@@ -3,7 +3,7 @@
 \usepackage[a4paper, margin=3cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amsfonts, enumitem, tikz, parskip, url}
+\usepackage{amsmath, amsfonts, enumitem, tikz, parskip, url, algorithm2e}
 
 \newcommand{\hh}{$\mathcal{H}$}
 \newcommand{\hash}[2][]{\mathcal{H}^{#1}(#2)}
@@ -135,9 +135,20 @@ Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras sufici
 \end{itemize}
 
 Assim, uma função que criptografa uma mensagem $m$ e retorna um texto cifrado $c$ pode ser
-representada como $c = E(m, K)$;.
+representada como
 
-Para que a cifra seja caracterizada como simétrica, é preciso criar uma função
+\begin{algorithmic}
+\If {$i\geq maxval$}
+    \State $i\gets 0$
+\Else
+    \If {$i+k\leq maxval$}
+        \State $i\gets i+k$
+    \EndIf
+\EndIf
+\end{algorithmic}
+
+
+$C = E(m, K)$. Para que a cifra seja caracterizada como simétrica, é preciso criar uma função $m = D(C, K)$. Isto pode ser obtido da seguinte maneira: 
 
 este processo, $K_e$
 % explicar como descriptografa
