@@ -104,10 +104,9 @@ utiliza uma função de compressão única, obtida a partir de uma cifra de bloc
 
 \subsection{AES --- \emph{Advanced Encryption Standard}}
 
-O AES é uma cifra de blocos que opera sobre uma matriz de estado de $4 \times 4$ bytes. Estas operações são caracterizadas por adições, multiplicações e divisões sobre um corpo finito
-$\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$
-\footnote{Operações nesta estrutura algébrica são similares a...}. Seu funcionamento é denominado
-iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas, depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, 10 rodadas são necessárias.
+O AES é uma cifra de blocos que opera sobre uma matriz de estado de $4 \times 4$ bytes. Estas operações são caracterizadas por adições, multiplicações e divisões sobre um corpo finito\footnote{Operações nesta estrutura algébrica são similares a...}
+$\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. Seu funcionamento é denominado
+iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas, depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, 10 rodadas são necessárias. As operações realizadas em cada rodada são \textsc{SubBytes}, \textsc{ShiftRows}, \textsc{MixColumns} e \textsc{AddRoundKey}.
 
 \begin{itemize}
 
