@@ -113,17 +113,13 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 
     \item[\textsc{SubBytes}] Realiza-se a substituição de cada elemento da matriz de estado
         pelo seu valor correspondente em uma \emph{substitution-box} (\emph{S-box}), onde os quatro bits mais à esquerda e direita, respectivamente, representam a linha e a coluna do elemento na \emph{S-box}.
-    
-    \item[\textsc{ShiftRows}] Cada linha da matriz $A_i$ é deslocada circularmente à esquerda $i$ vezes.
-    
-    Assumindo que a indexação de linhas da matriz de estado começa
-        em $0$, cada linha da matriz é deslocada circularmente à esquerda pelo valor de seu
-        índice.
-    
-    \item[\textsc{MixColumns}] Cada coluna da matriz de estado é multiplicada pelo polinômio
+
+    \item[\textsc{ShiftRows}] Cada linha da matriz $A_i$ é deslocada circularmente à esquerda     $i$ vezes.
+
+    \item[\textsc{MixColumns}] Cada coluna da matriz $A_j$ é multiplicada pelo polinômio
         $c = 03 \cdot s^{3} + 01 \cdot s^{2} + 01 \cdot s + 02$, módulo $x^{4} + 1$.
-        
-    \item[\textsc{AddRoundKey}] A operação ``ou exclusivo'' bit a bit é aplicada entre a
+
+    \item[\textsc{AddRoundKey}] A operação \texttt{XOR} bit a bit é aplicada entre $A$ e a
         matriz de estado e o bloco da chave referente à rodada.
 
 \end{enumerate}
