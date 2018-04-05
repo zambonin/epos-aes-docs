@@ -107,7 +107,7 @@ utiliza uma função de compressão única, obtida a partir de uma cifra de bloc
 O AES é uma cifra de blocos que opera sobre uma matriz de estado de $4 \times 4$ bytes. Estas operações são caracterizadas por adições, multiplicações e divisões sobre um corpo finito
 $\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$
 \footnote{Operações nesta estrutura algébrica são similares a...}. Seu funcionamento é denominado
-iterativo, ou seja, o estado é modificado através de várias subetapas.
+iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas, depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, 10 rodadas são necessárias.
 
 A sua cifra á feita através da repetição de determinado passos do seu algoritmo multiplas vezes, os quais chamamos de 'rodada', o numero de rodadas varia em relação ao tamanho da chave, 16bytes->10 rodadas, 24bytes->12 rodadas, 32bytes->14 rodadas. *do your magic*
 
