@@ -109,11 +109,6 @@ $\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4}
 \footnote{Operações nesta estrutura algébrica são similares a...}. Seu funcionamento é denominado
 iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas, depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, 10 rodadas são necessárias.
 
-A sua cifra á feita através da repetição de determinado passos do seu algoritmo multiplas vezes, os quais chamamos de 'rodada', o numero de rodadas varia em relação ao tamanho da chave, 16bytes->10 rodadas, 24bytes->12 rodadas, 32bytes->14 rodadas. *do your magic*
-
-
-
-
 \begin{itemize}
 
 \item Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
