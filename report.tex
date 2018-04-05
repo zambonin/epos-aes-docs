@@ -104,7 +104,11 @@ utiliza uma função de compressão única, obtida a partir de uma cifra de bloc
 
 \subsection{AES --- \emph{Advanced Encryption Standard}}
 
-O AES é uma cifra de blocos que opera sobre uma matriz de estado de $4 \times 4$ bytes. Estas operações são caracterizadas por adições, multiplicações e divisões sobre um corpo finito\footnote{Operações nesta estrutura algébrica são similares a...}
+O AES é uma cifra de blocos que opera sobre uma matriz de estado $A$,
+de dimensões $4 \times 4$, onde $A_{i,j} \in \mathbb{F}_{2^{8}}$, $0 \leq i, j < 3$
+
+
+de $4 \times 4$ bytes. Estas operações são caracterizadas por adições, multiplicações e divisões sobre um corpo finito\footnote{Operações nesta estrutura algébrica são similares a...}
 $\mathbb{F}_{2^{8}}$ definido pelo polinômio irredutível $m(x) = x^{8} + x^{4} + x^{3} + x + 1$. Seu funcionamento é denominado
 iterativo, consistindo na aplicação de uma sequência de quatro operações sobre a matriz de estado. A quantidade destas aplicações, denominadas rodadas ($n_r$), depende diretamente do tamanho da chave, e.g. para uma chave de 128 bits, $n_r = 10$.
 
@@ -134,8 +138,8 @@ do algoritmo, de tamanho $n = \{128, 192, 256\}$, e retorna um conjunto
 de $4(n_r + 1)$ palavras de 32 bits, denominado de chave expandida.
 Cada conjunto de 4 palavras sucessivas é utilizado em uma rodada do algoritmo.
 As primeiras $n / 32$ entradas deste conjunto são populadas pela divisão da
-chave inicial. Todas as palavras posteriores consecutivas são construídas
-através do algoritmo abaixo.
+chave inicial. Todas as palavras posteriores consecutivas são construídas da
+seguinte maneira: se o índice da palavra no conjunto divide $n$
 
 
 
