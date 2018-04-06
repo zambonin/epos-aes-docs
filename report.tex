@@ -145,7 +145,8 @@ representada pelo pseudocódigo abaixo.
     $A \longleftarrow m$\;
     $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
         \longleftarrow \textsc{KeyExpansion}(K)$\;
-    $A \longleftarrow \textsc{AddRoundKey}(A, \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A,
+        \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
     
     \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
         $A \longleftarrow \textsc{SubBytes}(A)$\;
@@ -182,7 +183,8 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     $A \longleftarrow c$\;
     $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
         \longleftarrow \textsc{KeyExpansion}(K)$\;
-    $A \longleftarrow \textsc{AddRoundKey}(A, \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A,
+        \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
     
     \For{$i \leftarrow n_r - 1$ \KwTo $1$}{
         $A \longleftarrow \textsc{InvShiftRows}(A)$\;
@@ -193,9 +195,9 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     }
  
     $A \longleftarrow \textsc{SubBytes}(A)$\;
-    $A \longleftarrow \textsc{ShiftRows}(A)$\;
+    $A \longleftarrow \textsc{InvShiftRows}(A)$\;
     $A \longleftarrow \textsc{AddRoundKey}(A,
-        \{K^{e}_{0}, \dots, K^{e}_{(n_r + 1) \cdot (\ell - 1)}\})$\;
+        \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
 
     $m \longleftarrow A$\;
 \end{algorithm}
