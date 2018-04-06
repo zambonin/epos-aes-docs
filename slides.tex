@@ -84,7 +84,7 @@
     \item Tripla de algoritmos probabilísticos de tempo polinomial
       \cite{Goldreich2004}
     \begin{itemize}
-      \item Geração de chaves (\emph{Gen}), geração da assinatura ($\mathcal{S}$),\\
+      \item Geração de chaves (\emph{Gen}), geração da assinatura (\emph{Sig}),\\
           verificação da assinatura ($\mathcal{V}$)
     \end{itemize}
   \end{itemize}
@@ -233,10 +233,10 @@
   \frametitle{Winternitz OTS}
   \framesubtitle{Melhorias}
   \begin{itemize}
-    \item Menores tamanhos de assinatura em todas as melhorias.
-    \item Elimina a necessidade de umEliminate the need for a collision resistant \hh{}
+    \item Menores tamanhos de assinatura em todas as melhorias
+    \item Elimina a necessidade de um \hh{} resistente a colisões
     \begin{itemize}
-      \item Use of a non-compressing function family $F_n$
+      \item Uso de uma família de funções de não-compressãoUse of a non-compressing function family $F_n$
       \item Random walk through $F_n$ instead of simple iterations
     \end{itemize}
     \item Round-specific bitmasks on each hash iteration $i \in \mathbb{N}$
