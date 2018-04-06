@@ -293,8 +293,7 @@ apresenta versatilidade em relação ao tamanho de chaves e da assinatura, e tam
 ser configurado para utilizar diferentes funções de resumo criptográfico a fim de
 utilizar recursos possivelmente disponíveis no dispositivo alvo.
 
-Descreve-se abaixo o funcionamento do esquema e discute-se algumas de suas
-características. Tome um parâmetro de segurança $m$, geralmente considerado como
+Tome um parâmetro de segurança $m$, geralmente considerado como
 o tamanho da saída da função de resumo criptográfico escolhido. Um parâmetro
 $w \in \mathbb{N}, w > 1$ também deve ser definido, responsável por codificar a
 quantidade de bits a serem assinados simultaneamente, modificando assim o
@@ -307,6 +306,8 @@ Por fim, considere as funções de mão única
 $f : \binwds{m} \longrightarrow \binwds{m}$
 e de resumo criptográfico
 $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$.
+Descreve-se abaixo o funcionamento do esquema
+e discute-se algumas de suas características. 
 
 \begin{enumerate}
     \item[] \emph{Geração de chaves.} Defina $\text{\sk{}} = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave pública $\text{\pk{}} = (y_{t-1}, \dots, y_0)$ pode ser derivada de \sk{}, computando $f^{2^{w}-1}(x) \; \forall x \in  \text{\sk{}}$. Logo, $\text{\pk{}} = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
@@ -314,7 +315,7 @@ $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$.
     \item[] \emph{Geração da assinatura.} Tome uma mensagem $M$ e calcule o seu resumo $d = \mathcal{H}(M)$. Por conveniência, escolhe-se $m$ ou $w$ de forma que $w \mid m$, mas podem ser concatenados zeros ao resumo para que isso seja satisfeito. $d$ é dividido em uma $t_1$-tupla de palavras em base-$w$, $\mathcal{B}_1 = (b_{t-1}, \dots, b_{t-t_1})$. 
     Adicionalmente, uma soma de verificação é calculada usando a representação inteira dos elementos de $\mathcal{B}_1$: $c = \sum_{b \in \mathcal{B}_1} 2^w - 1 - b$. Novamente, $c$ pode ser arredondado com zeros até que $w \mid \length{c}$. Finalmente, $c$ é dividido em uma $t_2$-tupla de palavras base-$w$, $\mathcal{B}_2 = (b_{t_2-1}, \dots, b_0)$. Assim, $\mathcal{B} = \mathcal{B}_1 \cup \mathcal{B}_2$ e obtém-se a assinatura $\sigma = (f^{b_{t-1}}(x_{t-1}), \dots, f^{b_0}(x_0)).$
     
-    \item[] \emph{Verificação da assinatura.} Para assegurar a corretude da assinatura $\sigma$, todos os blocos $\sigma_i$ precisam ser verificados separadamente através do cálculo das aplicações restantes de $f$. Assim, é necessário obter $\mathcal{B}$ novamente, e $\sigma$ está correta se $$
+    \item[] \emph{Verificação da assinatura.} Para assegurar a corretude da assinatura $\sigma$, todos os blocos $\sigma_i$ precisam ser verificados separadamente através do cálculo das aplicações restantes de $f$. Assim, é necessário computar $\mathcal{B}$ novamente, e $\sigma$ está correta se $\text{\pk{}} = $
     
     A assinatura é verificada corretamente se $$Y = (f^{2^w - 1 - b_{t-1}}(\sigma_{t-1}), \dots, f^{2^w - 1 - b_0}(\sigma_0)).$$
 
