@@ -167,9 +167,9 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
 
 \begin{enumerate}
 
-    \item[\textsc{InvSubBytes}] 
-
     \item[\textsc{InvShiftRows}] Cada linha de $A$, $A_i$, é deslocada circularmente à direita $i$ vezes.
+
+    \item[\textsc{InvSubBytes}] 
     
     \item[\textsc{InvMixColumns}]
 
@@ -185,7 +185,7 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     $A \longleftarrow \textsc{AddRoundKey}(A, \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
     
     \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
-        $A \longleftarrow \textsc{SubBytes}(A)$\;
+        $A \longleftarrow \textsc{InvSubBytes}(A)$\;
         $A \longleftarrow \textsc{ShiftRows}(A)$\;
         $A \longleftarrow \textsc{MixColumns}(A)$\;
         $A \longleftarrow \textsc{AddRoundKey}(A,
