@@ -12,6 +12,8 @@
 \newcommand{\sk}{$\mathcal{S}_k$}
 \newcommand{\hash}[2][]{\mathcal{H}^{#1}(#2)}
 \newcommand{\binwds}[1]{\{0, 1\}^{#1}}
+\newcommand{\concat}{\, \vert \vert \,}
+
 \renewcommand*{\thefootnote}{(\arabic{footnote})}
 
 \title{Esquemas de assinatura digital pós-quânticos \\ baseados em AES}
@@ -223,7 +225,7 @@ teoria de números e álgebra que atualmente não admitem soluções em tempo
 polinomial são comumente utilizados como base para algoritmos assimétricos.
 Porém, percebe-se que, com a introdução de um computador quântico, estes
 problemas podem ser resolvidos de maneira significativamente mais rápida, como
-visto em \cite{Shor:1997:PAP:264393.264406}.
+visto em~\cite{Shor:1997:PAP:264393.264406}.
 
 \section{Esquemas de assinatura digital}
 
@@ -269,7 +271,7 @@ $\textsc{Gen}(1^n)$, que gera um par de chaves aleatório $(\mathcal{P}_k,
 $\textsc{Sig}(\mathcal{S}_k, m)$, que produz uma assinatura $\sigma$ para uma
 mensagem $m$; e o algoritmo de verificação $\textsc{Ver}(\mathcal{P}_k, m,
 \sigma)$, que retorna o estado de validade da assinatura como um valor verdade
-binário. De acordo com \cite{Goldreich2004}, todas as assinaturas geradas por
+binário. De acordo com~\cite{Goldreich2004}, todas as assinaturas geradas por
 \textsc{Sig} devem ser verificáveis por \textsc{Ver} utilizando todas as chaves
 geradas por \textsc{Gen}. Formalmente, $\forall (p, s) \in
 \textsc{Gen}^{\rightarrow}(1^n)$ e $\forall w \in \{0, 1\}^{*}$,
