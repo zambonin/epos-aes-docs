@@ -218,7 +218,7 @@
     P_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0}) \text{ e} \\
     \sigma &= (\mathcal{H}^{\epsilon_{t - 1}}(y_{t - 1}), \dots, \mathcal{H}^{\epsilon_0}(y_0)).
   \end{align*}
-  Para verificar $\sigma$, os elementos $\epsilon_i$ é calculado e as cadeias de resumo são completadas:
+  Para verificar $\sigma$, os elementos $\epsilon_i$ são calculados e aplicados:
   \begin{align*}
     \forall \sigma_i \in \sigma,
         \hash[2^w - 1 - \epsilon_{i}]{\sigma_i} &= P_{k_i}
