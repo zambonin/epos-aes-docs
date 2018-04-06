@@ -114,6 +114,15 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{AES}
+    
+\end{frame}
+    
+    
+\end{frame}
+
+
+\begin{frame}
   \frametitle{One-time signature schemes}
   \begin{itemize}
     \item Key pair shall be used only once
@@ -214,6 +223,7 @@
   \end{itemize}
 \end{frame}
 
+%XMS
 \begin{frame}
   \frametitle{Many-time signature schemes (Merkle)}
   \begin{columns}[T]
@@ -256,36 +266,6 @@
       \end{figure}
     \end{column}
   \end{columns}
-\end{frame}
-
-\begin{frame}
-  \frametitle{CMSS, GMSS}
-  \begin{itemize}
-    \item Main idea: Merkle trees with layers
-    \item Root of a child tree is signed with an OTS private key
-      corresponding to a leaf of its parent
-    \item CMSS as a special case of GMSS
-    \item Simple Winternitz as chosen OTS scheme
-    \item Amortized cost of key pair generation,
-      competitive with classical schemes such as RSA, ECDSA
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{XMSS, XMSS$^{MT}$}
-  \begin{itemize}
-    \item Bitmasks between levels of the tree
-    \item Sub-tree on each leaf called L-tree
-    \begin{itemize}
-      \item Stores each element of a WOTS public key in a balanced way
-      \item Bitmasks are the same for all L-trees
-      \item Only a second preimage resistant \hh{} is needed
-    \end{itemize}
-  \end{itemize}
-  \begin{figure}[htbp]
-    \centering
-    \includegraphics[trim={0 0 0 2cm},clip,scale=0.18]{xmss-example}
-  \end{figure}
 \end{frame}
 
 \begin{frame}[plain,noframenumbering]
