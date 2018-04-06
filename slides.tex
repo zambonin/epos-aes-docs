@@ -52,8 +52,8 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Foundations}
-  \framesubtitle{Hash functions}
+  \frametitle{Fundamentação}
+  \framesubtitle{Funções de resumo}
   \begin{equation*}
     \mathcal{H}: \{0, 1\}^{*} \longrightarrow \{0, 1\}^{n}
   \end{equation*}
@@ -97,7 +97,7 @@
         \node (sk) at (0, -1) {$\mathcal{S}_k$};
         \node (pk) at (4, -1) {$\mathcal{P}_k$};
         \node (ds) at (2, 0)
-          {\scriptsize{$m \concat \emph{Sig}(\mathcal{S}_k, \hash{m})$}};
+          {\scriptsize{$m \concat Sig(\mathcal{S}_k, \hash{m})$}};
         \node (res) at (5.5, 0) {\scriptsize\{0, 1\}};
         \node[draw] (sig) at (0, 0) {\emph{Sig}};
         \node[draw] (gen) at (2, -2) {\emph{Gen}};
@@ -237,7 +237,7 @@
     \item Elimina a necessidade de um \hh{} resistente a colisões
     \begin{itemize}
       \item Uso de uma família de funções de não-compressivas $F_n$
-      \item Passos aleatórios emRandom walk through $F_n$ instead of simple iterations
+      \item Passos aleatórios em $F_n$ ao invés de iterações simplesinstead of simple iterations
     \end{itemize}
     \item Round-specific bitmasks on each hash iteration $i \in \mathbb{N}$
     \begin{align*}
