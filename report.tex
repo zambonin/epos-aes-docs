@@ -333,19 +333,9 @@ separately by computing the remaining applications of $f$.
 The signature verifies correctly if
 $$Y = (f^{2^w - 1 - b_{t-1}}(\alpha_{t-1}), \dots, f^{2^w - 1 - b_0}(\alpha_0)).$$
 
-In Figure \ref{fig:wotssign} we illustrate the signature generation
-and its verification. It is visible that computing a signature block
-is a step necessarily after the key generation. Hence, the key and
-signature generation may only be computed by whoever has the secret
-signature key $X$.
+\subsection{\textsc{Wots+}}
 
-\begin{figure}[h!]
-    \centering
-    \input{charts/wotssign}
-    \caption{\textsc{Wots} signature and verification steps
-      for a index $i \in \{0, \dots, t-1\}$.}
-    \label{fig:wotssign}
-\end{figure}
+\subsection{Esquemas baseados em árvores de Merkle}
 
 % * como plugar o AES nele
 % * esquemas posteriores
