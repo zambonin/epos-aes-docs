@@ -89,30 +89,30 @@
     \end{itemize}
   \end{itemize}
 
-\begin{figure}[h]
-  \centering
-  \begin{tikzpicture}
-    \node (hm) at (-1.25, 0) {$m$};
-    \node (in) at (0, -2) {$1^n$};
-    \node (sk) at (0, -1) {$\mathcal{S}_k$};
-    \node (pk) at (4, -1) {$\mathcal{P}_k$};
-    \node (ds) at (2, 0)
-      {\scriptsize{$m \concat \emph{Sig}(\mathcal{S}_k, \hash{m})$}};
-    \node (res) at (5.5, 0) {\scriptsize\{0, 1\}};
-    \node[draw] (sig) at (0, 0) {\emph{Sig}};
-    \node[draw] (gen) at (2, -2) {\emph{Gen}};
-    \node[draw] (ver) at (4, 0) {\emph{Ver}};
-    \draw[-latex] (gen) to (1.25, -1) to (sk);
-    \draw[-latex] (gen) to (2.75, -1) to (pk);
-    \draw[-latex] (sk) -- (sig);
-    \draw[-latex] (hm) -- (sig);
-    \draw[-latex] (sig) -- (ds);
-    \draw[-latex] (ds) -- (ver);
-    \draw[-latex] (pk) -- (ver);
-    \draw[-latex] (ver) -- (res);
-    \draw[-latex] (in) -- (gen);
-  \end{tikzpicture}
-\end{figure}
+    \begin{figure}[h]
+      \centering
+      \begin{tikzpicture}
+        \node (hm) at (-1.25, 0) {$m$};
+        \node (in) at (0, -2) {$1^n$};
+        \node (sk) at (0, -1) {$\mathcal{S}_k$};
+        \node (pk) at (4, -1) {$\mathcal{P}_k$};
+        \node (ds) at (2, 0)
+          {\scriptsize{$m \concat \emph{Sig}(\mathcal{S}_k, \hash{m})$}};
+        \node (res) at (5.5, 0) {\scriptsize\{0, 1\}};
+        \node[draw] (sig) at (0, 0) {\emph{Sig}};
+        \node[draw] (gen) at (2, -2) {\emph{Gen}};
+        \node[draw] (ver) at (4, 0) {\emph{Ver}};
+        \draw[-latex] (gen) to (1.25, -1) to (sk);
+        \draw[-latex] (gen) to (2.75, -1) to (pk);
+        \draw[-latex] (sk) -- (sig);
+        \draw[-latex] (hm) -- (sig);
+        \draw[-latex] (sig) -- (ds);
+        \draw[-latex] (ds) -- (ver);
+        \draw[-latex] (pk) -- (ver);
+        \draw[-latex] (ver) -- (res);
+        \draw[-latex] (in) -- (gen);
+      \end{tikzpicture}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -237,7 +237,7 @@
     \item Elimina a necessidade de um \hh{} resistente a colisões
     \begin{itemize}
       \item Uso de uma família de funções de não-compressivas $F_n$
-      \item PassosRandom walk through $F_n$ instead of simple iterations
+      \item Passos aleatórios emRandom walk through $F_n$ instead of simple iterations
     \end{itemize}
     \item Round-specific bitmasks on each hash iteration $i \in \mathbb{N}$
     \begin{align*}
