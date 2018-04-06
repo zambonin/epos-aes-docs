@@ -298,20 +298,24 @@ O esquema de assinaturas de unico uso de Winternitz(\textsc{Wots}), em sua propo
     \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil,
     \quad t = t_1 + t_2.$$
 \end{itemize}
+Estes parâmetros são escolhidos tal que $w$ seja o numero de bits a serem assinados simultaneamente, eles também estão diretamente relacionados ao tamanho da chave e a *(performance)* da assinatura.
+These parameters are selected so that $w$ is the number of bits to be
+signed simultaneously. They are also directly related to the key size
+and signature performance, as we will see in the following.
 
 
-In its original proposal~\cite{Merkle:1989:CDS:118209.118230}, the Winternitz
-one-time signature scheme (\textsc{Wots}) works as follows. Take $m$
-as a security parameter, usually the output size in bits of a
-cryptographic hash function, and choose a parameter
-$w \in \mathbb{N}, w > 1$. In addition, consider a non-compressing
-one-way function $f : \{0, 1\}^{m} \longrightarrow \{0, 1\}^{m}$
-and a cryptographic hash function
-$\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{m}$.
-Then, compute
-$$t_1 = \left\lceil \frac{m}{w} \right\rceil, \quad t_2 = \left\lceil 
-\frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil,
-\quad t = t_1 + t_2.$$
+% In its original proposal~\cite{Merkle:1989:CDS:118209.118230}, the Winternitz
+% one-time signature scheme (\textsc{Wots}) works as follows. Take $m$
+% as a security parameter, usually the output size in bits of a
+% cryptographic hash function, and choose a parameter
+% $w \in \mathbb{N}, w > 1$. In addition, consider a non-compressing
+% one-way function $f : \{0, 1\}^{m} \longrightarrow \{0, 1\}^{m}$
+% and a cryptographic hash function
+% $\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{m}$.
+% Then, compute
+% $$t_1 = \left\lceil \frac{m}{w} \right\rceil, \quad t_2 = \left\lceil 
+% \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil,
+% \quad t = t_1 + t_2.$$
 
 These parameters are selected so that $w$ is the number of bits to be
 signed simultaneously. They are also directly related to the key size
