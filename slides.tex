@@ -164,18 +164,13 @@
       \item Generalização do LD-OTS
       \item Compensação entre desempenho e tamanho da assinatura
     \end{itemize}
-    \item HORS
-    \begin{itemize}
-      \item Esquema de poucas vezes, segurança diminui a cada assinatura
-      \item HORST --- HORS com árvores
-    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Winternitz OTS}
   \framesubtitle{Generalização de chave}
-  Seja $w \in \mathbb{N}, w > 1$ o parâmetro de compensação Winternitz. Entao,
+  Seja $w \in \mathbb{N}, w > 1$ o parâmetro Winternitz. Então,
    \begin{align*}
        t_1 &= \left\lceil \frac{n}{w} \right\rceil \\
        t_2 &= \left\lceil
@@ -184,7 +179,7 @@
    \end{align*}
    As chaves privada e pública são, respectivamente,
    \begin{align*}
-     S_k &= (y_{t - 1}, \dots, y_{0})
+     $\mathcal{S}_k$ &= (y_{t - 1}, \dots, y_{0})
        \stackrel{\$}{\longleftarrow} \{0,1\}^n \\
      P_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0})
    \end{align*}
