@@ -294,8 +294,13 @@ utilizar recursos possivelmente disponíveis no dispositivo alvo.
 
 Descreve-se abaixo o funcionamento do esquema e discute-se algumas de suas
 características. Tome um parâmetro de segurança $m$, geralmente considerado como
-o tamanho da saída da função de resumo criptográfico escolhido, e um parâmetro $w$
-    \item Assumimos um parâmetro de segurança $m$, geralmente com o tamanho da saida de uma função de resumo cryptografico e escolhemos um parâmetro $w \in \mathbb{N}, w > 1$. Considerando a função *(non-compressing one-way)* $f : \{0, 1\}^{m} \longrightarrow \{0, 1\}^{m}$ e a função de resumo criptográfico $\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{m}$.
+o tamanho da saída da função de resumo criptográfico escolhido. Um parâmetro $w$
+$w \in \mathbb{N}, w > 1$ também deve ser definido, responsável por codificar a
+quantidade de bits a serem assinados simultaneamente, modificando assim o
+desempenho geral do esquema e o tamanho de chaves e assinatura. Considere uma
+função de mão única 
+
+Considerando a função *(non-compressing one-way)* $f : \{0, 1\}^{m} \longrightarrow \{0, 1\}^{m}$ e a função de resumo criptográfico $\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{m}$.
     E, realizamos:
     $$t_1 = \left\lceil \frac{m}{w} \right\rceil, \quad t_2 = \left\lceil 
     \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil,
