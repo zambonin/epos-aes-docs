@@ -82,10 +82,10 @@
     \item Provêm autenticação, integridade e não-repúdio
     \item Baseado em criptografia de chaves públicas
     \item Tripla de algoritmos probabilísticos de tempo polinomial
-      \cite{Goldreich2004}
+      \cite{Goldreich:2004:FCV:975541}
     \begin{itemize}
       \item Geração de chaves (\emph{Gen}), geração da assinatura (\emph{Sig}),\\
-          verificação da assinatura ($\mathcal{V}$)
+          verificação da assinatura (\emph{Ver})
     \end{itemize}
   \end{itemize}
 
@@ -97,11 +97,11 @@
     \node (sk) at (0, -1) {$\mathcal{S}_k$};
     \node (pk) at (4, -1) {$\mathcal{P}_k$};
     \node (ds) at (2, 0)
-      {\scriptsize{$m \concat \textsc{Sig}(\mathcal{S}_k, \hash{m})$}};
+      {\scriptsize{$m \concat \emph{Sig}(\mathcal{S}_k, \hash{m})$}};
     \node (res) at (5.5, 0) {\scriptsize\{0, 1\}};
-    \node[draw] (sig) at (0, 0) {\textsc{Sig}};
-    \node[draw] (gen) at (2, -2) {\textsc{Gen}};
-    \node[draw] (ver) at (4, 0) {\textsc{Ver}};
+    \node[draw] (sig) at (0, 0) {\emph{Sig}};
+    \node[draw] (gen) at (2, -2) {\emph{Gen}};
+    \node[draw] (ver) at (4, 0) {\emph{Ver}};
     \draw[-latex] (gen) to (1.25, -1) to (sk);
     \draw[-latex] (gen) to (2.75, -1) to (pk);
     \draw[-latex] (sk) -- (sig);
@@ -236,8 +236,8 @@
     \item Menores tamanhos de assinatura em todas as melhorias
     \item Elimina a necessidade de um \hh{} resistente a colisões
     \begin{itemize}
-      \item Uso de uma família de funções de não-compressãoUse of a non-compressing function family $F_n$
-      \item Random walk through $F_n$ instead of simple iterations
+      \item Uso de uma família de funções de não-compressivas $F_n$
+      \item PassosRandom walk through $F_n$ instead of simple iterations
     \end{itemize}
     \item Round-specific bitmasks on each hash iteration $i \in \mathbb{N}$
     \begin{align*}
