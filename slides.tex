@@ -82,14 +82,12 @@
     \item Provem autenticação, integridade e não-repúdio
     \item Baseado em criptografia de chaves públicas
     \item Tripla de algoritmos probabilísticos de tempo polinomial
-    
       \cite{Goldreich2004}
     \begin{itemize}
-      \item Geração de uma chave ($\mathcal{G}$), assiando ($\mathcal{S}$),
+      \item Gerando uma chave ($\mathcal{G}$), assinando ($\mathcal{S}$),
           verificando ($\mathcal{V}$)
     \end{itemize}
     \item Deve existir uma maneira de ligar o assinante a sua chave
-    There should exist a way to bind a signer to its key
   \end{itemize}
 
   \begin{figure}
@@ -150,7 +148,8 @@
 \begin{frame}
   \frametitle{One-time signature schemes}
   \begin{itemize}
-    \item Key pair shall be used only once
+    \item Par de chaves só deve ser utilizado uma unica vez
+    Key pair shall be used only once
     \item Lamport-Diffie (LD-OTS)
     \begin{itemize}
       \item First hash-based scheme
