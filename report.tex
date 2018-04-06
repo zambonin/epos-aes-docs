@@ -271,9 +271,9 @@ $\textsc{Gen}(1^n)$, que gera um par de chaves aleatório $(\mathcal{P}_k,
 $\textsc{Sig}(\mathcal{S}_k, m)$, que produz uma assinatura $\sigma$ para uma
 mensagem $m$; e o algoritmo de verificação $\textsc{Ver}(\mathcal{P}_k, m,
 \sigma)$, que retorna o estado de validade da assinatura como um valor verdade
-binário. De acordo com~\cite{Goldreich2004}, todas as assinaturas geradas por
-\textsc{Sig} devem ser verificáveis por \textsc{Ver} utilizando todas as chaves
-geradas por \textsc{Gen}. Formalmente, $\forall (p, s) \in
+binário. De acordo com~\cite{Goldreich:2004:FCV:975541}, todas as assinaturas
+geradas por \textsc{Sig} devem ser verificáveis por \textsc{Ver} utilizando
+todas as chaves geradas por \textsc{Gen}. Formalmente, $\forall (p, s) \in
 \textsc{Gen}^{\rightarrow}(1^n)$ e $\forall w \in \{0, 1\}^{*}$,
 \begin{equation}
     \text{Pr}[\textsc{Ver}(p, w, \textsc{Sig}(s, w)) = 1] = 1.
@@ -285,7 +285,68 @@ composto da concatenação da mensagem original com a assinatura do resumo
 criptográfico desta, embora a saída do algoritmo \textsc{Sig} consista apenas
 da aplicação de uma função interna a este ao resumo.
 
-\section*{O esquema Winternitz}
+\section{O esquema Winternitz}
+
+In its original proposal~\cite{Merkle:1989:CDS:118209.118230}, the Winternitz
+one-time signature scheme (\textsc{Wots}) works as follows. Take $m$
+as a security parameter, usually the output size in bits of a
+cryptographic hash function, and choose a parameter
+$w \in \mathbb{N}, w > 1$. In addition, consider a non-compressing
+one-way function $f : \{0, 1\}^{m} \longrightarrow \{0, 1\}^{m}$
+and a cryptographic hash function
+$\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{m}$.
+Then, compute
+$$t_1 = \left\lceil \frac{m}{w} \right\rceil, \quad t_2 = \left\lceil 
+\frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil,
+\quad t = t_1 + t_2.$$
+
+These parameters are selected so that $w$ is the number of bits to be
+signed simultaneously. They are also directly related to the key size
+and signature performance, as we will see in the following.
+
+\emph{Key Generation.}
+Let $X = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$
+be the private key, informally a $t$-tuple of pseudo-random integers.
+The public key $Y = (y_{t-1}, \dots, y_0)$ can be derived from $X$
+by applying $f$ to each of the $x_i$ elements $2^{w}-1$ times.
+Hence, $Y = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
+
+\emph{Signature Generation.} Take a message $M$ and compute its
+digest $d = \mathcal{H}(M)$. For convenience, we choose $m$ or $w$
+such that $w \mid m$. However, one may pad the digest
+by appending zeros to satisfy this requirement. $d$ is then split
+into a $t_1$-tuple of base-$w$ words
+$\mathcal{B}_1 = (b_{t-1}, \dots, b_{t-t_1})$.
+Additionally, we compute the checksum using the integer
+representation of the elements in $\mathcal{B}_1$:
+$$ c = \sum_{i=t-t_1}^{t-1} 2^w - 1 - b_i.$$
+Again, $c$ may be padded with zeroes until $w \mid \vert c \vert$.
+Finally, it is split into a $t_2$-tuple of base-$w$ words
+$\mathcal{B}_2 = (b_{t_2-1}, \dots, b_0)$.
+With $\mathcal{B} = \mathcal{B}_1 \cup \mathcal{B}_2$ computed,
+we obtain the signature
+$$\alpha = (f^{b_{t-1}}(x_{t-1}), \dots, f^{b_0}(x_0)).$$
+
+\emph{Signature Verification.} To ascertain the correctness of the
+signature $\alpha$, each of its blocks $\alpha_i$ need to be verified
+separately by computing the remaining applications of $f$.
+The signature verifies correctly if
+$$Y = (f^{2^w - 1 - b_{t-1}}(\alpha_{t-1}), \dots, f^{2^w - 1 - b_0}(\alpha_0)).$$
+
+In Figure \ref{fig:wotssign} we illustrate the signature generation
+and its verification. It is visible that computing a signature block
+is a step necessarily after the key generation. Hence, the key and
+signature generation may only be computed by whoever has the secret
+signature key $X$.
+
+\begin{figure}[h!]
+    \centering
+    \input{charts/wotssign}
+    \caption{\textsc{Wots} signature and verification steps
+      for a index $i \in \{0, \dots, t-1\}$.}
+    \label{fig:wotssign}
+\end{figure}
+
 % * como plugar o AES nele
 % * esquemas posteriores
 
