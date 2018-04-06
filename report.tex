@@ -299,15 +299,13 @@ O esquema de assinaturas de unico uso de Winternitz(\textsc{Wots}), em sua propo
     \quad t = t_1 + t_2.$$
 \end{itemize}
 Estes parâmetros são escolhidos tal que $w$ seja o numero de bits a serem assinados simultaneamente, eles também estão diretamente relacionados ao tamanho da chave e a *(performance)* da assinatura.
+
 \begin{itemize}
-    
+    \emph{Key Generation.}
+    Let $X = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ be the private key, informally a $t$-tuple of pseudo-random integers. 
+    The public key $Y = (y_{t-1}, \dots, y_0)$ can be derived from $X$ by applying $f$ to each of the $x_i$ elements $2^{w}-1$ times.
+    Hence, $Y = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
 \end{itemize}
-\emph{Key Generation.}
-% Let $X = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$
-% be the private key, informally a $t$-tuple of pseudo-random integers.
-% The public key $Y = (y_{t-1}, \dots, y_0)$ can be derived from $X$
-% by applying $f$ to each of the $x_i$ elements $2^{w}-1$ times.
-% Hence, $Y = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
 
 
 % In its original proposal~\cite{Merkle:1989:CDS:118209.118230}, the Winternitz
