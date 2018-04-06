@@ -306,9 +306,9 @@ Por fim, seja
     t = t_1 + t_2.$$
 
 \begin{enumerate}
-    \item[] \emph{Geração de chaves.} Defina $\mathcal{S}_k = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave pública $Y = (y_{t-1}, \dots, y_0)$ pode ser derivada de $\mathcal{S}_k$, computando $\forall x \in \mathcal{S}_k, f^{2^{w}-1}(x)$. Logo, $Y = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
+    \item[] \emph{Geração de chaves.} Defina $\mathcal{S}_k = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave pública $\mathcal{P}_k = (y_{t-1}, \dots, y_0)$ pode ser derivada de $\mathcal{S}_k$, computando $f^{2^{w}-1}(x) \; \forall x \in \mathcal{S}_k$. Logo, $\mathcal{P}_k = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
 
-    \item\emph{Signature Generation.}
+    \item[] \emph{Signature Generation.}
     Pegando a mensagem $M$ e calculando o seu resumo $d = \mathcal{H}(M)$. Por conveniência, nós escolhemos $m$ ou $w$ para que $w \mid m$. Podem ser concatenados zeros ao resumo para que isso seja satisfeito. $d$ é dividido $t_1$-tupla de palavras base-$w$, $\mathcal{B}_1 = (b_{t-1}, \dots, b_{t-t_1})$. 
     Adicionalmente, calculamos o checksum usando a representação inteira dos elementos de $\mathcal{B}_1$:
     $$ c = \sum_{i=t-t_1}^{t-1} 2^w - 1 - b_i.$$
