@@ -156,13 +156,13 @@ representada pelo pseudocódigo abaixo.
         $A \longleftarrow \textsc{ShiftRows}(A)$\;
         $A \longleftarrow \textsc{MixColumns}(A)$\;
         $A \longleftarrow \textsc{AddRoundKey}(A,
-            \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell}\})$\;
+            \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell - 1}\})$\;
     }
  
     $A \longleftarrow \textsc{SubBytes}(A)$\;
     $A \longleftarrow \textsc{ShiftRows}(A)$\;
     $A \longleftarrow \textsc{AddRoundKey}(A,
-        \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot (\ell - 1)}\})$\;
+        \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
 
     $c \longleftarrow A$\;
 \end{algorithm}
@@ -189,13 +189,13 @@ Por fim, o algoritmo resultante pode ser representado pelo pseudocódigo abaixo.
     $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
         \longleftarrow \textsc{KeyExpansion}(K)$\;
     $A \longleftarrow \textsc{AddRoundKey}(A,
-        \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
+        \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
     
     \For{$i \leftarrow n_r - 1$ \KwTo $1$}{
         $A \longleftarrow \textsc{InvShiftRows}(A)$\;
         $A \longleftarrow \textsc{InvSubBytes}(A)$\;
         $A \longleftarrow \textsc{AddRoundKey}(A,
-            \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell}\})$\;
+            \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell - 1}\})$\;
         $A \longleftarrow \textsc{InvMixColumns}(A)$\;
     }
  
