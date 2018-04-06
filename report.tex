@@ -166,13 +166,37 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
 
 \begin{enumerate}
 
-    \item[\textsc{InvShiftRows}] Cada linha de $A$, $A_i$, é deslocada circularmente à direita     $\ell - i$ vezes.  %????
-
     \item[\textsc{InvSubBytes}] 
+
+    \item[\textsc{InvShiftRows}] Cada linha de $A$, $A_i$, é deslocada circularmente à direita     $\ell - i$ vezes.  %????
     
     \item[\textsc{InvMixColumns}]
 
 \end{enumerate}
+
+\begin{algorithm}[H]
+    \KwData{$c$, o texto cifrado; $K$, a chave desejada}
+    \KwResult{$m$, o texto cifrado resultante}
+
+    $A \longleftarrow m$\;
+    $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A, \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
+    
+    \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
+        $A \longleftarrow \textsc{SubBytes}(A)$\;
+        $A \longleftarrow \textsc{ShiftRows}(A)$\;
+        $A \longleftarrow \textsc{MixColumns}(A)$\;
+        $A \longleftarrow \textsc{AddRoundKey}(A,
+            \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell}\})$\;
+    }
+ 
+    $A \longleftarrow \textsc{SubBytes}(A)$\;
+    $A \longleftarrow \textsc{ShiftRows}(A)$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A,
+        \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot (\ell - 1)}\})$\;
+
+    $c \longleftarrow A$\;
+\end{algorithm}
 
 
     % \item[\textsc{KeyExpansion}] Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
