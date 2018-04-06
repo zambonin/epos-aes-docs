@@ -112,7 +112,7 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 
 \begin{enumerate}
 
-    \item[\textsc{SubBytes}] Realiza-se a substituição de cada elemento da matriz de estado
+    \item[\textsc{SubBytes}] Realiza-se a substituição de $A_{i,j}$
         pelo seu valor correspondente em uma \emph{substitution-box} (\emph{S-box}, construída a partir da inversa multiplicativa do elemento sendo operado e ), onde os \emph{nibbles} mais e menos significativos, respectivamente, representam a linha e a coluna do elemento na \emph{S-box}.
 
     \item[\textsc{ShiftRows}] Cada linha de $A$, $A_i$, é deslocada circularmente à esquerda     $i$ vezes.
