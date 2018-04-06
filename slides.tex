@@ -84,7 +84,7 @@
     \item Tripla de algoritmos probabilísticos de tempo polinomial
       \cite{Goldreich2004}
     \begin{itemize}
-      \item Geração de chaves (\textsc{Gen}), geração da assinatura ($\mathcal{S}$),\\
+      \item Geração de chaves (\emph{Gen}), geração da assinatura ($\mathcal{S}$),\\
           verificação da assinatura ($\mathcal{V}$)
     \end{itemize}
   \end{itemize}
@@ -222,7 +222,7 @@
     P_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0}) \text{ e} \\
     \sigma &= (\mathcal{H}^{\epsilon_{t - 1}}(y_{t - 1}), \dots, \mathcal{H}^{\epsilon_0}(y_0))
   \end{align*}
-  Para verificar $\sigma$, todo $\epsilon_i$ é calculado e a cadeia de resumo é completada are calculated and the hash chains are finished:
+  Para verificar $\sigma$, todo $\epsilon_i$ é calculado e as cadeias de resumo são completadas:
   \begin{align*}
     \forall \sigma_i \in \sigma,
         \hash[2^w - 1 - \epsilon_{i}]{\sigma_i} &= P_{k_i}
@@ -231,9 +231,9 @@
 
 \begin{frame}
   \frametitle{Winternitz OTS}
-  \framesubtitle{Improvements}
+  \framesubtitle{Melhorias}
   \begin{itemize}
-    \item Shorter signature sizes in all improvements
+    \item Menores tamanhos de assinatura em todas as melhorias.Shorter signature sizes in all improvements
     \item Eliminate the need for a collision resistant \hh{}
     \begin{itemize}
       \item Use of a non-compressing function family $F_n$
