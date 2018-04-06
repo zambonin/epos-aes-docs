@@ -170,16 +170,16 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
 
     \item[\textsc{InvShiftRows}] Cada linha de $A$, $A_i$, é deslocada circularmente à direita $i$ vezes.
 
-    \item[\textsc{InvSubBytes}] $c = 03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02$, módulo $x^{4} + 1$
+    \item[\textsc{InvSubBytes}] 
     
     \item[\textsc{InvMixColumns}] 
     % $c^{-1} \equiv 01 \pmod{x^4 + 1} \equiv 0B \cdot x^{3} + OD \cdot x^{2} + 09 \cdot x + 0E$
     
-    Cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa do polinômio utilizado no \textsc{MixColumns}, módulo $x^{4} + 1$, de valor $c = $.
+    Similar a operação \textsc{MixColumns}, onde cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa do polinômio utilizado no \textsc{MixColumns}, módulo $x^{4} + 1$, de valor $c = $.
 
 \end{enumerate}
 
-Assim, o algoritmo resultante pode ser representado pelo pseudocódigo abaixo. Note a mudança da ordem das etapas, e a utilização de $K_e$
+Assim, o algoritmo resultante pode ser representado pelo pseudocódigo abaixo. Note a mudança da ordem das etapas, e a utilização invertida de $K_e$.
 
 \begin{algorithm}[H]
     \KwData{$c$, o texto cifrado; $K$, a chave desejada}
