@@ -129,14 +129,14 @@
     \framesubtitle{Funcionamento}
     \begin{itemize}
         \item Cada bloco é representado por uma matriz de estado $A$ de dimensões $4 \times 4$
-        \item Seu funcionamento é constituido das seguintes operações em $A$, em rel:
+        \item Seu funcionamento é constituido de multiplas iterações das seguintes operações em $A$, em relação a chave referente iteração a atual:
         \begin{itemize}
             \item\textsc{SubBytes}
             \item\textsc{ShiftRows}
             \item\textsc{MixColumns}
             \item\textsc{AddRoundKey}
         \end{itemize}
-
+        \item A chave utilizada em cada iteração é obtida através de uma rotina de expansão da chave, denominada \textsc{KeyExpansion}
 
     \end{itemize}
     
