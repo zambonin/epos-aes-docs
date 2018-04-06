@@ -120,7 +120,7 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
         é deslocada circularmente à esquerda $i$ vezes.
 
     \item \textsc{MixColumns}: cada coluna de $A$, $A_j$, é multiplicada pelo polinômio
-        $c = 03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02$, módulo $x^{4} + 1$.
+        $c = 03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02$, módulo $x^{4} + 1$, para que o resultado ainda seja um polinômio de grau máximo 3 que possa ser representado na coluna.
 
     \item \textsc{AddRoundKey}: a operação \texttt{XOR} bit a bit é aplicada entre $A$ e o
         bloco da chave referente à rodada.
