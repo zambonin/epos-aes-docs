@@ -290,10 +290,11 @@ da aplicação de uma função interna a este ao resumo.
 
 
 O esquema de assinaturas de unico uso de Winternitz(\textsc{Wots}), em sua proposta original \cite{Merkle:1989:CDS:118209.118230} tem o seguinte funcionamento:
+
 \begin{itemize}
-    \item 
-    \item 
-Assumimos um parâmetro de segurança $m$, geralmente com o tamanho da saida de uma função de resumo cryptografico e escolhemos um parâmetro $w \in \mathbb{N}, w > 1$. 
+    \item Assumimos um parâmetro de segurança $m$, geralmente com o tamanho da saida de uma função de resumo cryptografico e escolhemos um parâmetro $w \in \mathbb{N}, w > 1$. 
+    \item Considerando a função *(non-compressing one-way)* $f : \{0, 1\}^{m} \longrightarrow \{0, 1\}^{m}$ e a função de resumo
+$\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{m}$.
 \end{itemize}
 
 
