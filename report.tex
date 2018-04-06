@@ -170,7 +170,7 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
 
     \item[\textsc{InvShiftRows}] Cada linha de $A$, $A_i$, é deslocada circularmente à direita $i$ vezes.
 
-    \item[\textsc{InvSubBytes}] 
+    \item[\textsc{InvSubBytes}] $c = 03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02$, módulo $x^{4} + 1$
     
     \item[\textsc{InvMixColumns}] 
     % $c^{-1} \equiv 01 \pmod{x^4 + 1} \equiv 0B \cdot x^{3} + OD \cdot x^{2} + 09 \cdot x + 0E$
@@ -178,6 +178,8 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     Cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa do polinômio utilizado no \textsc{MixColumns}, módulo $x^{4} + 1$, de valor $c = $.
 
 \end{enumerate}
+
+Assim, o algoritmo resultante pode ser representado pelo pseudocódigo abaixo. Note a mudança da ordem das etapas, e a utilização de $K_e$
 
 \begin{algorithm}[H]
     \KwData{$c$, o texto cifrado; $K$, a chave desejada}
@@ -204,61 +206,6 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
 
     $m \longleftarrow A$\;
 \end{algorithm}
-
-
-    % \item[\textsc{KeyExpansion}] Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
-    % \begin{enumerate}
-    %     \item A subfunção RotWord a qual faz uma troca de bytes na, onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. 
-    %     \item A subfunção SubWord substitui cada byte pelo valor respectivo na caixa S-Box. 
-    %     \item Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito.
-    % \end{enumerate} 
-
-
-% \begin{itemize}
-
-% \item Derivar as chaves de cada rodada a partir da chave inicial (KeyExpansions): O algoritmo é copia a chave inicial para as primeiras posições da chave expandida. Cada 4bytes inseridos dependem dos 4bytes imediatamente anterior e dos bytes inseridos 4 posições atrás. Caso a posição/4 = i e $i \pmod{n} != 0$, onde n = 4 para k = 16bytes,6 para k = 24bytes e 8 para k = 32bytes), os 8bytes são gerados com um simples XOR entre as os bytes da qual eles dependem, caso contrario eles são gerados através das seguintes operações: RotWord-> SubWord -> Rcon. 
-%     \begin{enumerate}
-%     \item A subfunção RotWord a qual faz uma troca de bytes na, onde o byte da primeira posição é colocado na última posição e os bytes das outras posições são deslocados à esquerda. 
-%     \item A subfunção SubWord substitui cada byte pelo valor respectivo na caixa S-Box. 
-%     \item Rcon é um byte constante que tem os três bits mais à direita com valor zerado e o byte mais à esquerda é definido pela multiplicação no corpo finito.
-%     \end{enumerate} 
-
-% \item Na primeira rodada temos o estado definido como a mensagem dividida em blocos de 16bytes, e é feito um XOR bit a bit entre os bytes do estado e a chave da primeira rodada(AddRoundKey).
-%     \begin{enumerate}
-%         \item $estado[0] = mensagem$
-%         \item $estado[1] = estado[0] XOR ChaveRodada[0]$
-%     \end{enumerate}
-
-% \item Nas rodadas consequentes até a penultima é feito uma troca de cada byte do estado atual pelo valor correspondente nas caixa S, em seguida é feita um deslocamento circular, no qual o estado é escrito em forma matricial e as suas linhas são deslocadas de forma circular em 0,1,2 ou 3 para a esquerda, então é feito o embaralhamento das colunas do estado em forma de matriz, cada byte da coluna é mapeado para um novo valor o qual é obtido atrvés de uma função onde ocorre uma multiplicação entre state e uma matriz específica, cada elemento do produto das matrizes é a soma dos produtos dos elementos de uma linha e uma coluna.
-
-
-% KeyExpansions—round keys are derived from the cipher key using Rijndael's key schedule. AES requires a separate 128-bit round key block for each round plus one more.
-
-% InitialRound
-% AddRoundKey—each byte of the state is combined with a block of the round key using bitwise xor.
-
-% Rounds
-% SubBytes—a non-linear substitution step where each byte is replaced with another according to a lookup table.
-% ShiftRows—a transposition step where the last three rows of the state are shifted cyclically a certain number of steps.
-% MixColumns—a mixing operation which operates on the columns of the state, combining the four bytes in each column.
-% AddRoundKey
-
-% Final Round (no MixColumns)
-% SubBytes
-% ShiftRows
-% AddRoundKey.
-
-% \end{itemize}
-% -O processo de cifra é feito, ordenadamente, através de: 
-% XOR bit a bit entre a chave e a mensagem
-% Substituição de sucessões (Nibble Substituition) com caixas S
-% Deslocamento Circular
-% Embaralhamento das Colunas
-% XOR bit a bit entre a chave expandida e a mensagem
-% Substituição de sucessões com caixas S
-% Deslocamento Circular
-% XOR bit a bit entre a chave expandida e a mensagem
-
 
 \section*{Criptografia assimétrica}
 
