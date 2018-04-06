@@ -65,7 +65,7 @@
         \draw plot[domain=1:5] (-\x, {\sgn 1/20*(3+\x*\x)});
       \foreach \r in {1, 2.3333, ..., 5}
         \draw (-\r, 0) ellipse[x radius=(\r+.5)/20, y radius=1/20*(3+\r*\r)];
-      \node at (0.25, 0) {$\longrightarrow$ digest};
+      \node at (0.25, 0) {$\longrightarrow$ resumo};
     \end{tikzpicture}
   \end{figure}
 
@@ -239,7 +239,7 @@
       \item Uso de uma família de funções de não-compressivas $F_n$
       \item Passos aleatórios em $F_n$ ao invés de iterações simples
     \end{itemize}
-    \item Mascaras de bit especificas em cada rodada para cada Round-specific bitmasks on each hash iteration $i \in \mathbb{N}$
+    \item Mascaras de bit especificas em cada rodada para cada iteração do resumoRound-specific bitmasks on each hash iteration $i \in \mathbb{N}$
     \begin{align*}
       (b_0, \dots, b_j) &\in \{0,1\}^{n \times j}, j \geq i \\
       c^0(x) &= x \\
