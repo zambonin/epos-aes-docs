@@ -246,7 +246,7 @@ que uma mensagem foi assinada e enviada, após este fato.
     \node (sk) at (0, -1) {\sk{}};
     \node (pk) at (4, -1) {\pk{}};
     \node (ds) at (2, 0)
-      {\scriptsize{$m \concat \textsc{Sig}(\mathcal{S}_k, \hash{m})$}};
+      {\scriptsize{$m \concat \textsc{Sig}(\text{\sk{}}, \hash{m})$}};
     \node (res) at (5.5, 0) {\scriptsize\{0, 1\}};
     \node[draw] (sig) at (0, 0) {\textsc{Sig}};
     \node[draw] (gen) at (2, -2) {\textsc{Gen}};
@@ -267,15 +267,15 @@ que uma mensagem foi assinada e enviada, após este fato.
 
 Esquemas de assinatura digital são fortemente baseados em criptografia de
 chaves públicas, e consistem de três algoritmos: a geração de chaves
-$\textsc{Gen}(1^n)$, que gera um par de chaves aleatório $(\mathcal{P}_k,
-\mathcal{S}_k)$ com parâmetro de segurança $n$; o algoritmo de assinatura
-$\textsc{Sig}(\mathcal{S}_k, m)$, que produz uma assinatura $\sigma$ para uma
-mensagem $m$; e o algoritmo de verificação $\textsc{Ver}(\mathcal{P}_k, m,
+$\textsc{Gen}(1^n)$, que gera um par de chaves aleatório (\pk{},
+ \sk{}) com parâmetro de segurança $n$; o algoritmo de assinatura
+$\textsc{Sig}(\text{\sk{}}, m)$, que produz uma assinatura $\sigma$ para uma
+mensagem $m$; e o algoritmo de verificação $\textsc{Ver}(\text{\pk{}}, m,
 \sigma)$, que retorna o estado de validade da assinatura como um valor verdade
 binário. De acordo com~\cite{Goldreich:2004:FCV:975541}, todas as assinaturas
 geradas por \textsc{Sig} devem ser verificáveis por \textsc{Ver} utilizando
 todas as chaves geradas por \textsc{Gen}. Formalmente, $\forall (p, s) \in
-\textsc{Gen}^{\rightarrow}(1^n)$ e $\forall w \in \{0, 1\}^{*}$,
+\textsc{Gen}^{\rightarrow}(1^n)$ e $\forall w \in \binwds{*}$,
 \begin{equation}
     \text{Pr}[\textsc{Ver}(p, w, \textsc{Sig}(s, w)) = 1] = 1.
 \end{equation}
@@ -299,20 +299,22 @@ o tamanho da saída da função de resumo criptográfico escolhido. Um parâmetr
 $w \in \mathbb{N}, w > 1$ também deve ser definido, responsável por codificar a
 quantidade de bits a serem assinados simultaneamente, modificando assim o
 desempenho geral do esquema e o tamanho de chaves e assinatura. Considere uma
-função de mão única $f : \{0, 1\}^{m} \longrightarrow \{0, 1\}^{m}$ e uma função
-de resumo criptográfico $\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{m}$.
+função de mão única $f : \binwds{m} \longrightarrow \binwds{m}$ e uma função
+de resumo criptográfico $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$.
 Por fim, seja 
     $$t_1 = \left\lceil \frac{m}{w} \right\rceil, \; t_2 = \left\lceil 
     \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil \text{ e }
     t = t_1 + t_2.$$
 
 \begin{enumerate}
-    \item[] \emph{Geração de chaves.} Defina $\mathcal{S}_k = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave pública $\mathcal{P}_k = (y_{t-1}, \dots, y_0)$ pode ser derivada de $\mathcal{S}_k$, computando $f^{2^{w}-1}(x) \; \forall x \in \mathcal{S}_k$. Logo, $\mathcal{P}_k = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
+    \item[] \emph{Geração de chaves.} Defina $ \sk{} = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave pública $\pk{} = (y_{t-1}, \dots, y_0)$ pode ser derivada de $ \sk{}$, computando $f^{2^{w}-1}(x) \; \forall x \in  \sk{}$. Logo, $ \pk{} = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
 
     \item[] \emph{Geração da assinatura.} Tome uma mensagem $M$ e calcule o seu resumo $d = \mathcal{H}(M)$. Por conveniência, escolhe-se $m$ ou $w$ de forma que $w \mid m$, mas podem ser concatenados zeros ao resumo para que isso seja satisfeito. $d$ é dividido em uma $t_1$-tupla de palavras em base-$w$, $\mathcal{B}_1 = (b_{t-1}, \dots, b_{t-t_1})$. 
     Adicionalmente, uma soma de verificação é calculada usando a representação inteira dos elementos de $\mathcal{B}_1$: $c = \sum_{b \in \mathcal{B}_1} 2^w - 1 - b$. Novamente, $c$ pode ser arredondado com zeros até que $w \mid \length{c}$. Finalmente, $c$ é dividido em uma $t_2$-tupla de palavras base-$w$, $\mathcal{B}_2 = (b_{t_2-1}, \dots, b_0)$. Assim, $\mathcal{B} = \mathcal{B}_1 \cup \mathcal{B}_2$ e obtém-se a assinatura $\sigma = (f^{b_{t-1}}(x_{t-1}), \dots, f^{b_0}(x_0)).$
     
-    \item[] \emph{Verificação da assinatura.} Para se assegurar a corretude da assinatura $\sigma$, cada um de seu blocos $\sigma_i$ precisa ser verificado separadamente através do calculo das aplicações restantes de $f$. A assinatura é verificada corretamente se $$Y = (f^{2^w - 1 - b_{t-1}}(\sigma_{t-1}), \dots, f^{2^w - 1 - b_0}(\sigma_0)).$$
+    \item[] \emph{Verificação da assinatura.} Para assegurar a corretude da assinatura $\sigma$, todos os blocos $\sigma_i$ precisam ser verificados separadamente através do cálculo das aplicações restantes de $f$. Assim, é necessário obter $\mathcal{B}$ novamente, e $\sigma$ está correta se $$
+    
+    A assinatura é verificada corretamente se $$Y = (f^{2^w - 1 - b_{t-1}}(\sigma_{t-1}), \dots, f^{2^w - 1 - b_0}(\sigma_0)).$$
 
 \end{enumerate}
 
