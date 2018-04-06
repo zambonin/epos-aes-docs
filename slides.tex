@@ -171,15 +171,14 @@
 \begin{frame}
   \frametitle{Winternitz OTS}
   \framesubtitle{Generalização de chave}
-  Seja $w \in \mathbb{N}, w > 1$ o parametro de compensação Winternitz tradeoff
-  parameter. Then,
+  Seja $w \in \mathbb{N}, w > 1$ o parametro de compensação Winternitz. Entao,
    \begin{align*}
        t_1 &= \left\lceil \frac{n}{w} \right\rceil \\
        t_2 &= \left\lceil
        \frac{\lfloor log_2 t_1 \rfloor + 1 + w}{w} \right\rceil \\
          t &= t_1 + t_2
    \end{align*}
-   The private and public keys are, respectively,
+   As chaves privada e pública são, respectivamente,The private and public keys are, respectively,
    \begin{align*}
      S_k &= (y_{t - 1}, \dots, y_{0})
        \stackrel{\$}{\longleftarrow} \{0,1\}^n \\
