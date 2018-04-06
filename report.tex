@@ -225,7 +225,63 @@ Porém, percebe-se que, com a introdução de um computador quântico, estes
 problemas podem ser resolvidos de maneira significativamente mais rápida, como
 visto em \cite{Shor:1997:PAP:264393.264406}.
 
-\section*{Esquemas de assinatura digital}
+\section{Esquemas de assinatura digital}
+
+Um esquema de assinatura digital é uma construção matemática que habilita a
+demonstração de certas propriedades sobre mensagens assinadas: nomeadamente,
+a autenticação do remetente, onde esta entidade pode ser facilmente
+identificada como a emissora da assinatura digital; a integridade da mensagem,
+i.e. a certeza de que esta não foi modificada ao ser transmitida por um canal
+possivelmente inseguro; e o não-repúdio do remetente, onde não é possível negar
+que uma mensagem foi assinada e enviada, após este fato.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \node (hm) at (-1.25, 0) {$m$};
+    \node (in) at (0, -2) {$1^n$};
+    \node (sk) at (0, -1) {\sk{}};
+    \node (pk) at (4, -1) {\pk{}};
+    \node (ds) at (2, 0)
+      {\scriptsize{$m \concat \textsc{Sig}(\mathcal{S}_k, \hash{m})$}};
+    \node (res) at (5.5, 0) {\scriptsize\{0, 1\}};
+    \node[draw] (sig) at (0, 0) {\textsc{Sig}};
+    \node[draw] (gen) at (2, -2) {\textsc{Gen}};
+    \node[draw] (ver) at (4, 0) {\textsc{Ver}};
+    \draw[-latex] (gen) to (1.25, -1) to (sk);
+    \draw[-latex] (gen) to (2.75, -1) to (pk);
+    \draw[-latex] (sk) -- (sig);
+    \draw[-latex] (hm) -- (sig);
+    \draw[-latex] (sig) -- (ds);
+    \draw[-latex] (ds) -- (ver);
+    \draw[-latex] (pk) -- (ver);
+    \draw[-latex] (ver) -- (res);
+    \draw[-latex] (in) -- (gen);
+  \end{tikzpicture}
+  \caption{Funcionamento típico de um esquema de assinatura digital.}
+  \label{fig:2}
+\end{figure}
+
+Esquemas de assinatura digital são fortemente baseados em criptografia de
+chaves públicas, e consistem de três algoritmos: a geração de chaves
+$\textsc{Gen}(1^n)$, que gera um par de chaves aleatório $(\mathcal{P}_k,
+\mathcal{S}_k)$ com parâmetro de segurança $n$; o algoritmo de assinatura
+$\textsc{Sig}(\mathcal{S}_k, m)$, que produz uma assinatura $\sigma$ para uma
+mensagem $m$; e o algoritmo de verificação $\textsc{Ver}(\mathcal{P}_k, m,
+\sigma)$, que retorna o estado de validade da assinatura como um valor verdade
+binário. De acordo com \cite{Goldreich2004}, todas as assinaturas geradas por
+\textsc{Sig} devem ser verificáveis por \textsc{Ver} utilizando todas as chaves
+geradas por \textsc{Gen}. Formalmente, $\forall (p, s) \in
+\textsc{Gen}^{\rightarrow}(1^n)$ e $\forall w \in \{0, 1\}^{*}$,
+\begin{equation}
+    \text{Pr}[\textsc{Ver}(p, w, \textsc{Sig}(s, w)) = 1] = 1.
+\end{equation}
+
+Na Figura \ref{fig:2}, é possível visualizar um diagrama do comportamento de
+um esquema de assinatura digital genérico. Note que $\sigma$ geralmente é
+composto da concatenação da mensagem original com a assinatura do resumo
+criptográfico desta, embora a saída do algoritmo \textsc{Sig} consista apenas
+da aplicação de uma função interna a este ao resumo.
 
 \section*{O esquema Winternitz}
 % * como plugar o AES nele
