@@ -53,14 +53,14 @@
 
 \begin{frame}
   \frametitle{Fundamentação}
-  \framesubtitle{Funções de resumo}
+  \framesubtitle{Funções de resumo criptográfico}
   \begin{equation*}
     \mathcal{H}: \{0, 1\}^{*} \longrightarrow \{0, 1\}^{n}
   \end{equation*}
 
   \begin{figure}
     \begin{tikzpicture}
-      \node at (-6.5, 0) {input $\longrightarrow$};
+      \node at (-6.5, 0) {entrada $\longrightarrow$};
       \foreach \sgn in {+, -}
         \draw plot[domain=1:5] (-\x, {\sgn 1/20*(3+\x*\x)});
       \foreach \r in {1, 2.3333, ..., 5}
@@ -70,9 +70,9 @@
   \end{figure}
 
   \begin{itemize}
-    \item RIPEMD: $n \in \{128, 160, 256, 320\}$
     \item SHA-2, SHA-3, BLAKE: $n \in \{224, 256, 384, 512\}$
-    \item Keccak: any $n$
+    \item Keccak: qualquer $n$
+    \item Resistência à pré-imagem, segunda pré-imagem, colisão
   \end{itemize}
 \end{frame}
 
@@ -239,7 +239,7 @@
       \item Uso de uma família de funções de não-compressivas $F_n$
       \item Passos aleatórios em $F_n$ ao invés de iterações simples
     \end{itemize}
-    \item Round-specific bitmasks on each hash iteration $i \in \mathbb{N}$
+    \item Mascaras de bit especificas em cada rodada para cada Round-specific bitmasks on each hash iteration $i \in \mathbb{N}$
     \begin{align*}
       (b_0, \dots, b_j) &\in \{0,1\}^{n \times j}, j \geq i \\
       c^0(x) &= x \\
