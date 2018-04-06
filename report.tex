@@ -113,14 +113,14 @@ para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignor
 
 \begin{enumerate}[label=\roman*.]
 
-    \item \textsc{SubBytes}: realiza-se a substituição de $A_{i,j}$
+    \item \textsc{SubBytes}: realiza-se a reposição de $A_{i,j}$
         pelo seu valor correspondente em uma \emph{substitution-box} (\emph{S-box}, construída a partir de uma transformação afim em $A_{i,j}^{-1}$ sobre $\mathbb{F}_2$), onde os \emph{nibbles} mais e menos significativos, respectivamente, representam a linha e a coluna do elemento na \emph{S-box}.
 
     \item \textsc{ShiftRows}: cada linha de $A$, $A_i$,
         é deslocada circularmente à esquerda $i$ vezes.
 
     \item \textsc{MixColumns}: cada coluna de $A$, $A_j$, é multiplicada pelo polinômio
-        $c = 03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02$, módulo $x^{4} + 1$, para que o resultado ainda seja um polinômio de grau máximo 3 que possa ser representado na coluna.
+        $c = 03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02$, módulo $x^{4} + 1$, para que o resultado ainda seja um polinômio de grau máximo 3, apto a ser representado na coluna.
 
     \item \textsc{AddRoundKey}: a operação \texttt{XOR} bit a bit é aplicada entre $A$ e o
         bloco da chave referente à rodada.
