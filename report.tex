@@ -185,8 +185,8 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     $A \longleftarrow \textsc{AddRoundKey}(A, \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
     
     \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
+        $A \longleftarrow \textsc{InvShiftRows}(A)$\;
         $A \longleftarrow \textsc{InvSubBytes}(A)$\;
-        $A \longleftarrow \textsc{ShiftRows}(A)$\;
         $A \longleftarrow \textsc{MixColumns}(A)$\;
         $A \longleftarrow \textsc{AddRoundKey}(A,
             \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell}\})$\;
