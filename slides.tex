@@ -77,15 +77,15 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Assinaturas Digitais}
+  \frametitle{Assinaturas digitais}
   \begin{itemize}
-    \item Provem autenticação, integridade e não-repúdio
+    \item Provêm autenticação, integridade e não-repúdio
     \item Baseado em criptografia de chaves públicas
     \item Tripla de algoritmos probabilísticos de tempo polinomial
       \cite{Goldreich2004}
     \begin{itemize}
-      \item Gerando uma chave ($\mathcal{G}$), assinando ($\mathcal{S}$),
-          verificando ($\mathcal{V}$)
+      \item Geração de chaves ($\mathcal{G}$), geração da assinatura ($\mathcal{S}$),
+          verifica ($\mathcal{V}$)
     \end{itemize}
     \item Deve existir uma maneira de ligar o assinante a sua chave
   \end{itemize}
@@ -204,7 +204,7 @@
   \end{minipage}
   \vspace{4mm}
   
-  Finalmente, a assinatura de uso único é construidathe one-time signature is constructed.
+  Finalmente, a assinatura de uso único é construida.
   \begin{align*}
     \sigma &= (\mathcal{H}^{\epsilon_{t - 1}}(y_{t - 1}),
     \dots, \mathcal{H}^{\epsilon_0}(y_0))
@@ -213,7 +213,7 @@
 
 \begin{frame}
   \frametitle{Winternitz OTS}
-  \framesubtitle{Verification step}
+  \framesubtitle{Verificação}
   Recall that
   \begin{align*}
     P_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0}) \text{ and} \\
@@ -293,7 +293,7 @@
 \begin{frame}[plain,noframenumbering]
   \frametitle{Bibliography}
   \bibliographystyle{alpha}
-  \bibliography{overview}
+  \bibliography{report}
 \end{frame}
 
 \end{document}
