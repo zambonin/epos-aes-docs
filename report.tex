@@ -173,9 +173,9 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     \item[\textsc{InvSubBytes}] 
     
     \item[\textsc{InvMixColumns}] 
-    $c^{-1} \equiv 01 \pmod{x^4 + 1} \equiv$
+    % $c^{-1} \equiv 01 \pmod{x^4 + 1} \equiv 0B \cdot x^{3} + OD \cdot x^{2} + 09 \cdot x + 0E$
     
-    Cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa do polinômio utilizado no \textsc{MixColumns}, módulo $x^{4} + 1$, de valor $c = 0B \cdot x^{3} + OD \cdot x^{2} + o9 \cdot x + 0E$.
+    Cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa do polinômio utilizado no \textsc{MixColumns}, módulo $x^{4} + 1$, de valor $c = $.
 
 \end{enumerate}
 
