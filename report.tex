@@ -175,7 +175,7 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     \item[\textsc{InvMixColumns}] 
     % $c^{-1} \equiv 01 \pmod{x^4 + 1} \equiv 0B \cdot x^{3} + OD \cdot x^{2} + 09 \cdot x + 0E$
     
-    Similar a operação \textsc{MixColumns}, onde cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa do polinômio utilizado no \textsc{MixColumns}, módulo $x^{4} + 1$, de valor $c = $.
+    Similar à operação \textsc{MixColumns}, onde cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa $d = c^{-1}$, obtida por: $(03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02) \cdot d \equiv 1 \pmod{x^4 + 1}$, módulo $x^{4} + 1$ .
 
 \end{enumerate}
 
