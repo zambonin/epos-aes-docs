@@ -135,8 +135,7 @@ Tome $\ell = \frac{n}{32}$, e assumindo que é necessário criar palavras sufici
     \item $i \equiv 0 \pmod{4} \rightarrow \mathbf{k}
         = \textsc{SubBytes}(rot(K^{e}_{i - 1})) \oplus RC_{\frac{i}{\ell}}$;
     \item $\ell = 8 \land i \equiv 4 \pmod{8} \rightarrow \mathbf{k}
-        = \textsc{SubBytes}(K^{e}_{i - 1})$;
-    \item $\mathbf{k} = K^{e}_{i-1}$.
+        = \textsc{SubBytes}(K^{e}_{i - 1})$.
 \end{itemize}
 
 Assim, uma função que criptografa uma mensagem $m$ e retorna um texto cifrado $c$ pode ser
