@@ -143,7 +143,8 @@ representada pelo pseudocódigo abaixo.
     \KwResult{$c$, o texto cifrado resultante}
 
     $A \longleftarrow m$\;
-    $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
+    $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot (\ell - 1)}
+        \longleftarrow \textsc{KeyExpansion}(K)$\;
     $A \longleftarrow \textsc{AddRoundKey}(A, \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
     
     \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
@@ -176,10 +177,11 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
 
 \begin{algorithm}[H]
     \KwData{$c$, o texto cifrado; $K$, a chave desejada}
-    \KwResult{$m$, o texto cifrado resultante}
+    \KwResult{$m$, o texto claro resultante}
 
-    $A \longleftarrow m$\;
-    $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
+    $A \longleftarrow c$\;
+    $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot (\ell - 1)}
+        \longleftarrow \textsc{KeyExpansion}(K)$\;
     $A \longleftarrow \textsc{AddRoundKey}(A, \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
     
     \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
@@ -195,7 +197,7 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     $A \longleftarrow \textsc{AddRoundKey}(A,
         \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot (\ell - 1)}\})$\;
 
-    $c \longleftarrow A$\;
+    $m \longleftarrow A$\;
 \end{algorithm}
 
 
