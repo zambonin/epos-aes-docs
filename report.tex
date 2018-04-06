@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage[a4paper, margin=3cm]{geometry}
+\usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese, onelanguage]{algorithm2e}
@@ -110,17 +111,18 @@ O AES é uma cifra de blocos que opera, a partir de uma chave $K$ de tamanho $n 
 Note que existe uma rodada adicional introdutória composta apenas de \textsc{AddRoundKey},
 para que o estado inicial seja modificado. Ademais, \textsc{MixColumns} é ignorado na última rodada, a fim de facilitar a reversibilidade da cifra. Uma rotina de expansão de chave existe para que $K$ seja propagada em todas as rodadas com valores derivados, porém distintos. Estes componentes serão descritos abaixo.
 
-\begin{enumerate}
+\begin{enumerate}[label=\roman*.]
 
-    \item[\textsc{SubBytes}] Realiza-se a substituição de $A_{i,j}$
+    \item \textsc{SubBytes}: realiza-se a substituição de $A_{i,j}$
         pelo seu valor correspondente em uma \emph{substitution-box} (\emph{S-box}, construída a partir de uma transformação afim em $A_{i,j}^{-1}$ sobre $\mathbb{F}_2$), onde os \emph{nibbles} mais e menos significativos, respectivamente, representam a linha e a coluna do elemento na \emph{S-box}.
 
-    \item[\textsc{ShiftRows}] Cada linha de $A$, $A_i$, é deslocada circularmente à esquerda     $i$ vezes.
+    \item \textsc{ShiftRows}: cada linha de $A$, $A_i$,
+        é deslocada circularmente à esquerda $i$ vezes.
 
-    \item[\textsc{MixColumns}] Cada coluna de $A$, $A_j$, é multiplicada pelo polinômio
+    \item \textsc{MixColumns}: cada coluna de $A$, $A_j$, é multiplicada pelo polinômio
         $c = 03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02$, módulo $x^{4} + 1$.
 
-    \item[\textsc{AddRoundKey}] A operação \texttt{XOR} bit a bit é aplicada entre $A$ e o
+    \item \textsc{AddRoundKey}: a operação \texttt{XOR} bit a bit é aplicada entre $A$ e o
         bloco da chave referente à rodada.
 
 \end{enumerate}
@@ -172,7 +174,7 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
 
     \item \textsc{InvSubBytes}: é necessário computar a transformação afim inversa para cada elemento $A_{i,j}$, e depois calcular sua inversa multiplicativa.
     
-    \item \textsc{InvMixColumns}: similar à operação \textsc{MixColumns}, onde cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa $d = c^{-1}$, obtida por: $(03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02) \cdot d \equiv 1 \pmod{x^{4} + 1}$, logo $d(x) = 0B \cdot x^{3} + OD \cdot x^{2} + 09 \cdot x + 0E$.
+    \item \textsc{InvMixColumns}: cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa $d = c^{-1}$, obtida por: $(03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02) \cdot d \equiv 1 \pmod{x^{4} + 1}$, logo $d(x) = 0B \cdot x^{3} + OD \cdot x^{2} + 09 \cdot x + 0E$.
 
 \end{enumerate}
 
