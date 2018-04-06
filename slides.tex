@@ -89,26 +89,32 @@
     \end{itemize}
   \end{itemize}
 
-  \begin{figure}
-    \begin{tikzpicture}
-      \node (hm) at (-1, 0) {$m$};
-      \node (sk) at (0, -1) {$S_{k}$};
-      \node (pk) at (4, -1) {$P_{k}$};
-      \node (ds) at (2, 0) {\scriptsize{$m \concat \mathcal{S}(\hash{m})$}};
-      \node (res) at (6, 0) {\scriptsize\{\texttt{true}, \texttt{false}\}};
-      \node[draw] (sig) at (0, 0) {$\mathcal{S}$};
-      \node[draw] (ger) at (2, -2) {$\mathcal{G}$};
-      \node[draw] (ver) at (4, 0) {$\mathcal{V}$};
-      \draw[-latex] (ger) to (0, -2) to (sk);
-      \draw[-latex] (ger) to (4, -2) to (pk);
-      \draw[-latex] (sk) -- (sig);
-      \draw[-latex] (hm) -- (sig);
-      \draw[-latex] (sig) -- (ds);
-      \draw[-latex] (ds) -- (ver);
-      \draw[-latex] (pk) -- (ver);
-      \draw[-latex] (ver) -- (res);
-    \end{tikzpicture}
-  \end{figure}
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \node (hm) at (-1.25, 0) {$m$};
+    \node (in) at (0, -2) {$1^n$};
+    \node (sk) at (0, -1) {$\mathcal{S}_k$};
+    \node (pk) at (4, -1) {$\mathcal{P}_k$};
+    \node (ds) at (2, 0)
+      {\scriptsize{$m \concat \textsc{Sig}(\mathcal{S}_k, \hash{m})$}};
+    \node (res) at (5.5, 0) {\scriptsize\{0, 1\}};
+    \node[draw] (sig) at (0, 0) {\textsc{Sig}};
+    \node[draw] (gen) at (2, -2) {\textsc{Gen}};
+    \node[draw] (ver) at (4, 0) {\textsc{Ver}};
+    \draw[-latex] (gen) to (1.25, -1) to (sk);
+    \draw[-latex] (gen) to (2.75, -1) to (pk);
+    \draw[-latex] (sk) -- (sig);
+    \draw[-latex] (hm) -- (sig);
+    \draw[-latex] (sig) -- (ds);
+    \draw[-latex] (ds) -- (ver);
+    \draw[-latex] (pk) -- (ver);
+    \draw[-latex] (ver) -- (res);
+    \draw[-latex] (in) -- (gen);
+  \end{tikzpicture}
+  \caption{Funcionamento típico de um esquema de assinatura digital.}
+  \label{fig:2}
+\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -213,9 +219,9 @@
 \begin{frame}
   \frametitle{Winternitz OTS}
   \framesubtitle{Verificação}
-  Recall that
+  Lembre-se que
   \begin{align*}
-    P_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0}) \text{ and} \\
+    P_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0}) \text{ e} \\
     \sigma &= (\mathcal{H}^{\epsilon_{t - 1}}(y_{t - 1}), \dots, \mathcal{H}^{\epsilon_0}(y_0))
   \end{align*}
   To verify $\sigma$, all $\epsilon_i$ are calculated and the hash chains are finished:
