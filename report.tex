@@ -300,15 +300,13 @@ quantidade de bits a serem assinados simultaneamente, modificando assim o
 desempenho geral do esquema e o tamanho de chaves e assinatura. Considere uma
 função de mão única $f : \{0, 1\}^{m} \longrightarrow \{0, 1\}^{m}$ e uma função
 de resumo criptográfico $\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{m}$.
-Os valores abaixo são computados
+Por fim, seja 
+    $$t_1 = \left\lceil \frac{m}{w} \right\rceil, \; t_2 = \left\lceil 
+    \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil \text{ e }
+    t = t_1 + t_2.$$
 
-    $$t_1 = \left\lceil \frac{m}{w} \right\rceil, \quad t_2 = \left\lceil 
-    \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil,
-    \quad t = t_1 + t_2.$$
-
-\begin{itemize}
-    \item\emph{Key Generation.}
-    Seja $X = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ a chave privada, informalmente uma $t$-tupla de inteiros pseudo-aleatórios. A chave pubilca $Y = (y_{t-1}, \dots, y_0)$ pode ser derivada de $X$ aplicando-se $f$ para cada $x_i$ elementos $2^{w}-1$ vezes. Logo, $Y = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
+\begin{enumerate}
+    \item[] \emph{Geração de chaves.} Defina $X = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave píubilca $Y = (y_{t-1}, \dots, y_0)$ pode ser derivada de $X$ aplicando-se $f$ para cada $x_i$ elementos $2^{w}-1$ vezes. Logo, $Y = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
 
     \item\emph{Signature Generation.}
     Pegando a mensagem $M$ e calculando o seu resumo $d = \mathcal{H}(M)$. Por conveniência, nós escolhemos $m$ ou $w$ para que $w \mid m$. Podem ser concatenados zeros ao resumo para que isso seja satisfeito. $d$ é dividido $t_1$-tupla de palavras base-$w$, $\mathcal{B}_1 = (b_{t-1}, \dots, b_{t-t_1})$. 
@@ -319,7 +317,7 @@ Os valores abaixo são computados
     \item\emph{Signature Verification.} 
     Para se assegurar a corretuda da assinatura $\alpha$, cada um de seu blocos $\alpha_i$ precisa ser verificado separadamente através do calculo das aplicações restantes de $f$. A assinatura é verificada corretamente se $$Y = (f^{2^w - 1 - b_{t-1}}(\alpha_{t-1}), \dots, f^{2^w - 1 - b_0}(\alpha_0)).$$
 
-\end{itemize}
+\end{enumerate}
 
 % In its original proposal~\cite{Merkle:1989:CDS:118209.118230}, the Winternitz
 % one-time signature scheme (\textsc{Wots}) works as follows. Take $m$
