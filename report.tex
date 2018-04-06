@@ -287,9 +287,7 @@ da aplicação de uma função interna a este ao resumo.
 
 \section{O esquema Winternitz}
 
-
-
-O esquema de assinaturas de unico uso de Winternitz(\textsc{Wots}), em sua proposta original \cite{Merkle:1989:CDS:118209.118230} tem o seguinte funcionamento:
+O esquema de assinatura digital única Winternitz(\textsc{Wots} --- \emph{Winternitz one-time signature}), em sua proposta original \cite{Merkle:1989:CDS:118209.118230}, tem o seguinte funcionamento:
 
 \begin{itemize}
     \item Assumimos um parâmetro de segurança $m$, geralmente com o tamanho da saida de uma função de resumo cryptografico e escolhemos um parâmetro $w \in \mathbb{N}, w > 1$. Considerando a função *(non-compressing one-way)* $f : \{0, 1\}^{m} \longrightarrow \{0, 1\}^{m}$ e a função de resumo criptográfico $\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{m}$.
@@ -311,7 +309,7 @@ Estes parâmetros são escolhidos tal que $w$ seja o numero de bits a serem assi
     Novamente, $c$ pode ser arredondado com zeros até que $w \mid \vert c \vert$. Finalmente, ele é dividido em uma $t_2$-tupla de palavras base-$w$, $\mathcal{B}_2 = (b_{t_2-1}, \dots, b_0)$. Com a realização de $\mathcal{B} = \mathcal{B}_1 \cup \mathcal{B}_2$ obtemos a assinatura:
     $$\alpha = (f^{b_{t-1}}(x_{t-1}), \dots, f^{b_0}(x_0)).$$
     \item\emph{Signature Verification.} 
-    Para se assegurar a corretuda da assinatura $\alpha$, cada um de seu blocos $\alpha_i$ precisa ser verificado separadamente através do calculo das aplicações restantes de $f$. The signature verifies correctly if $$Y = (f^{2^w - 1 - b_{t-1}}(\alpha_{t-1}), \dots, f^{2^w - 1 - b_0}(\alpha_0)).$$
+    Para se assegurar a corretuda da assinatura $\alpha$, cada um de seu blocos $\alpha_i$ precisa ser verificado separadamente através do calculo das aplicações restantes de $f$. A assinatura é verificada corretamente se $$Y = (f^{2^w - 1 - b_{t-1}}(\alpha_{t-1}), \dots, f^{2^w - 1 - b_0}(\alpha_0)).$$
 
 \end{itemize}
 
