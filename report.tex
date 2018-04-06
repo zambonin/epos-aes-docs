@@ -300,16 +300,16 @@ $w \in \mathbb{N}, w > 1$ também deve ser definido, responsável por codificar 
 quantidade de bits a serem assinados simultaneamente, modificando assim o
 desempenho geral do esquema e o tamanho de chaves e assinatura. A partir destes,
 calcula-se
-
+ $$t_1 = \left\lceil \frac{m}{w} \right\rceil, \; t_2 = \left\lceil 
+    \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil \text{ e }
+    t = t_1 + t_2.$$
 
 
 Considere uma
 função de mão única $f : \binwds{m} \longrightarrow \binwds{m}$ e uma função
 de resumo criptográfico $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$.
 Por fim, seja 
-    $$t_1 = \left\lceil \frac{m}{w} \right\rceil, \; t_2 = \left\lceil 
-    \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil \text{ e }
-    t = t_1 + t_2.$$
+   
 
 \begin{enumerate}
     \item[] \emph{Geração de chaves.} Defina $\text{\sk{}} = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave pública $\text{\pk{}} = (y_{t-1}, \dots, y_0)$ pode ser derivada de \sk{}, computando $f^{2^{w}-1}(x) \; \forall x \in  \text{\sk{}}$. Logo, $\text{\pk{}} = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
