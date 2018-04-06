@@ -305,7 +305,7 @@ Estes parâmetros são escolhidos tal que $w$ seja o numero de bits a serem assi
     Seja $X = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ a chave privada, informalmente uma $t$-tupla de inteiros pseudo-aleatórios. A chave pubilca $Y = (y_{t-1}, \dots, y_0)$ pode ser derivada de $X$ aplicando-se $f$ para cada $x_i$ elementos $2^{w}-1$ vezes. Logo, $Y = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
 
     \item\emph{Signature Generation.}
-    Take a message $M$ and compute its digest $d = \mathcal{H}(M)$. For convenience, we choose $m$ or $w$ such that $w \mid m$. However, one may pad the digest by appending zeros to satisfy this requirement. $d$ is then split into a $t_1$-tuple of base-$w$ words $\mathcal{B}_1 = (b_{t-1}, \dots, b_{t-t_1})$. 
+    Pegando a mensagem $M$ and compute its digest $d = \mathcal{H}(M)$. For convenience, we choose $m$ or $w$ such that $w \mid m$. However, one may pad the digest by appending zeros to satisfy this requirement. $d$ is then split into a $t_1$-tuple of base-$w$ words $\mathcal{B}_1 = (b_{t-1}, \dots, b_{t-t_1})$. 
     Additionally, we compute the checksum using the integer representation of the elements in $\mathcal{B}_1$:
     $$ c = \sum_{i=t-t_1}^{t-1} 2^w - 1 - b_i.$$
     Again, $c$ may be padded with zeroes until $w \mid \vert c \vert$. Finally, it is split into a     $t_2$-tuple of base-$w$ words $\mathcal{B}_2 = (b_{t_2-1}, \dots, b_0)$. With $\mathcal{B} =     \mathcal{B}_1 \cup \mathcal{B}_2$ computed, we obtain the signature
