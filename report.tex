@@ -173,13 +173,11 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     \item[\textsc{InvSubBytes}] 
     
     \item[\textsc{InvMixColumns}] 
-    % $c^{-1} \equiv 01 \pmod{x^4 + 1} \equiv 0B \cdot x^{3} + OD \cdot x^{2} + 09 \cdot x + 0E$
-    
     Similar à operação \textsc{MixColumns}, onde cada coluna de $A$, $A_j$, é multiplicada pela inversa multiplicativa $d = c^{-1}$, obtida por: $(03 \cdot x^{3} + 01 \cdot x^{2} + 01 \cdot x + 02) \cdot d \equiv 1 \pmod{x^{4} + 1}$, logo $d(x) = 0B \cdot x^{3} + OD \cdot x^{2} + 09 \cdot x + 0E$.
 
 \end{enumerate}
 
-Assim, o algoritmo resultante pode ser representado pelo pseudocódigo abaixo. Note a mudança da ordem das etapas, e a utilização invertida de $K_e$.
+Por fim, o algoritmo resultante pode ser representado pelo pseudocódigo abaixo. Note a mudança da ordem das etapas, e a utilização invertida de $K_e$.
 
 \begin{algorithm}[H]
     \KwData{$c$, o texto cifrado; $K$, a chave desejada}
