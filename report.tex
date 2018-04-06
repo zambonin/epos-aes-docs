@@ -180,8 +180,7 @@ Para que a cifra seja caracterizada como simétrica, é preciso criar uma funç�
     \KwResult{$m$, o texto claro resultante}
 
     $A \longleftarrow c$\;
-    $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot (\ell - 1)}
-        \longleftarrow \textsc{KeyExpansion}(K)$\;
+    $K_{e_0} \dots K_{e_{n_r}} \longleftarrow \textsc{KeyExpansion}(K)$\;
     $A \longleftarrow \textsc{AddRoundKey}(A, \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
     
     \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
