@@ -306,7 +306,8 @@ Por fim, seja
     t = t_1 + t_2.$$
 
 \begin{enumerate}
-    \item[] \emph{Geração de chaves.} Defina $X = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave píubilca $Y = (y_{t-1}, \dots, y_0)$ pode ser derivada de $X$ aplicando-se $f$ para cada $x_i$ elementos $2^{w}-1$ vezes. Logo, $Y = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
+    \item[] \emph{Geração de chaves.} Defina $X = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave pública $Y = (y_{t-1}, \dots, y_0)$ pode ser derivada de $X$ aplicando $f$ para cada $x_i$ elementos $2^{w}-1$ vezes em
+    cada elemento de $X$. Logo, $Y = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
 
     \item\emph{Signature Generation.}
     Pegando a mensagem $M$ e calculando o seu resumo $d = \mathcal{H}(M)$. Por conveniência, nós escolhemos $m$ ou $w$ para que $w \mid m$. Podem ser concatenados zeros ao resumo para que isso seja satisfeito. $d$ é dividido $t_1$-tupla de palavras base-$w$, $\mathcal{B}_1 = (b_{t-1}, \dots, b_{t-t_1})$. 
