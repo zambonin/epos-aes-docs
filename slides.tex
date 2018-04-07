@@ -265,11 +265,11 @@
   \framesubtitle{Utilizando $f$ como AES}
   
   \begin{itemize}
-      \item Funções de mão única podem ser construídas a partir de cifras de bloco
+      \item Funções de resumo criptográficas podem ser construídas a partir de cifras de bloco
       \item Construção Matyas-Meyer-Oseas \cite[9.41]{Menezes:1996:HAC:548089}
       \begin{itemize}
-        \item Entrada $x$, saída $h_k$, cifra $E_K$ com bloco de $n$ bits e chave $K$
-        \item Tome um valor inicial $IV$, $\vert IV \vert = n$, e uma função $g$ que gere chaves válidas para $E$
+        \item Entrada $x$, saída $h_k$, cifra $E$ com tamanho de bloco $n$
+        \item Tome um valor inicial $IV$, $\vert IV \vert = n$, e uma função $g$ que cria chaves válidas para $E$
         \item $x = (x_0, \dots, x_{k - 1}), \vert x_i \vert = n$
         \item $h_0 = IV, h_i = E_{g(h_{i-1})}(x_i) \oplus x_i, 1 \leq i \leq k$
       \end{itemize}
