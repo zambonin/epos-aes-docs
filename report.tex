@@ -318,7 +318,7 @@ e discute-se algumas de suas características.
     \item[] \emph{Verificação da assinatura.} Para assegurar a corretude da assinatura $\sigma$, todos os blocos $\sigma_i$ precisam ser verificados separadamente através do cálculo das aplicações restantes de $f$. Assim, computando $\mathcal{B}$ novamente, $\sigma$ está correta se $\text{\pk{}} = (f^{2^w - 1 - b_{t-1}}(\sigma_{t-1}), \dots, f^{2^w - 1 - b_0}(\sigma_0))$.
 \end{enumerate}
 
-A soma de verificação $c$ é necessária a fim de proteger o esquema contra falsificação de assinaturas. Observe que, em sua ausência, é possível que uma entidade maliciosa crie assinaturas $\sigma'$ apenas calculando mais iterações de $f$ em blocos da assinatura $\sigma$. Note que não é possível decrementar valores $b_i \in \mathcal{B}$ pois isto implicaria em achar uma pré-imagem de $f$, o que é computacionalmente inviável tratando-se de funções de mão única. 
+Note que não é possível decrementar valores $b_i \in \mathcal{B}$ pois isto implicaria em achar uma pré-imagem de $f$, o que é computacionalmente inviável tratando-se de funções de mão única. EntãoNote que não é possível decrementar valores $b_i \in \mathcal{B}$ pois isto implicaria em achar uma pré-imagem de $f$, o que é computacionalmente inviável tratando-se de funções de mão única. A soma de verificação $c$ é necessária a fim de proteger o esquema contra falsificação de assinaturas. Observe que, em sua ausência, é possível que uma entidade maliciosa crie assinaturas $\sigma'$ apenas calculando mais iterações de $f$ em blocos da assinatura $\sigma$. 
 
 
 Com a presença de $c$, e consequentemente $\mathcal{B}_2$, ao modificar um valor $b_i$ de $\mathcal{B}_1$, para que o valor correto de $\mathcal{B_2}$ seja mantido,
@@ -333,7 +333,7 @@ Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem com
 *introduzir os 3 algoritmos*
 \begin{enumerate}
 
-    \item[] \textsc{Geraão de chaves}: Com a entrada do parâmetro de segurança $n$, em unário, o algoritmo de geração de chaves escola $l + w - 1$ $n$
+    \item[] \textsc{Geraão de chaves}: Com a entrada do parâmetro de segurança $n$, em unário, o algoritmo de geração de chaves escolhe $l + w - 1$ $n$-bit
 
 \end{enumerate}
 
