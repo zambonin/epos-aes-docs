@@ -80,7 +80,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{AES --- \emph{Advanced Encryption Standard}}
+    \frametitle{AES}
     \framesubtitle{Definições}
     \begin{itemize}
         \item Versão padronizada do algoritmo Rjindael \cite{Daemen:2002:DR:560131}
@@ -193,13 +193,13 @@
   e $\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{n}$. Então,
    \begin{align*}
        t_1 &= \left\lceil \frac{n}{w} \right\rceil, t_2 = \left\lceil
-       \frac{\lfloor log_2 t_1 \rfloor + 1 + w}{w} \right\rceil, t = t_1 + t_2
+       \frac{\lfloor log_2 t_1 \rfloor + 1 + w}{w} \right\rceil \text{ e } t = t_1 + t_2.
    \end{align*}
    As chaves privada e pública são, respectivamente,
    \begin{align*}
       \mathcal{S}_k &= (y_{t - 1}, \dots, y_{0})
-        \stackrel{\$}{\longleftarrow} \{0,1\}^n \\
-      \mathcal{P}_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0})
+        \stackrel{\$}{\longleftarrow} \{0,1\}^n \text{ e}\\
+      \mathcal{P}_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0}).
    \end{align*}
 \end{frame}
 
@@ -210,7 +210,7 @@
   
   \begin{minipage}{.45\linewidth}
   \begin{align*}
-    \hash{m} &= (\epsilon_{t - 1}, \dots, \epsilon_{t - t_1})
+    \mathcal{H}(m) &= (\epsilon_{t - 1}, \dots, \epsilon_{t - t_1})
   \end{align*}
   \end{minipage}
   \begin{minipage}{.45\linewidth}
@@ -232,12 +232,12 @@
   \framesubtitle{Verificação}
   Relembrando,
   \begin{align*}
-    P_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0}) \text{ e} \\
+    \mathcal{P}_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0}) \text{ e} \\
     \sigma &= (f^{\epsilon_{t - 1}}(y_{t - 1}), \dots, f^{\epsilon_0}(y_0)).
   \end{align*}
   Os elementos $\epsilon_i$ são calculados e utilizados na verificação de $\sigma$:
   \begin{align*}
-    \forall \sigma_i \in \sigma, \hash[2^w - 1 - \epsilon_{i}]{\sigma_i} &= P_{k_i}
+    \forall \sigma_i \in \sigma, \hash[2^w - 1 - \epsilon_{i}]{\sigma_i} &= \mathcal{P}_{k_i}
   \end{align*}
 \end{frame}
 
@@ -265,12 +265,12 @@
   \framesubtitle{Utilizando $f$ como AES}
   
   \begin{itemize}
-      \item Funções de mão única podem ser construídas a partir de cifras de bloco
+      \item Funções de resumo podem ser construídas a partir de cifras de bloco
       \item Construção Matyas-Meyer-Oseas \cite[9.41]{Menezes:1996:HAC:548089}
       \begin{itemize}
         \item Entrada $x$, saída $h_k$, cifra $E_K$ com bloco de $n$ bits e chave $K$
         \item Tome um valor inicial $IV$, $\vert IV \vert = n$, e uma função $g$ que gere chaves válidas para $E$
-        \item $x = (x_0, \dots, x_{k - 1}), \vert x_i \vert = n$
+        \item $X = (x_0, \dots, x_{k - 1}), \forall x_i \in X, \vert x_i \vert = n$
         \item $h_0 = IV, h_i = E_{g(h_{i-1})}(x_i) \oplus x_i, 1 \leq i \leq k$
       \end{itemize}
       \item Assim, AES pode ser integrado ao Winternitz
