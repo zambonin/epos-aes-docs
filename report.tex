@@ -328,9 +328,9 @@ Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem com
 
 \begin{enumerate}
 
-    \item[] \emph{Geração de chaves.} Defina \sk{} e $r$ como tuplas de inteiros pseudoaleatórios, discutidos anteriormente. O algoritmo também deve escolher uma chave de função
+    \item[] \emph{Geração de chaves.} Defina \sk{} e $r$ como tuplas de inteiros pseudoaleatórios, discutidos anteriormente. O algoritmo também deve escolher uma chave de função $k \stackrel{\$}\longleftarrow \mathcal{K}$. Em seguida, derive \pk{} da seguinte maneira: 
     
-    Com a entrada do parâmetro de segurança $n$, em unário, o algoritmo de geração de chaves escolhe aleatoriamente $l + w - 1$ $n$-bit strings. A chave secreta $sk = (sk_1\dots,sk_l)$ é constituida dos $l$ primeiras strings aleatórias. As $w-1$ strings restantes são utilizadas para *randomization* dos elementos $r=(r_1,\dots,r_{w-1})$ para a função $c$. Em seguida o algoritmo escolhe aleatóriamente uma chave de função $k \stackrel{\$}\longleftarrow\mathcal{K}$. Em seguida, a chave pública de verificação $pk$ é gerada através de $pk = (pk_{0},pk_{1},\dots,pl_{l})=((r,k),c^{w-1}_{k}(sk_{1},r),\dots,c^{w-1}_{k}(sk_{l},r)$
+    a chave pública de verificação $pk$ é gerada através de $pk = (pk_{0},pk_{1},\dots,pl_{l})=((r,k),c^{w-1}_{k}(sk_{1},r),\dots,c^{w-1}_{k}(sk_{l},r)$
 
     \item[] \emph{Geração da assinatura.} Tome uma mensagem $M$, calcule o seu resumo $d = \mathcal{H}(M)$ e a soma de verificação $c$ correspondente, produzindo $\mathcal{B}$. As considerações sobre preenchimento de $m$ e $c$ ainda se aplicam. Aplicando a nova função de iteração, tem-se $\sigma = (c^{b_{t - 1}}_{k}(x_{t-1}, r), \dots, c^{b_{0}}_{k}(x_{0}, r))$.
     
