@@ -328,10 +328,8 @@ Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem com
 
 \begin{enumerate}
 
-    \item[] \emph{Geração de chaves.} Defina \sk{} e $r$ como tuplas de inteiros pseudoaleatórios, discutidos anteriormente. O algoritmo também deve escolher uma chave de função $k \stackrel{\$}\longleftarrow \mathcal{K}$. Por fim, $\text{\pk{}} = ((r,k),c^{w-1}_{k}(sk_{1},r),\dots,c^{w-1}_{k}(sk_{l},r))$.
+    \item[] \emph{Geração de chaves.} Defina \sk{} e $r$ como tuplas de inteiros pseudoaleatórios, discutidos anteriormente. O algoritmo também deve escolher uma chave de função $k \stackrel{\$}\longleftarrow \mathcal{K}$. Por fim, $\text{\pk{}} = (c^{0}_{k}(r,k), c^{2^w - 1}_{k}(sk_{1},r),\dots,c^{w-1}_{k}(sk_{l},r))$.
     
-    a chave pública de verificação $pk$ é gerada através de $pk =($
-
     \item[] \emph{Geração da assinatura.} Tome uma mensagem $M$, calcule o seu resumo $d = \mathcal{H}(M)$ e a soma de verificação $c$ correspondente, produzindo $\mathcal{B}$. As considerações sobre preenchimento de $m$ e $c$ ainda se aplicam. Aplicando a nova função de iteração, tem-se $\sigma = (c^{b_{t - 1}}_{k}(x_{t-1}, r), \dots, c^{b_{0}}_{k}(x_{0}, r))$.
     
     \item[] \emph{Verificação da assinatura.} Novamente, é necessário calcular $\mathcal{B}$ para obter as iterações restantes até \pk{}. Assim, $\sigma$ está correta se $\text{\pk{}} = (c^{2^{w} - 1 - b_{t - 1}}_{k}(\sigma_{t-1}, r), \dots, c^{2^{w} - 1 - b_{0}}_{k}(\sigma_{0}, r))$.
