@@ -310,7 +310,7 @@ Descreve-se abaixo o funcionamento do esquema
 e discute-se algumas de suas características. 
 
 \begin{enumerate}
-    \item[] \emph{Geração de chaves.} Defina $\text{\sk{}} = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \{0,1\}^m$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave pública $\text{\pk{}} = (y_{t-1}, \dots, y_0)$ pode ser derivada de \sk{}, computando $f^{2^{w}-1}(x) \; \forall x \in  \text{\sk{}}$. Logo, $\text{\pk{}} = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
+    \item[] \emph{Geração de chaves.} Defina $\text{\sk{}} = (x_{t-1}, \dots, x_0) \stackrel{\$}{\longleftarrow} \binwds{m}$ como a chave privada, informalmente uma $t$-tupla de inteiros pseudoaleatórios. A chave pública $\text{\pk{}} = (y_{t-1}, \dots, y_0)$ pode ser derivada de \sk{}, computando $f^{2^{w}-1}(x) \; \forall x \in  \text{\sk{}}$. Logo, $\text{\pk{}} = (f^{2^{w}-1}(x_{t-1}), \dots, f^{2^{w}-1}(x_0))$.
 
     \item[] \emph{Geração da assinatura.} Tome uma mensagem $M$ e calcule o seu resumo $d = \mathcal{H}(M)$. Por conveniência, escolhe-se $m$ ou $w$ de forma que $w \mid m$, mas podem ser concatenados zeros ao resumo para que isso seja satisfeito. $d$ é dividido em uma $t_1$-tupla de palavras em base-$w$, $\mathcal{B}_1 = (b_{t-1}, \dots, b_{t-t_1})$. 
     Adicionalmente, uma soma de verificação é calculada usando a representação inteira dos elementos de $\mathcal{B}_1$: $c = \sum_{b \in \mathcal{B}_1} 2^w - 1 - b$. Novamente, $c$ pode ser arredondado com zeros até que $w \mid \length{c}$. Finalmente, $c$ é dividido em uma $t_2$-tupla de palavras base-$w$, $\mathcal{B}_2 = (b_{t_2-1}, \dots, b_0)$. Assim, $\mathcal{B} = \mathcal{B}_1 \cup \mathcal{B}_2$ e obtém-se a assinatura $\sigma = (f^{b_{t-1}}(x_{t-1}), \dots, f^{b_0}(x_0)).$
@@ -324,9 +324,9 @@ A soma de verificação é necessária a fim de proteger o esquema contra
 
 O principal esquema variante do \textsc{Wots}, chamado de \textsc{Wots+}~\cite{cryptoeprint:2017:965}, tem como ideia principal a reposição de $f$ por uma família de funções $\mathcal{F}_k$, substituindo o processo de iterações sequenciais --- utilizando apenas uma função --- do esquema original. Esta característica também permite uma prova de segurança mais simples, mas não menos poderosa, que desconsidera a necessidade da resistência à colisões de $f$.
 
-Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem como a função de resumo criptográfico $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$ de maneira análoga ao esquema original. A família de funções que o \textsc{Wots+} utiliza é definida por $\mathcal{F}_k : \{f_k : \binwds{m} \longrightarrow \binwds{m} \mid k \in \mathcal{K}_m\}$, ou seja, funções de mão única sem compressão, e $\mathcal{K}_n$ é interpretado como o espaço de chaves. A partir desta família, elabora-se a nova função de iteração $c^{i}_{k}(x$
+Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem como a função de resumo criptográfico $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$ de maneira análoga ao esquema original. A família de funções que o \textsc{Wots+} utiliza é definida por $\mathcal{F}_k : \{f_k : \binwds{m} \longrightarrow \binwds{m} \mid k \in \mathcal{K}_m\}$, ou seja, funções de mão única sem compressão, e $\mathcal{K}_n$ é interpretado como o espaço de chaves. A partir desta família, e de uma tupla de palavras pseudoaleatórias $r = (r_1, \dots, r_{2^w - 1}) \stackrel{\$}{\longleftarrow} \binwds{m}$, elabora-se a nova função de iteração $c^{i}_{k}(x, r)$. Esta é definida recursivamente como 
 
-definimos $c$ no caso de $i=0$ como $c^{0}_k(x,r)=x$  e para $i>0$ $c^{i}_{k} = f_k(c^{i-1}_k(x,r) \bigoplus r_i)$
+definimos $c$ no caso de $i=0$, $c$ retorna $x$, $c^{0}_k(x,r)=x$, para $i>0$ $c^{i}_{k} = f_k(c^{i-1}_k(x,r) \bigoplus r_i)$
 
 
 \subsection{Esquemas baseados em árvores de Merkle}
