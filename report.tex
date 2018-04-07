@@ -318,7 +318,7 @@ e discute-se algumas de suas características.
     \item[] \emph{Verificação da assinatura.} Para assegurar a corretude da assinatura $\sigma$, todos os blocos $\sigma_i$ precisam ser verificados separadamente através do cálculo das aplicações restantes de $f$. Assim, computando $\mathcal{B}$ novamente, $\sigma$ está correta se $\text{\pk{}} = (f^{2^w - 1 - b_{t-1}}(\sigma_{t-1}), \dots, f^{2^w - 1 - b_0}(\sigma_0))$.
 \end{enumerate}
 
-A soma de verificação $c$ é necessária a fim de proteger o esquema contra falsificação de assinaturas. Observe que, em sua ausência, é possível que uma entidade maliciosa assine outras mensagens apenas calculando mais iterações de $f$ em blocos da assinatura $\sigma$. Com a presença de $c$, e consequentemente $\mathcal{B}_2$, ao modificar algum valor de $\mathcal{B}_1$
+A soma de verificação $c$ é necessária a fim de proteger o esquema contra falsificação de assinaturas. Observe que, em sua ausência, é possível que uma entidade maliciosa crie assinaturas $\sigma'$ apenas calculando mais iterações de $f$ em blocos da assinatura $\sigma$. Com a presença de $c$, e consequentemente $\mathcal{B}_2$, ao modificar algum valor de $\mathcal{B}_1$,
 
 \subsection{\textsc{Wots+}}
 
