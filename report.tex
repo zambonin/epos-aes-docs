@@ -340,10 +340,10 @@ Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem com
 \subsection{Esquemas baseados em árvores de Merkle}
 % * esquemas posteriores
 
-Dado uma folha $Y_i$ da árvore de chaves publicas, definimos $\mathcal{H}(i,j,Y)$ como:
+Dado uma folha $Y_i$ da árvore de chaves publicas, definimos $H(i,j,Y)$ como:
     \begin{enumerate}
-        \item $\mathcal{H}(i,i,Y)=F(Y_i)$
-        \item $\mathcal{H}(i,j,Y)$
+        \item $H(i,i,Y)=F(Y_i)$
+        \item $H(i,j,Y)=F(<H(i,(i+j-1)/2,Y),H(i+j+1)/2j,Y),Y>)$
     \end{enumerate}
 
 
