@@ -322,7 +322,8 @@ e discute-se algumas de suas características.
 % * como plugar o AES nele
 
 Os esquemas variantes do Wots tem como ideia principal, utilizar cadeias de funções com entradas pseudoaleatórias, estas são a chave privada e a saída a chave pública. Diferente de outras variantes, onde essas cadeias são apenas iterações sequênciais da mesma função, o Wots+ usa um modo especial de iterações a qual habilita uma prova de segurança *tight*, sem que a família da função de resumo usada sejam a prova de colisão.
-A família de funções que o Wots+ utiliza é definida por: $ \mathcal{F}_k $
+A família de funções que o Wots+ utiliza é definida por: 
+$\mathcal{F}_k :{f_k:\{0,1\}^{n}} \rightarrow \{0,1\}^{n} \| k $
 
 
 \subsection{Esquemas baseados em árvores de Merkle}
