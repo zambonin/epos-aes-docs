@@ -332,8 +332,7 @@ Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem com
     
     \item[] \emph{Geração da assinatura.} Tome uma mensagem $M$, calcule o seu resumo $d = \mathcal{H}(M)$ e a soma de verificação $c$ correspondente, produzindo $\mathcal{B}$. As considerações sobre preenchimento de $m$ e $c$ ainda se aplicam. Aplicando a nova função de iteração, tem-se $\sigma = (c^{b_{t - 1}}_{k}(x_{t-1}, r), \dots, c^{b_{0}}_{k}(x_{0}, r))$.
     
-    \item[] \emph{Verificação da assinatura.} Novamente, é necessário calcular $\mathcal{B}$ para obter as iterações restantes até \pk{}. Assim, $\sigma$ está correta se $\text{\pk{}} = (c^{2^{w} - 1 - b_{t - 1}}_{k}(\sigma_{t-1}, r), \dots, c^{2^{w} - 1 - b_{0}}_{k}(\sigma_{0}, r))$. Note que apenas as palavras
-    $r_i \mid$
+    \item[] \emph{Verificação da assinatura.} Novamente, é necessário calcular $\mathcal{B}$ para obter as iterações restantes até \pk{}. Assim, $\sigma$ está correta se $\text{\pk{}} = (c^{2^{w} - 1 - b_{t - 1}}_{k}(\sigma_{t-1}, r), \dots, c^{2^{w} - 1 - b_{0}}_{k}(\sigma_{0}, r))$. Note que, neste caso, apenas
 
 \end{enumerate}
 
