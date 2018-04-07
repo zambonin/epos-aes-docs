@@ -254,7 +254,7 @@
     \end{itemize}
     \item Máscaras de bit aleatórias em cada rodada para cada iteração de resumo $i \in \mathbb{N}$ 
     \begin{align*}
-      (b_0, \dots, b_j) &\in \{0,1\}^{n \times j}, j \geq i \\
+      (b_0, \dots, b_j) \stackrel{\$}{\longleftarrow} \{0, 1\}^{n} \\
       c^0(x) &= x \\
       c^i(x) &= \mathcal{H}(c^{i-1}(x) \oplus b_i)
     \end{align*}
