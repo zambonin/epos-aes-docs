@@ -268,10 +268,10 @@
       \item Funções de resumo criptográficas podem ser construídas a partir de cifras de bloco
       \item Construção Matyas-Meyer-Oseas \cite[9.41]{Menezes:1996:HAC:548089}
       \begin{itemize}
-        \item Entrada $x$, saída $h$
-        \item $x = (x_0, \dots, x_{k - 1}$, $\vert x_i \vert = n$ é dividida em $t$ blocos de tamanho $n$ para a cifra $E$
-        \item Tome um valor inicial $IV$, $\vert IV \vert = n$
-        \item Saída $h$
+        \item Entrada $x$, saída $h$, cifra $E$ com tamanho de bloco $n$
+        \item $x = (x_0, \dots, x_{k - 1}), \vert x_i \vert = n$
+        \item Tome um valor inicial $IV$, $\vert IV \vert = n$, e uma função $g$ que cria chaves válidas para $E$
+        \item $h_0 = IV, h_i = E_{g(h_{i-1})}(x_i) \oplus x_i$
       \end{itemize}
   \end{itemize}
 \end{frame}
