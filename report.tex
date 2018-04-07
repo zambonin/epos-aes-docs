@@ -318,13 +318,13 @@ e discute-se algumas de suas características.
     \item[] \emph{Verificação da assinatura.} Para assegurar a corretude da assinatura $\sigma$, todos os blocos $\sigma_i$ precisam ser verificados separadamente através do cálculo das aplicações restantes de $f$. Assim, computando $\mathcal{B}$ novamente, $\sigma$ está correta se $\text{\pk{}} = (f^{2^w - 1 - b_{t-1}}(\sigma_{t-1}), \dots, f^{2^w - 1 - b_0}(\sigma_0))$.
 \end{enumerate}
 
-A soma de verificação é necessária a fim de proteger o esquema contra 
+A soma de verificação $c$ é necessária a fim de proteger o esquema contra falsificação de assinaturas. Observe que, em sua ausência, é possível que uma entidade maliciosa assine outras mensagens apenas calculando mais iterações de $f$ em blocos da assinatura $\sigma$. Com a presença de $c$, e consequentemente $\mathcal{B}_2$, ao modificar algum valor de $\mathcal{B}_1$
 
 \subsection{\textsc{Wots+}}
 
 O principal esquema variante do \textsc{Wots}, chamado de \textsc{Wots+}~\cite{cryptoeprint:2017:965}, tem como ideia principal a reposição de $f$ por uma família de funções $\mathcal{F}_k$, substituindo o processo de iterações sequenciais --- utilizando apenas uma função --- do esquema original. Esta característica também permite uma prova de segurança mais simples, mas não menos poderosa, que desconsidera a necessidade da resistência à colisões de $f$.
 
-Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem como a função de resumo criptográfico $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$ de maneira análoga ao esquema original. A família de funções que o \textsc{Wots+} utiliza é definida por $\mathcal{F}_k : \{f_k : \binwds{m} \longrightarrow \binwds{m} \mid k \in \mathcal{K}_m\}$, ou seja, funções de mão única sem compressão, e $\mathcal{K}_n$ é interpretado como o espaço de chaves. A partir desta família, e de uma tupla de palavras pseudoaleatórias $r = (r_1, \dots, r_{2^w - 1}) \stackrel{\$}{\longleftarrow} \binwds{m}$, elabora-se a nova função de iteração $c^{i}_{k}(x, r)$. Esta é definida recursivamente como $c^{0}_{k}(x, r) = x, \; c^{i}_{k} = f_k(c^{i-1}_k(x,r) \oplus r_i)$
+Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem como a função de resumo criptográfico $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$ de maneira análoga ao esquema original. A família de funções que o \textsc{Wots+} utiliza é definida por $\mathcal{F}_k : \{f_k : \binwds{m} \longrightarrow \binwds{m} \mid k \in \mathcal{K}_m\}$, ou seja, funções de mão única sem compressão, e $\mathcal{K}_n$ é interpretado como o espaço de chaves. A partir desta família, e de uma tupla de palavras pseudoaleatórias $r = (r_1, \dots, r_{2^w - 1}) \stackrel{\$}{\longleftarrow} \binwds{m}$, elabora-se a nova função de iteração $c^{i}_{k}(x, r)$, definida recursivamente como $c^{0}_{k}(x, r) = x, \; c^{i}_{k}(x, r) = f_k(c^{i-1}_{k}(x, r) \oplus r_i)$.
 
 
 \subsection{Esquemas baseados em árvores de Merkle}
