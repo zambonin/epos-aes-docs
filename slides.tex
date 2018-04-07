@@ -243,7 +243,7 @@
 
 \begin{frame}
   \frametitle{Winternitz OTS}
-  \framesubtitle{Variante +}
+  \framesubtitle{Variante WOTS+}
   \begin{itemize}
     \item Menores tamanhos de assinatura
     \item Elimina a necessidade de \hh{} resistente a colisões
@@ -263,7 +263,6 @@
 \begin{frame}
   \frametitle{Winternitz OTS}
   \framesubtitle{Utilizando $f$ como AES}
-  
   \begin{itemize}
       \item Funções de resumo podem ser construídas a partir de cifras de bloco
       \item Construção Matyas-Meyer-Oseas \cite[9.41]{Menezes:1996:HAC:548089}
@@ -273,7 +272,11 @@
         \item $X = (x_0, \dots, x_{k - 1}), \forall x_i \in X, \vert x_i \vert = n$
         \item $h_0 = IV, h_i = E_{g(h_{i-1})}(x_i) \oplus x_i, 1 \leq i \leq k$
       \end{itemize}
-      \item Assim, AES pode ser integrado ao Winternitz
+      \item Multicolisões em WOTS simples, redução da segurança
+      \item Assim, AES pode ser integrado ao WOTS+
+      \begin{itemize}
+          \item 
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
