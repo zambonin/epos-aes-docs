@@ -302,7 +302,7 @@ calcula-se
     $$t_1 = \left\lceil \frac{m}{w} \right\rceil, \; t_2 = \left\lceil 
     \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil \text{ e }
     t = t_1 + t_2.$$
-Por fim, considere as funções\footnote{É possível que o esquema seja construído utilizando \hh{} no lugar de $f$. de mão única
+Por fim, considere as funções\footnote{Na prática, o esquema pode ser instanciado utilizando \hh{} no lugar de $f$.} de mão única
 $f : \binwds{m} \longrightarrow \binwds{m}$
 e de resumo criptográfico
 $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$.
@@ -329,7 +329,7 @@ Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem com
 % *introduzir os 3 algoritmos*
 \begin{enumerate}
 
-    \item[] \emph{Geração de chaves}: Com a entrada do parâmetro de segurança $n$, em unário, o algoritmo de geração de chaves escolhe aleatoriamente $l + w - 1$ $n$-bit strings. A chave secreta $sk = (sk_1\dots,sk_l)$ é constituida dos $l$ primeiras strings aleatórias. As $w-1$ strings restantes são utilizadas para *randomization* dos elementos $r=(r_1,\dots,r_{w-1}$
+    \item[] \emph{Geração de chaves}: Com a entrada do parâmetro de segurança $n$, em unário, o algoritmo de geração de chaves escolhe aleatoriamente $l + w - 1$ $n$-bit strings. A chave secreta $sk = (sk_1\dots,sk_l)$ é constituida dos $l$ primeiras strings aleatórias. As $w-1$ strings restantes são utilizadas para *randomization* dos elementos $r=(r_1,\dots,r_{w-1})$
 
 \end{enumerate}
 
