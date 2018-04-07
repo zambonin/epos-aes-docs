@@ -335,11 +335,7 @@ Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem com
 
 \end{enumerate}
 
-Note que é possível utilizar uma função conhecida, como o AES, para as iterações de $f$. Isto pode ser explicado por conta de implementações em hardware de rotinas relacionadas, como o conjunto de instruções AES-NI da Intel, habilitando um grande ganho de desempenho no cômputo desta cifra. Porém, é necessário
-adaptar a cifra de blocos para que respeite as restrições impostas pelo esquema \textsc{Wots+}. Para que isto seja feito de maneira a manter um nível de segurança suficiente, é possível empregar a construção Matyas-Meyer-Oseas (MMO, \cite[9.41]{Menezes:1996:HAC:548089}). Esta funciona da seguinte maneira: 
-
-
-
+Note que é possível utilizar uma função conhecida, como o AES, para as iterações de $f$. Isto pode ser explicado por conta de implementações em hardware de rotinas relacionadas, como o conjunto de instruções AES-NI da Intel, habilitando um grande ganho de desempenho no cômputo desta cifra. Porém, é necessário adaptar a cifra de blocos para que respeite as restrições impostas pelo esquema \textsc{Wots+}. Para que isto seja feito de maneira a manter um nível de segurança suficiente, é possível empregar a construção Matyas-Meyer-Oseas (MMO, \cite[9.41]{Menezes:1996:HAC:548089}). Assuma uma cifra de blocos genérica $E_{k}$ parametrizada pela chave $k$, cujo bloco tem um tamanho de $n$ bits. Tome um vetor de inicialização $IV$ de tamanho $n$, e uma função $g$ que adapte sua entrada para chaves do tamanho necessário por $E_{k}$. Deseja-se obter um resumo $h_k$ de tamanho $n$ que represente uma palavra $x$, e que sua inversibilidade seja computacionalmente inviável. Deste modo, divida $x$ em uma $t-$tupla de valores
 
 \begin{itemize}
         \item Entrada $x$, saída $h_k$, cifra $E_K$ com bloco de $n$ bits e chave $K$
