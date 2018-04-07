@@ -121,7 +121,7 @@
     \frametitle{AES --- \emph{Advanced Encryption Standard}}
     \begin{itemize}
         \item Cifra de blocos reversível
-        \item Opera sobre uma matriz $A$
+        \item Opera sobre uma matriz $A, A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
         \item Suas operações são definidas sobre um corpo finito
         $\mathbb{F}_{2^{8}}$
         \item Sua chave tem tamanho $n = \{128,192,256 \}$
@@ -132,7 +132,6 @@
     \frametitle{AES}
     \framesubtitle{Funcionamento}
     \begin{itemize}
-        \item Cada bloco é representado por uma matriz de estado $A$ de dimensões $4 \times 4$
         \item Seu funcionamento é constituido de multiplas iterações das seguintes operações em $A$, em relação a chave referente iteração a atual:
         \begin{itemize}
             \item\textsc{SubBytes}
