@@ -302,7 +302,7 @@ calcula-se
     $$t_1 = \left\lceil \frac{m}{w} \right\rceil, \; t_2 = \left\lceil 
     \frac{\left\lfloor \log_2 t_1 \right\rfloor + 1 + w}{w} \right\rceil \text{ e }
     t = t_1 + t_2.$$
-Por fim, considere as funções de mão única
+Por fim, considere as funções\footnote{É possível que o esquema seja construído utilizando \hh{} no lugar de $f$. de mão única
 $f : \binwds{m} \longrightarrow \binwds{m}$
 e de resumo criptográfico
 $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$.
@@ -318,7 +318,7 @@ e discute-se algumas de suas características.
     \item[] \emph{Verificação da assinatura.} Para assegurar a corretude da assinatura $\sigma$, todos os blocos $\sigma_i$ precisam ser verificados separadamente através do cálculo das aplicações restantes de $f$. Assim, computando $\mathcal{B}$ novamente, $\sigma$ está correta se $\text{\pk{}} = (f^{2^w - 1 - b_{t-1}}(\sigma_{t-1}), \dots, f^{2^w - 1 - b_0}(\sigma_0))$.
 \end{enumerate}
 
-Note que não é possível decrementar valores $b_i \in \mathcal{B}$, pois isto implicaria em achar uma pré-imagem de $f$, o que é computacionalmente inviável em vista da restrição para $f$ ser uma função de mão única. Então, resta apenas a tentativa da falsificação de $\sigma$ incrementando algum valor $b_i$. A soma de verificação $c$ é necessária a fim de proteger o esquema contra este comportamento. Observe que, em sua ausência, é possível que uma entidade maliciosa crie assinaturas $\sigma'$ apenas calculando mais iterações de $f$ em blocos da assinatura $\sigma$. Entretanto, com a presença de $c$, e consequentemente $\mathcal{B}_2$, ao modificar um valor $b_i$ de $\mathcal{B}_1$, para que o valor correto de $\mathcal{B}_2$ seja mantido, é necessário que uma pré-imagem de algum bloco $b_i \in \mathcal{B}_2$ seja calculada.
+Note que não é possível decrementar valores $b_i \in \mathcal{B}$, pois isto implicaria em achar uma pré-imagem de $f$, o que é computacionalmente inviável em vista da restrição para $f$. Então, resta apenas a tentativa da falsificação de $\sigma$ incrementando algum valor $b_i$. A soma de verificação $c$ é necessária a fim de proteger o esquema contra este comportamento. Observe que, em sua ausência, é possível que uma entidade maliciosa crie assinaturas $\sigma'$ apenas calculando mais iterações de $f$ em blocos da assinatura $\sigma$. Entretanto, com a presença de $c$, e consequentemente $\mathcal{B}_2$, ao modificar um valor $b_j \in \mathcal{B}_1$, para que o valor correto de $\mathcal{B}_2$ seja mantido, é necessário que uma pré-imagem de algum bloco $b_k \in \mathcal{B}_2$ seja calculada. Analogamente, modificar algum valor de $\mathcal{B}_2$ tornará a verificação da assinatura impossível.
 
 \subsection{\textsc{Wots+}}
 
@@ -326,10 +326,10 @@ O principal esquema variante do \textsc{Wots}, chamado de \textsc{Wots+}~\cite{c
 
 Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem como a função de resumo criptográfico $\mathcal{H} : \binwds{*} \longrightarrow \binwds{m}$ de maneira análoga ao esquema original. A família de funções que o \textsc{Wots+} utiliza é definida por $\mathcal{F}_k : \{f_k : \binwds{m} \longrightarrow \binwds{m} \mid k \in \mathcal{K}_m\}$, ou seja, funções de mão única sem compressão, e $\mathcal{K}_n$ é interpretado como o espaço de chaves. A partir desta família, e de uma tupla de palavras pseudoaleatórias $r = (r_1, \dots, r_{2^w - 1}) \stackrel{\$}{\longleftarrow} \binwds{m}$, elabora-se a nova função de iteração $c^{i}_{k}(x, r)$, definida recursivamente como $c^{0}_{k}(x, r) = x, \; c^{i}_{k}(x, r) = f_k(c^{i-1}_{k}(x, r) \oplus r_i)$.
 
-*introduzir os 3 algoritmos*
+% *introduzir os 3 algoritmos*
 \begin{enumerate}
 
-    \item[] \textsc{Geraão de chaves}: Com a entrada do parâmetro de segurança $n$, em unário, o algoritmo de geração de chaves escolhe aleatoriamente $l + w - 1$ $n$-bit strings. A chave secreta $sk = (sk_1\dots,sk_l)$
+    \item[] \emph{Geração de chaves}: Com a entrada do parâmetro de segurança $n$, em unário, o algoritmo de geração de chaves escolhe aleatoriamente $l + w - 1$ $n$-bit strings. A chave secreta $sk = (sk_1\dots,sk_l)$ é constituida dos $l$ primeiras strings aleatórias. As $w-1$ strings restantes são utilizadas para *randomization* dos elementos $r=(r_1,\dots,r_{w-1}$
 
 \end{enumerate}
 
