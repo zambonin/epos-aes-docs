@@ -26,7 +26,7 @@
 
 \newcommand{\concat}{\, \vert \vert \,}
 \newcommand{\hh}{$\mathcal{H}$}
-\newcommand{\hash}[2][]{\mathcal{H}^{#1}(#2)}
+\newcommand{\hash}[2][]{f^{#1}(#2)}
 \newcommand{\pad}{\vert \vert \, 0^*}
 
 \begin{document}
@@ -148,7 +148,7 @@
         \node (sk) at (0, -1) {$\mathcal{S}_k$};
         \node (pk) at (4, -1) {$\mathcal{P}_k$};
         \node (ds) at (2, 0)
-          {\scriptsize{$m \concat Sig(\mathcal{S}_k, \hash{m})$}};
+          {\scriptsize{$m \concat Sig(\mathcal{S}_k, \mathcal{H}(m))$}};
         \node (res) at (5.5, 0) {\scriptsize\{0, 1\}};
         \node[draw] (sig) at (0, 0) {\emph{Sig}};
         \node[draw] (gen) at (2, -2) {\emph{Gen}};
@@ -187,12 +187,12 @@
 \begin{frame}
   \frametitle{Winternitz OTS}
   \framesubtitle{Geração de chave}
-  Seja $w \in \mathbb{N}, w > 1$ o parâmetro Winternitz. Então,
+  Seja $w \in \mathbb{N}, w > 1$ o parâmetro Winternitz,
+  $f : \{0, 1\}^{n} \longrightarrow \{0, 1\}^{n}$
+  e $\mathcal{H} : \{0, 1\}^{*} \longrightarrow \{0, 1\}^{n}$. Então,
    \begin{align*}
-       t_1 &= \left\lceil \frac{n}{w} \right\rceil \\
-       t_2 &= \left\lceil
-       \frac{\lfloor log_2 t_1 \rfloor + 1 + w}{w} \right\rceil \\
-         t &= t_1 + t_2
+       t_1 &= \left\lceil \frac{n}{w} \right\rceil, t_2 = \left\lceil
+       \frac{\lfloor log_2 t_1 \rfloor + 1 + w}{w} \right\rceil, t = t_1 + t_2
    \end{align*}
    As chaves privada e pública são, respectivamente,
    \begin{align*}
@@ -222,8 +222,7 @@
   
   Finalmente, a assinatura de uso único é construída:
   \begin{align*}
-    \sigma &= (\mathcal{H}^{\epsilon_{t - 1}}(y_{t - 1}),
-    \dots, \mathcal{H}^{\epsilon_0}(y_0))
+    \sigma &= (f^{\epsilon_{t - 1}}(y_{t - 1}), \dots, f^{\epsilon_0}(y_0))
   \end{align*}
 \end{frame}
 
@@ -233,12 +232,11 @@
   Relembrando,
   \begin{align*}
     P_k &= (\hash[2^w - 1]{y_{t - 1}}, \dots, \hash[2^w - 1]{y_0}) \text{ e} \\
-    \sigma &= (\mathcal{H}^{\epsilon_{t - 1}}(y_{t - 1}), \dots, \mathcal{H}^{\epsilon_0}(y_0)).
+    \sigma &= (f^{\epsilon_{t - 1}}(y_{t - 1}), \dots, f^{\epsilon_0}(y_0)).
   \end{align*}
   Os elementos $\epsilon_i$ são calculados e utilizados na verificação de $\sigma$:
   \begin{align*}
-    \forall \sigma_i \in \sigma,
-        \hash[2^w - 1 - \epsilon_{i}]{\sigma_i} &= P_{k_i}
+    \forall \sigma_i \in \sigma, \hash[2^w - 1 - \epsilon_{i}]{\sigma_i} &= P_{k_i}
   \end{align*}
 \end{frame}
 
@@ -254,9 +252,9 @@
     \end{itemize}
     \item Máscaras de bit aleatórias em cada rodada para cada iteração de resumo $i \in \mathbb{N}$ 
     \begin{align*}
-      (b_0, \dots, b_j) \stackrel{\$}{\longleftarrow} \{0, 1\}^{n} \\
+      (b_0, \dots, b_{2^w - 1}) &\stackrel{\$}{\longleftarrow} \{0, 1\}^{n} \\
       c^0(x) &= x \\
-      c^i(x) &= \mathcal{H}(c^{i-1}(x) \oplus b_i)
+      c^i(x) &= f_k(c^{i-1}(x) \oplus b_i)
     \end{align*}
   \end{itemize}
 \end{frame}
