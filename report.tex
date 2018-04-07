@@ -343,9 +343,10 @@ Utilizando este método, é possível integrar AES junto ao \textsc{Wots+}, como
 
 \subsection{Esquemas baseados em árvores de Merkle}
 
-A criação de um par de chaves para cada mensagem pode tornar-se extremamente onerosa, bem como a infraestrutura necessária para relacionar múltiplas chaves a uma entidade. Desse modo, assim como esquemas de assinatura digital clássicos, deseja-se que uma chave privada possa assinar múltiplos documentos. No contexto de esquemas baseados em funções de resumo criptográfico, a estrutura de dados chamada de árvore de Merkle pode ser aproveitada para tal. Esta árvore, geralmente de característica binária e perfeita, 
+A criação de um par de chaves para cada mensagem pode tornar-se extremamente onerosa, bem como a infraestrutura necessária para relacionar múltiplas chaves a uma entidade. Desse modo, assim como esquemas de assinatura digital clássicos, deseja-se que uma chave privada possa assinar múltiplos documentos. No contexto de esquemas baseados em funções de resumo criptográfico, a estrutura de dados chamada de árvore de Merkle, geralmente de característica binária e perfeita, pode ser aproveitada para tal. De modo genérico, folhas de uma árvore de Merkle são construídas a partir do resumo criptográfico de dados que desejam ser inseridas nesta. Então, pais destas folhas terão o resumo criptográfico do valor dos resumos de seus filhos concatenados, repetindo este processo até que a raiz seja preenchida. Esta estrutura também pode ser utilizada para verificação conjunta de integridade de múltiplos arquivos semanticamente similares, visto que qualquer mudança nas
+folhas da árvore produzirá um valor distinto na raiz.
 
-De modo genérico, folhas de uma árvore de Merkle são construídas a partir do resumo criptográfico de dados que desejam ser inseridas nesta.
+Note que qualquer mudança na árvore, seja esta maliciosa ou acidental, invalidará o valor na raiz e
 
 *introdução*
 
