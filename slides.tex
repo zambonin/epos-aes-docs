@@ -119,19 +119,24 @@
 
 \begin{frame}
     \frametitle{AES --- \emph{Advanced Encryption Standard}}
+    \framesubtitle{Definições}
     \begin{itemize}
-        \item Cifra de blocos que opera a partir de uma chave $\mathcal{K}$
+        \item Versão padronizada do algoritmo Rjindael \cite{Daemen:2002:DR:560131}
+        \item Cifra de blocos que opera a partir de uma chave singular $\mathcal{K}$
         \begin{itemize}
-            \item 
+            \item $\vert \mathcal{K} \vert \in \{128, 192, 256\}$
+            \item 10, 12 ou 14 rodadas, respectivamente
         \end{itemize}
-        \item $\vert \mathcal{K} \vert \in \{128, 192, 256\}$
-        \item Opera sobre uma matriz de estado $A$$A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
+        \item Opera sobre uma matriz de estado $A$
+        \begin{itemize}
+            \item $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{AES}
-    \framesubtitle{Funcionamento}
+    \framesubtitle{Pseudocódigo}
     \begin{itemize}
         \item Seu funcionamento é constituido de multiplas iterações das seguintes operações em $A$, em relação a chave referente iteração a atual:
         \begin{itemize}
@@ -146,8 +151,32 @@
 
 \begin{frame}
     \frametitle{AES}
-    \framesubtitle{Operações}
+    \framesubtitle{Pseudocódigo}
+    \begin{algorithm}[H]
+    \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
+    \KwResult{$c$, o texto cifrado resultante}
+
+    $A \longleftarrow m$\;
+    $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
+        \longleftarrow \textsc{KeyExpansion}(K)$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A,
+        \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
     
+    \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
+        $A \longleftarrow \textsc{SubBytes}(A)$\;
+        $A \longleftarrow \textsc{ShiftRows}(A)$\;
+        $A \longleftarrow \textsc{MixColumns}(A)$\;
+        $A \longleftarrow \textsc{AddRoundKey}(A,
+            \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell - 1}\})$\;
+    }
+ 
+    $A \longleftarrow \textsc{SubBytes}(A)$\;
+    $A \longleftarrow \textsc{ShiftRows}(A)$\;
+    $A \longleftarrow \textsc{AddRoundKey}(A,
+        \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
+
+    $c \longleftarrow A$\;
+\end{algorithm}
 \end{frame}
 
 \begin{frame}
