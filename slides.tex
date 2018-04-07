@@ -2,6 +2,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage[portuguese, onelanguage]{algorithm2e}
 \usepackage{graphicx, tikz-qtree, caption, chronology}
 
 \usetheme{CambridgeUS}
@@ -119,39 +120,51 @@
 
 \begin{frame}
     \frametitle{AES --- \emph{Advanced Encryption Standard}}
+    \framesubtitle{Definições}
     \begin{itemize}
-        \item Cifra de blocos que opera a partir de uma chave $\mathcal{K}$
+        \item Versão padronizada do algoritmo Rjindael \cite{Daemen:2002:DR:560131}
+        \item Cifra de blocos que opera a partir de uma chave singular $\mathcal{K}$
         \begin{itemize}
             \item $\vert \mathcal{K} \vert \in \{128, 192, 256\}$
+            \item 10, 12 ou 14 rodadas ($n_r$), respectivamente
         \end{itemize}
         \item Opera sobre uma matriz de estado $A$
         \begin{itemize}
-            \item 
+            \item $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
+            \item Deslocamentos de linhas, permutas e operações sobre bytes
         \end{itemize}
-        
-        $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
     \end{itemize}
 \end{frame}
 
 \begin{frame}
+    \footnotesize
     \frametitle{AES}
-    \framesubtitle{Funcionamento}
-    \begin{itemize}
-        \item Seu funcionamento é constituido de multiplas iterações das seguintes operações em $A$, em relação a chave referente iteração a atual:
-        \begin{itemize}
-            \item\textsc{SubBytes}
-            \item\textsc{ShiftRows}
-            \item\textsc{MixColumns}
-            \item\textsc{AddRoundKey}
-        \end{itemize}
-        \item A chave utilizada em cada iteração é obtida através de uma rotina de expansão da chave, denominada \textsc{KeyExpansion}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{AES}
-    \framesubtitle{Operações}
+    \framesubtitle{Pseudocódigo}
+    \begin{algorithm}[H]
+        \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
+        \KwResult{$c$, o texto cifrado resultante}
     
+        $A \longleftarrow m$\;
+        $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
+            \longleftarrow \textsc{KeyExpansion}(K)$\;
+        $A \longleftarrow \textsc{AddRoundKey}(A,
+            \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
+        
+        \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
+            $A \longleftarrow \textsc{SubBytes}(A)$\;
+            $A \longleftarrow \textsc{ShiftRows}(A)$\;
+            $A \longleftarrow \textsc{MixColumns}(A)$\;
+            $A \longleftarrow \textsc{AddRoundKey}(A,
+                \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell - 1}\})$\;
+        }
+     
+        $A \longleftarrow \textsc{SubBytes}(A)$\;
+        $A \longleftarrow \textsc{ShiftRows}(A)$\;
+        $A \longleftarrow \textsc{AddRoundKey}(A,
+            \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
+    
+        $c \longleftarrow A$\;
+    \end{algorithm}
 \end{frame}
 
 \begin{frame}
@@ -174,7 +187,7 @@
 
 \begin{frame}
   \frametitle{Winternitz OTS}
-  \framesubtitle{Generalização de chave}
+  \framesubtitle{Geração de chave}
   Seja $w \in \mathbb{N}, w > 1$ o parâmetro Winternitz. Então,
    \begin{align*}
        t_1 &= \left\lceil \frac{n}{w} \right\rceil \\
