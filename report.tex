@@ -339,7 +339,7 @@ Note que é possível utilizar uma função conhecida, como o AES, para as itera
 
 Assuma uma cifra de blocos genérica $E_{k}$ parametrizada pela chave $k$, cujo bloco tem um tamanho de $n$ bits. Tome um vetor de inicialização $IV$ de tamanho $n$, e uma função $g$ que adapte sua entrada para chaves do tamanho necessário por $E_{k}$. Deseja-se obter um resumo $h_k$ de tamanho $n$ que represente uma palavra $x$, e que sua inversibilidade seja computacionalmente inviável. Deste modo, $X = (x_0, \dots, x_{k - 1}), \forall x_i \in X, \vert x_i \vert = n$, ou seja, divida $x$ em uma $t$-tupla cujos elementos têm tamanho $n$ --- preenchimento com zeros pode ser aplicado caso existam elementos que desrespeitem esta regra. O resultado deste processo é definido recursivamente como $h_0 = IV, h_i = E_{g(h_{i-1})}(x_i) \oplus x_i, 1 \leq i \leq t$.
 
-Utilizando este método, é possível integrar AES junto ao \textsc{Wots+}, como forma de executar iterações para criar e verificar a assinatura, como sugerido por \cite[4.1]{cryptoeprint:2017:965}. Note que apenas esta versão do esquema pode beneficiar-se deste método, em virtude dos elementos pseudoaleatórios $r$ aplicados em cada iteração. Ao simplificar a iteração, como no caso d
+Utilizando este método, é possível integrar AES junto ao \textsc{Wots+}, como forma de executar iterações para criar e verificar a assinatura, como sugerido por \cite[4.1]{cryptoeprint:2017:965}. Note que apenas esta versão do esquema pode beneficiar-se deste método, em virtude dos elementos pseudoaleatórios $r$ aplicados em cada iteração.
 
 
     %   \item Assim, AES pode ser integrado ao WOTS+
