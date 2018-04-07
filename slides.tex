@@ -28,6 +28,7 @@
 \newcommand{\hh}{$\mathcal{H}$}
 \newcommand{\hash}[2][]{f^{#1}(#2)}
 \newcommand{\pad}{\vert \vert \, 0^*}
+\newcommand{\binwds}[1]{\{0, 1\}^{#1}}
 
 \begin{document}
 
@@ -247,10 +248,10 @@
     \item Menores tamanhos de assinatura
     \item Elimina a necessidade de \hh{} resistente a colisões
     \begin{itemize}
-      \item $\mathcal{F}_k : \{f_k : \binwds{m} \longrightarrow \binwds{m} \mid k \in \mathcal{K}_m\}$
+      \item $\mathcal{F}_k : \{f_k : \binwds{n} \longrightarrow \binwds{n} \mid k \in \mathcal{K}_n\}$
       \item Operações adicionais usando $f_k$ ao invés de iterações simples
     \end{itemize}
-    \item Máscaras de bit aleatórias em cada iteração de resumo $i \in \mathbb{N}$ 
+    \item Máscaras de bit aleatórias em cada iteração
     \begin{align*}
       (b_0, \dots, b_{2^w - 1}) &\stackrel{\$}{\longleftarrow} \{0, 1\}^{n} \\
       c^0(x) &= x \\
@@ -259,7 +260,6 @@
   \end{itemize}
 \end{frame}
 
-%XMS
 \begin{frame}
   \frametitle{Many-time signature schemes (Merkle)}
   \begin{columns}[T]
@@ -302,7 +302,7 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[plain,noframenumbering]
+\begin{frame}[plain,noframenumbering,allowframebreaks]
   \frametitle{Bibliografia}
   \bibliographystyle{alpha}
   \bibliography{report}
