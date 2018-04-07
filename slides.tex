@@ -261,14 +261,18 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Winternitz OTS}
+  \framesubtitle{Utilizando $f$ como AES}
+\end{frame}
+
+\begin{frame}
   \frametitle{Esquemas baseados em árvores de Merkle}
   \begin{columns}[T]
-    \begin{column}{.45\textwidth}
+    \begin{column}{.4\textwidth}
       \begin{itemize}
         \item Assinaturas únicas em cada folha, árvore construída a partir de chaves públicas
-        \item Tamanho e percorrimento da árvore são problemas comuns
-        \item Maneira esperta de guarda o par de chaves (e.g. gerador de semente pseudoaleatória)
-        \item Geralmente esquemas de estado, i.e. caminho com quais pares OTS foram usados
+        \item Estado da arte dos esquemas baseados em funções de resumo criptográfico
+        \item XMSS, XMSS$^{MT}$, SPHINCS
       \end{itemize}
     \end{column}
     \begin{column}{.4\textwidth}
@@ -296,7 +300,7 @@
             ]
         \end{tikzpicture}
         \captionsetup{font=scriptsize}
-        \caption*{Tendo $\mathcal{D}_n$ como qualquer bloco de dados. Uma árvoce Merkle pode ser construida recursivamente através da concatenação dos resumos dos filhos de um nodo.}
+        \caption*{Seja $\mathcal{D}_n$ um dado qualquer. Uma árvore de Merkle é construída recursivamente através da concatenação dos resumos dos filhos de um nó.}
       \end{figure}
     \end{column}
   \end{columns}
