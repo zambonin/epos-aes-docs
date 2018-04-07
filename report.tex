@@ -343,9 +343,11 @@ Defina os parâmetros $m, w$ e a partir destes, $t_1, t_2 \text{ e } t$, bem com
 *introdução*
 
 \begin{enumerate}
-    \item[] \emph{Geração de chaves.} O esquema só pode ser utilizado para assinar um numero limitado de mensagens, para cada chave pública. Este número de mensagens deve ser uma potência de 2, assim temos $N = 2^{n}$. O primeiro passo para se gerar uma chave pública $pub$, é gerar chaves públicas $X_i$ e chaves privadas $Y_i$, de $2^{n}$ assinaturas únicas. Para cada $Y_i$ onde $i\leq i\leq 2^{n}$, um resumo $h_i=\mathcal{H}(Y_i)$ é calculado, a partir destes resumos uma árvore de Merkle é construida, onde cada resumo se torna uma folha, cada nodo $a$ da árvore é o resumo do valor dos seus filhos concatenados. Logo $a_{i,j}=\mathcal{H}(a_{i-1,j},a_{i-1,j+1})$, onde $i$ é a distancia do nodo ao nível das folhas
+    \item[] \emph{Geração de chaves.} O esquema só pode ser utilizado para assinar um numero limitado de mensagens, para cada chave pública. Este número de mensagens deve ser uma potência de 2, assim temos $N = 2^{n}$. O primeiro passo para se gerar uma chave pública $pub$, é gerar chaves públicas $X_i$ e chaves privadas $Y_i$, de $2^{n}$ assinaturas únicas. Para cada $Y_i$ onde $i\leq i\leq 2^{n}$, um resumo $h_i=\mathcal{H}(Y_i)$ é calculado, a partir destes resumos uma árvore de Merkle é construida, onde cada resumo se torna uma folha, cada nodo $a_{i,j}$ da árvore é o resumo do valor dos seus filhos concatenados. Logo $a_{i,0}=\mathcal{H}(a_{i-1,0},a_{i-1,1})$, onde $i$ é a distancia do nodo ao nível das folhas e $j$ a posição do nodo em seu nível a partir do nodo mais a esquerda. Desta maneira, uma árvore com $2^{n}$ folhas e $2^{n+1}-1$ nodos é construida, a raiz da árvore $a_{n,0}$ é a chave pública $pub$ do esquema.
 
     \item[] \emph{Geração de assinatura.}
+
+
 
     \item[] \emph{Verificação da assinatura}
 \end{enumerate}
