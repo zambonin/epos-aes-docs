@@ -341,12 +341,6 @@ Assuma uma cifra de blocos genérica $E_{k}$ parametrizada pela chave $k$, cujo 
 
 Utilizando este método, é possível integrar AES junto ao \textsc{Wots+}, como forma de executar iterações para criar e verificar a assinatura, como sugerido por \cite[4.1]{cryptoeprint:2017:965}. Note que apenas esta versão do esquema pode beneficiar-se deste método, em virtude dos elementos pseudoaleatórios $r$ aplicados em cada iteração.
 
-
-    %   \item Assim, AES pode ser integrado ao WOTS+
-    %   \begin{itemize}
-    %     \item Multicolisões em WOTS simples, redução da segurança
-    %   \end{itemize}
-
 \subsection{Esquemas baseados em árvores de Merkle}
 % * esquemas posteriores
 
@@ -355,7 +349,7 @@ Utilizando este método, é possível integrar AES junto ao \textsc{Wots+}, como
 \begin{enumerate}
     \item[] \emph{Geração de chaves.} O esquema só pode ser utilizado para assinar um numero limitado de mensagens, para cada chave pública. Este número de mensagens deve ser uma potência de 2, assim temos $N = 2^{n}$. O primeiro passo para se gerar uma chave pública $pub$, é gerar chaves públicas $X_i$ e chaves privadas $Y_i$, de $2^{n}$ assinaturas únicas. Para cada $Y_i$ onde $i\leq i\leq 2^{n}$, um resumo $h_i=\mathcal{H}(Y_i)$ é calculado, a partir destes resumos uma árvore de Merkle é construida, onde cada resumo se torna uma folha, cada nodo $a_{i,j}$ da árvore é o resumo do valor dos seus filhos concatenados. Logo $a_{i,0}=\mathcal{H}(a_{i-1,0}\parallel a_{i-1,1})$, onde $i$ é a distancia do nodo ao nível das folhas e $j$ a posição do nodo em seu nível a partir do nodo mais a esquerda. Desta maneira, uma árvore com $2^{n}$ folhas e $2^{n+1}-1$ nodos é construida, a raiz da árvore $a_{n,0}$ é a chave pública $pub$ do esquema.
 
-    \item[] \emph{Geração de assinatura.} Para se assinar uma mensagem $M$ com o esquema, utiliza-se um esquema de assinatura de uso único, o qual tem como resultado uma assinatura $sig'$, isto é feito através do uso de um par de chaves $(X_{i},Y_{i})$. A folha correspondente a chave pública $Y_i$ é $a_{0,i}=\mathcal{H}(Y_i)$, o caminho $A$ a esta folha é constituido de $n+1$ nodos, $A_{0},\dots,A_n$ onde $A_{0}=a_{0,i}$ é a folha e $A_{n}=a_{n,0}=pub$ a raiz da árvore. Para calcular este caminho $A$, é preciso de todos os filhos de cada nodo pertencente a ele, sendo $A_{i+1}$ o nodo pai do nodo $A_i$ é necessario o valor de $A_i$ e do seu irmão $B_i$, assim tendo $A_{i+1}=\mathcal{H}(A_i\parallel B_i)$. Assim temos a assinatura $sig$ de $M$ como $sig=(sig'\parallel$
+    \item[] \emph{Geração de assinatura.} Para se assinar uma mensagem $M$ com o esquema, utiliza-se um esquema de assinatura de uso único, o qual tem como resultado uma assinatura $sig'$, isto é feito através do uso de um par de chaves $(X_{i},Y_{i})$. A folha correspondente a chave pública $Y_i$ é $a_{0,i}=\mathcal{H}(Y_i)$, o caminho $A$ a esta folha é constituido de $n+1$ nodos, $A_{0},\dots,A_n$ onde $A_{0}=a_{0,i}$ é a folha e $A_{n}=a_{n,0}=pub$ a raiz da árvore. Para calcular este caminho $A$, é preciso de todos os filhos de cada nodo pertencente a ele, sendo $A_{i+1}$ o nodo pai do nodo $A_i$ é necessario o valor de $A_i$ e do seu irmão $B_i$, assim tendo $A_{i+1}=\mathcal{H}(A_i\parallel B_i)$. Assim temos a assinatura $sig$ de $M$ como $sig=(sig'\parallel B_2\parallel\dots\parallel B_{n-1}$
 
 
 
