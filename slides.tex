@@ -84,9 +84,9 @@
     \framesubtitle{Definições}
     \begin{itemize}
         \item Versão padronizada do algoritmo Rjindael \cite{Daemen:2002:DR:560131}
-        \item Cifra de blocos que opera a partir de uma chave singular $\mathcal{K}$
+        \item Cifra de blocos que opera a partir de uma chave singular $K$
         \begin{itemize}
-            \item $\vert \mathcal{K} \vert \in \{128, 192, 256\}$
+            \item $\vert K \vert \in \{128, 192, 256\}$
             \item 10, 12 ou 14 rodadas ($n_r$), respectivamente
         \end{itemize}
         \item Opera sobre uma matriz de estado $A$
@@ -100,31 +100,67 @@
 \begin{frame}
     \footnotesize
     \frametitle{AES}
-    \framesubtitle{Pseudocódigo}
+    \framesubtitle{Pseudocódigo para codificação}
+    \begin{figure}
+        \centering
+        \caption{Caption}
+        \label{fig:my_label}
+    \end{figure}
     \begin{algorithm}[H]
         \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
         \KwResult{$c$, o texto cifrado resultante}
     
-        $A \longleftarrow m$\;
+        $A \leftarrow m$\;
         $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
-            \longleftarrow \textsc{KeyExpansion}(K)$\;
-        $A \longleftarrow \textsc{AddRoundKey}(A,
+            \leftarrow \textsc{KeyExpansion}(K)$\;
+        $A \leftarrow \textsc{AddRoundKey}(A,
             \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
         
         \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
-            $A \longleftarrow \textsc{SubBytes}(A)$\;
-            $A \longleftarrow \textsc{ShiftRows}(A)$\;
-            $A \longleftarrow \textsc{MixColumns}(A)$\;
-            $A \longleftarrow \textsc{AddRoundKey}(A,
+            $A \leftarrow \textsc{SubBytes}(A)$\;
+            $A \leftarrow \textsc{ShiftRows}(A)$\;
+            $A \leftarrow \textsc{MixColumns}(A)$\;
+            $A \leftarrow \textsc{AddRoundKey}(A,
                 \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell - 1}\})$\;
         }
      
-        $A \longleftarrow \textsc{SubBytes}(A)$\;
-        $A \longleftarrow \textsc{ShiftRows}(A)$\;
-        $A \longleftarrow \textsc{AddRoundKey}(A,
+        $A \leftarrow \textsc{SubBytes}(A)$\;
+        $A \leftarrow \textsc{ShiftRows}(A)$\;
+        $A \leftarrow \textsc{AddRoundKey}(A,
             \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
     
-        $c \longleftarrow A$\;
+        $c \leftarrow A$\;
+    \end{algorithm}
+\end{frame}
+
+\begin{frame}
+    \footnotesize
+    \frametitle{AES}
+    \framesubtitle{Pseudocódigo para decodificação}
+    \begin{algorithm}[H]
+        \KwData{$c$, o texto cifrado; $K$, a chave desejada}
+        \KwResult{$m$, o texto claro resultante}
+    
+        $A \leftarrow c$\;
+        $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
+            \leftarrow \textsc{KeyExpansion}(K)$\;
+        $A \leftarrow \textsc{AddRoundKey}(A,
+            \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
+        
+        \For{$i \leftarrow n_r - 1$ \KwTo $1$}{
+            $A \leftarrow \textsc{InvShiftRows}(A)$\;
+            $A \leftarrow \textsc{InvSubBytes}(A)$\;
+            $A \leftarrow \textsc{AddRoundKey}(A,
+                \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell - 1}\})$\;
+            $A \leftarrow \textsc{InvMixColumns}(A)$\;
+        }
+     
+        $A \leftarrow \textsc{InvShiftRows}(A)$\;
+        $A \leftarrow \textsc{InvSubBytes}(A)$\;
+        $A \leftarrow \textsc{AddRoundKey}(A,
+            \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
+    
+        $m \leftarrow A$\;
     \end{algorithm}
 \end{frame}
 
