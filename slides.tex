@@ -237,7 +237,6 @@
     \frametitle{AES}
     \framesubtitle{Etapa \emph{AddRoundKey} e rotina \emph{KeyExpansion}}
           \begin{itemize}
-            % \item \emph{AddRoundKey}: ou exclusivo de $A$ com parte da chave expandida
             \item \emph{KeyExpansion}: chave expandida $K^e$, $\ell = \frac{\vert K \vert}{32}$ palavras por rodada
             \item ``\emph{Round constants}'':
                 $RC_0 = x^0, RC_1 = x^1, RC_j = x^{j-1} \cdot RC_{j-1}, j > 2$
@@ -253,6 +252,7 @@
       k_{i - 1}, \text{ caso contrário.}
     \end{cases}
 \end{equation*}
+        \item \emph{AddRoundKey}: $A\' = A + (k_{i}, \dots, )$
           \end{itemize}
 \end{frame}
 
