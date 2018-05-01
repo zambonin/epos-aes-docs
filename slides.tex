@@ -237,8 +237,9 @@
     \frametitle{AES}
     \framesubtitle{Etapa \emph{AddRoundKey} e Rotina \emph{KeyExpansion}}
           \begin{itemize}
-            \item \emph{AddRoundKey}: ou exclusivo de $A$ com parte da chave expandida
+            % \item \emph{AddRoundKey}: ou exclusivo de $A$ com parte da chave expandida
             \item \emph{KeyExpansion}: derivação de chaves para cada rodada a partir de $K$
+            $$RC_0 = x^0, RC_1 = x^1, RC_j = x^{j-1} \cdot RC_{j-1}, j > 2$$
                 \begin{equation*}
   \mathbf{k} =
     \begin{cases}
@@ -250,7 +251,6 @@
     \end{cases}
 \end{equation*}
           \end{itemize}
-    \end{columns}
 \end{frame}
 
 \begin{frame}
