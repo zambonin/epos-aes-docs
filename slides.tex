@@ -116,7 +116,7 @@
             \item Transformação afim aplicada na inversa multiplicativa de um elemento
             \end{itemize}
             \begin{equation*}
-                \begin{psmallmatrix}
+                \begin{smallmatrix}
                 1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
                 1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
                 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
@@ -125,19 +125,12 @@
                 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
                 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
                 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
-                \end{psmallmatrix} \cdot
+                \end{smallmatrix} \cdot
+                \begin{smallmatrix}
+                A^{-1}_{i,j} \\ x_0 \\ x_0 \\ x_0 \\ x_0 \\ x_0 \\ x_0 \\ x_0 \\
+                \end{smallmatrix} \oplus
                 \begin{psmallmatrix}
-                1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
-                1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
-                1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
-                1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
-                1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
-                0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
-                0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
-                0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
-                \end{psmallmatrix} \oplus
-                \begin{psmallmatrix}
-                0 
+                1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1 \\ 0 \\
                 \end{psmallmatrix}
             \end{equation*}
             
