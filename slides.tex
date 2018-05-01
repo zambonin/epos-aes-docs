@@ -91,8 +91,33 @@
         \end{itemize}
         \item Opera sobre uma matriz de estado $A$
         \begin{itemize}
-            \item $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
-            \item Deslocamentos de linhas, permutas e operações sobre bytes
+            \item $A_{i,j} \in \begin{algorithm}[H]
+        \KwData{$c$, o texto cifrado; $K$, a chave desejada}
+        \KwResult{$m$, o texto claro resultante}
+    
+        $A \leftarrow c$\;
+        $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
+            \leftarrow \textsc{KeyExpansion}(K)$\;
+        $A \leftarrow \textsc{AddRoundKey}(A,
+            \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
+        
+        \For{$i \leftarrow n_r - 1$ \KwTo $1$}{
+            $A \leftarrow \textsc{InvShiftRows}(A)$\;
+            $A \leftarrow \textsc{InvSubBytes}(A)$\;
+            $A \leftarrow \textsc{AddRoundKey}(A,
+                \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell - 1}\})$\;
+            $A \leftarrow \textsc{InvMixColumns}(A)$\;
+        }
+     
+        $A \leftarrow \textsc{InvShiftRows}(A)$\;
+        $A \leftarrow \textsc{InvSubBytes}(A)$\;
+        $A \leftarrow \textsc{AddRoundKey}(A,
+            \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
+    
+        $m \leftarrow A$\;
+    \end{algorithm}, 0 \leq i, j \leq 3$
+            \item Deslocamentos de linhas e permutas de elementos
+            \item Operações sobre bytes análogas a cálculos em 
         \end{itemize}
     \end{itemize}
 \end{frame}
