@@ -164,20 +164,19 @@
           \begin{itemize}
             \item Rotacionamento cíclico das linhas de $A$
             \begin{equation*}
-                \begin{matrix}
+                \begin{smallmatrix}
                     a & b & c & d \\
                     e & f & g & h \\
-                    i & j & k & l \\
-                    m & n & o & p \\
-                \end{matrix} \; \longrightarrow \;
-                \begin{matrix}
-                    a & b & c & d \\
-                    f & g & h & e \\
-                    k & l & i & j \\
-                    p & m & n & o \\
-                \end{matrix}
+                    e & f & g & h \\
+                    e & f & g & h \\
+                \end{smallmatrix} \longrightarrow
+                \begin{smallmatrix}
+                    e & f & g & h \\
+                    e & f & g & h \\
+                    e & f & g & h \\
+                    0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+                \end{smallmatrix}
             \end{equation*}
-            \item \emph{InvShiftRows}: rotacionamento inverso
           \end{itemize}
         \end{column}
         \begin{column}{.25\textwidth}
