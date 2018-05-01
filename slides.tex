@@ -162,9 +162,29 @@
     \begin{columns}[T]
         \begin{column}{.7\textwidth}
           \begin{itemize}
-            \item Assinaturas únicas em cada folha, árvore construída a partir de chaves públicas
-            \item Estado da arte dos esquemas baseados em funções de resumo criptográfico
-            \item XMSS, XMSS$^{MT}$, SPHINCS
+            \item Rotacionamento cíclico das linhas de $A$
+            \begin{equation*}
+                \begin{smallmatrix}
+                    1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+                    1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+                    1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
+                    1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+                    1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+                    0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
+                    0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+                    0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+                \end{smallmatrix} \longrightarrow
+                \begin{smallmatrix}
+                    1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+                    1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+                    1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
+                    1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+                    1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+                    0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
+                    0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+                    0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+                \end{smallmatrix}
+            \end{equation*}
           \end{itemize}
         \end{column}
         \begin{column}{.25\textwidth}
