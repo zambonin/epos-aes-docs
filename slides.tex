@@ -59,30 +59,6 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Funções de resumo criptográfico}
-  \begin{equation*}
-    \mathcal{H}: \{0, 1\}^{*} \longrightarrow \{0, 1\}^{n}
-  \end{equation*}
-
-  \begin{figure}
-    \begin{tikzpicture}
-      \node at (-6.5, 0) {entrada $\longrightarrow$};
-      \foreach \sgn in {+, -}
-        \draw plot[domain=1:5] (-\x, {\sgn 1/20*(3+\x*\x)});
-      \foreach \r in {1, 2.3333, ..., 5}
-        \draw (-\r, 0) ellipse[x radius=(\r+.5)/20, y radius=1/20*(3+\r*\r)];
-      \node at (0.25, 0) {$\longrightarrow$ resumo};
-    \end{tikzpicture}
-  \end{figure}
-
-  \begin{itemize}
-    \item SHA-2, SHA-3, BLAKE: $n \in \{224, 256, 384, 512\}$
-    \item Keccak: qualquer $n$
-    \item Resistência à pré-imagem, segunda pré-imagem, colisão
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
     \frametitle{AES}
     \framesubtitle{Definições}
     \begin{itemize}
@@ -266,6 +242,30 @@
         \includegraphics{img/aes_two_rounds.pdf}
         \label{fig:my_label}
     \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Funções de resumo criptográfico}
+  \begin{equation*}
+    \mathcal{H}: \{0, 1\}^{*} \longrightarrow \{0, 1\}^{n}
+  \end{equation*}
+
+  \begin{figure}
+    \begin{tikzpicture}
+      \node at (-6.5, 0) {entrada $\longrightarrow$};
+      \foreach \sgn in {+, -}
+        \draw plot[domain=1:5] (-\x, {\sgn 1/20*(3+\x*\x)});
+      \foreach \r in {1, 2.3333, ..., 5}
+        \draw (-\r, 0) ellipse[x radius=(\r+.5)/20, y radius=1/20*(3+\r*\r)];
+      \node at (0.25, 0) {$\longrightarrow$ resumo};
+    \end{tikzpicture}
+  \end{figure}
+
+  \begin{itemize}
+    \item SHA-2, SHA-3, BLAKE: $n \in \{224, 256, 384, 512\}$
+    \item Keccak: qualquer $n$
+    \item Resistência à pré-imagem, segunda pré-imagem, colisão
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
