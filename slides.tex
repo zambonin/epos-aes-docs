@@ -113,7 +113,7 @@
           \begin{itemize}
             \item Caixa de substituição (\emph{S-box}) aplicada em cada $A_{i,j}$, individualmente
             \item Única etapa não-linear da cifra
-            \item Transformação afim aplicada como
+            \item Transformação afim sobre $a = A^{-1}_{i,j}$
             \end{itemize}
             \begin{equation*}
                 A'_{i,j} = 
@@ -127,12 +127,17 @@
                 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
                 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
                 \end{smallmatrix} \cdot
-                A^{-1}_{i,j} \oplus
+                \begin{smallmatrix}
+                a_0 \\ a_1 \\ a_2 \\ a_3 \\ a_4 \\ a_5 \\ a_6 \\ a_7 \\
+                \end{smallmatrix}
+                \oplus
                 \begin{smallmatrix}
                 1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1 \\ 0 \\
                 \end{smallmatrix}
             \end{equation*}
-            
+            \begin{itemize}
+                \item \emph{InvSubBytes} 
+            \end{itemize}
         %     \begin{itemize}
         %         \item $A'_{i,j} = (A^{-1}_{i,j} \times 31) \pmod{257} \oplus 99$
         %     \end{itemize}
