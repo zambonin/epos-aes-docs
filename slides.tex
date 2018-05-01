@@ -215,9 +215,6 @@
     \framesubtitle{Etapa \emph{AddRoundKey} e rotina \emph{KeyExpansion}}
           \begin{itemize}
             \item \emph{KeyExpansion}: chave expandida $K^e$, $\ell = \frac{\length{K}}{32}$ palavras por rodada
-            \begin{itemize}
-                \item asdfhasdkjlfhasfhd
-            \end{itemize}
             \item ``\emph{Round constants}'':
                 $RC_0 = x^0, RC_1 = x^1, RC_j = x^{j-1} \cdot RC_{j-1}, j > 2$
         
@@ -225,7 +222,7 @@
                 \begin{equation*}
   k_i = k_{i - \ell} + 
     \begin{cases}
-      \textsc{SubBytes}(rot(k_{i - 1})) + RC_{\frac{i}{\ell}},
+      \textsc{SubBytes}(k_{i - 1} \stackrel{.}{\ll} 8) + RC_{\frac{i}{\ell}},
         \text{ se } i \equiv 0 \pmod{4} \\
       \textsc{SubBytes}(k_{i - 1}),
         \text{ se } \ell = 8 \text { e } i \equiv 4 \pmod{8} \\
