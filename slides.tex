@@ -243,6 +243,16 @@
             \item \emph{KeyExpansion}: derivação de chaves para cada rodada a partir de $K$
             \begin{itemize}
                 \item 
+                \begin{equation*}
+  \mathbf{k} =
+    \begin{cases}
+      \textsc{SubBytes}(rot(K^{e}_{i - 1})) \oplus RC_{\frac{i}{\ell}},
+        \text{ se } i \equiv 0 \pmod{4} \\
+      \textsc{SubBytes}(K^{e}_{i - 1}),
+        \text{ se } \ell = 8 \text { e } i \equiv 4 \pmod{8} \\
+      K^{e}_{i - 1}, \text{ caso contrário.}
+    \end{cases}
+\end{equation}
             \end{itemize}
           \end{itemize}
         \end{column}
