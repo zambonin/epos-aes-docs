@@ -8,8 +8,6 @@
 \usepackage{subcaption}
 \usepackage{amsmath, mathtools}
 
-\overbrace{your-formula}^\text{your comment} 
-
 \usetheme{CambridgeUS}
 \usecolortheme{seagull}
 \setbeamertemplate{title page}[default][shadow=false]
@@ -237,12 +235,15 @@
 
 \begin{frame}
     \frametitle{AES}
-    \framesubtitle{Etapa \emph{AddRoundKey} e Rotina \emph{KeyExpansion}}
+    \framesubtitle{Etapa \emph{AddRoundKey} e rotina \emph{KeyExpansion}}
           \begin{itemize}
             % \item \emph{AddRoundKey}: ou exclusivo de $A$ com parte da chave expandida
-            \item \emph{KeyExpansion}: chave expandida $K^e$ a partir de $K$
+            \item \emph{KeyExpansion}: chave expandida $K^e$ para cada rodada
+            \item Rotina gera palavras de 32 bits; $\ell = \frac{\vert K \vert}{32}$
             \begin{itemize}
-                \item $\ell = \frac{n}{32}, K^e = (k_0, \dots, k_{\ell - 1}, k_{\ell}, \dots, k_{(n_r + 1) \ell - 1})$
+                \item $\ell = \frac{n}{32}$,
+                
+                $K^e = (\overbrace{k_0, \dots, k_{\ell - 1}}^{K}, k_{\ell}, \dots, k_{(n_r + 1) \cdot \ell - 1})$
                 $RC_0 = x^0, RC_1 = x^1, RC_j = x^{j-1} \cdot RC_{j-1}, j > 2$
             \end{itemize}
                 \begin{equation*}
