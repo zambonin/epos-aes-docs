@@ -6,6 +6,7 @@
 \usepackage{graphicx, tikz-qtree, caption, chronology}
 \usepackage{hyperref}
 \usepackage{subcaption}
+\usepackage{mathtools}
 
 \usetheme{CambridgeUS}
 \usecolortheme{seagull}
@@ -113,12 +114,25 @@
             \item Caixa de substituição (\emph{S-box}) aplicada em cada elemento de $A$, individualmente
             \item Única etapa não-linear da cifra
             \item Transformação afim aplicada na inversa multiplicativa de um elemento
-            \begin{itemize}
-                \item $A'_{i,j} = (A^{-1}_{i,j} \times 31) \pmod{257} \oplus 99$
             \end{itemize}
-          \end{itemize}
-          \begin{itemize}
-              \item A etapa inversa é obtida a partir da aplicação da transformação afim inversa 
+            
+        $\begin{psmallmatrix}
+        1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+        1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+        1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
+        1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+        1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+        0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+        \end{psmallmatrix}$
+            
+        %     \begin{itemize}
+        %         \item $A'_{i,j} = (A^{-1}_{i,j} \times 31) \pmod{257} \oplus 99$
+        %     \end{itemize}
+        %   \end{itemize}
+        %   \begin{itemize}
+        %       \item A etapa inversa é obtida a partir da aplicação da transformação afim inversa 
           \end{itemize}
         \end{column}
         \begin{column}{.25\textwidth}
