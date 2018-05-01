@@ -141,33 +141,32 @@
       \centering
       \begin{minipage}{.7\linewidth}
         \begin{algorithm}[H]
-            \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
-            \KwResult{$c$, o texto cifrado resultante}
+            \KwData{$c$, o texto cifrado; $K$, a chave desejada}
+            \KwResult{$m$, o texto claro resultante}
         
-            $A \leftarrow m$\;
+            $A \leftarrow c$\;
             $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
                 \leftarrow \textsc{KeyExpansion}(K)$\;
             $A \leftarrow \textsc{AddRoundKey}(A,
-                \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
+                \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
             
-            \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
-                $A \leftarrow \textsc{SubBytes}(A)$\;
-                $A \leftarrow \textsc{ShiftRows}(A)$\;
-                $A \leftarrow \textsc{MixColumns}(A)$\;
+            \For{$i \leftarrow n_r - 1$ \KwTo $1$}{
+                $A \leftarrow \textsc{InvShiftRows}(A)$\;
+                $A \leftarrow \textsc{InvSubBytes}(A)$\;
                 $A \leftarrow \textsc{AddRoundKey}(A,
                     \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell - 1}\})$\;
+                $A \leftarrow \textsc{InvMixColumns}(A)$\;
             }
          
-            $A \leftarrow \textsc{SubBytes}(A)$\;
-            $A \leftarrow \textsc{ShiftRows}(A)$\;
+            $A \leftarrow \textsc{InvShiftRows}(A)$\;
+            $A \leftarrow \textsc{InvSubBytes}(A)$\;
             $A \leftarrow \textsc{AddRoundKey}(A,
-                \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
+                \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
         
-            $c \leftarrow A$\;
+            $m \leftarrow A$\;
         \end{algorithm}
       \end{minipage}
     \end{figure}
-    
 \end{frame}
 
 \begin{frame}
