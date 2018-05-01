@@ -111,30 +111,29 @@
     \begin{columns}[T]
         \begin{column}{.7\textwidth}
           \begin{itemize}
-            \item Caixa de substituição (\emph{S-box}) aplicada em cada $A_{i,j}$, individualmente
-            \item Única etapa não-linear da cifra
-            \item Transformação afim sobre $a = A^{-1}_{i,j}$
-            \begin{equation*}
-                A'_{i,j} = 
-                \begin{smallmatrix}
-                1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
-                1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
-                1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
-                1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
-                1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
-                0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
-                0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
-                0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
-                \end{smallmatrix} \cdot
-                \begin{smallmatrix}
-                a_0 \\ a_1 \\ a_2 \\ a_3 \\ a_4 \\ a_5 \\ a_6 \\ a_7 \\
-                \end{smallmatrix}
-                \oplus
-                \begin{smallmatrix}
-                1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1 \\ 0 \\
-                \end{smallmatrix}
-            \end{equation*}
-            \begin{itemize}
+                \item Caixa de substituição (\emph{S-box}) aplicada em cada $A_{i,j}$, individualmente
+                \item Única etapa não-linear da cifra
+                \item Transformação afim sobre $a = A^{-1}_{i,j}$
+                    \begin{equation*}
+                        A'_{i,j} = 
+                        \begin{smallmatrix}
+                        1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+                        1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+                        1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
+                        1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+                        1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+                        0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
+                        0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+                        0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+                        \end{smallmatrix} \cdot
+                        \begin{smallmatrix}
+                        a_0 \\ a_1 \\ a_2 \\ a_3 \\ a_4 \\ a_5 \\ a_6 \\ a_7 \\
+                        \end{smallmatrix}
+                        \oplus
+                        \begin{smallmatrix}
+                        1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1 \\ 0 \\
+                        \end{smallmatrix}
+                    \end{equation*}
                 \item \emph{InvSubBytes}: inversa da transformação afim
             \end{itemize}
         \end{column}
