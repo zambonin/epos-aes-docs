@@ -238,10 +238,12 @@
     \framesubtitle{Etapa \emph{AddRoundKey} e rotina \emph{KeyExpansion}}
           \begin{itemize}
             % \item \emph{AddRoundKey}: ou exclusivo de $A$ com parte da chave expandida
-            \item \emph{KeyExpansion}: chave expandida $K^e$ para cada rodada
+            \item \emph{KeyExpansion}: chave expandida $K^e$, $\ell = \frac{\vert K \vert}{32}$ palavras por rodada
             \item Rotina gera palavras de 32 bits; $\ell = \frac{\vert K \vert}{32}$
-                $K^e = (\overbrace{k_0, \dots, k_{\ell - 1}}^{K}, k_{\ell}, \dots, k_{(n_r + 1) \cdot \ell - 1})$
+            \item ``\emph{Round constants}'':
                 $RC_0 = x^0, RC_1 = x^1, RC_j = x^{j-1} \cdot RC_{j-1}, j > 2$
+            \item
+                $K^e = (\overbrace{k_0, \dots, k_{\ell - 1}}^{K}, k_{\ell}, \dots, k_{(n_r + 1) \cdot \ell - 1})$
                 \begin{equation*}
   \mathbf{k} =
     \begin{cases}
