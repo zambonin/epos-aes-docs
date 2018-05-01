@@ -114,8 +114,11 @@
             \item Única etapa não-linear da cifra
             \item Transformação afim aplicada na inversa multiplicativa de um elemento
             \begin{itemize}
-                \item 
+                \item $A'_{i,j} = (A^{-1}_{i,j} \times 31) \pmod{257} \oplus 99$
             \end{itemize}
+          \end{itemize}
+          \begin{itemize}
+              \item A etapa inversa é obtida a partir da aplicação da transformação afim inversa 
           \end{itemize}
         \end{column}
         \begin{column}{.25\textwidth}
