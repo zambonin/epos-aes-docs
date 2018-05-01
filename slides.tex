@@ -111,11 +111,12 @@
     \begin{columns}[T]
         \begin{column}{.7\textwidth}
           \begin{itemize}
-            \item Caixa de substituição (\emph{S-box}) aplicada em cada elemento de $A$, individualmente
+            \item Caixa de substituição (\emph{S-box}) aplicada em cada $A_{i,j}$, individualmente
             \item Única etapa não-linear da cifra
-            \item Transformação afim aplicada na inversa multiplicativa de um elemento
+            \item Transformação afim aplicada como
             \end{itemize}
             \begin{equation*}
+                A'_{i,j} = 
                 \begin{smallmatrix}
                 1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
                 1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
