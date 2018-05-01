@@ -222,14 +222,14 @@
                 \begin{equation*}
   k_i = k_{i - \ell} + 
     \begin{cases}
-      \textsc{SubBytes}(k_{i - 1} \stackrel{.}{\ll} 8) + RC_{\frac{i}{\ell}},
+      \textsc{SubBytes}(k_{i - 1} \stackrel{\curvearrowright}{\ll} 8) + RC_{\frac{i}{\ell}},
         \text{ se } i \equiv 0 \pmod{4} \\
       \textsc{SubBytes}(k_{i - 1}),
         \text{ se } \ell = 8 \text { e } i \equiv 4 \pmod{8} \\
       k_{i - 1}, \text{ caso contrário.}
     \end{cases}
 \end{equation*}
-        \item \emph{AddRoundKey}: $A' = A + (k_{i}, \dots, k_{i + \ell}), 0 \leq i \leq n_r$
+        \item \emph{AddRoundKey}: $A' = A + (k_{\ell \cdot i}, \dots, k_{\ell \cdot (i + 1) - 1}), 0 \leq i \leq n_r$
           \end{itemize}
 \end{frame}
 
