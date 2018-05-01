@@ -121,31 +121,7 @@
     \end{algorithm}
   \end{minipage}
 \end{figure}
-    \begin{algorithm}[H]
-        \KwData{$m$, o texto a ser cifrado; $K$, a chave desejada}
-        \KwResult{$c$, o texto cifrado resultante}
-    
-        $A \leftarrow m$\;
-        $K^{e}_{0} \dots K^{e}_{(n_r + 1) \cdot \ell}
-            \leftarrow \textsc{KeyExpansion}(K)$\;
-        $A \leftarrow \textsc{AddRoundKey}(A,
-            \{K^{e}_{0}, \dots, K^{e}_{\ell - 1}\})$\;
-        
-        \For{$i \leftarrow 1$ \KwTo $n_r - 1$}{
-            $A \leftarrow \textsc{SubBytes}(A)$\;
-            $A \leftarrow \textsc{ShiftRows}(A)$\;
-            $A \leftarrow \textsc{MixColumns}(A)$\;
-            $A \leftarrow \textsc{AddRoundKey}(A,
-                \{K^{e}_{i \cdot \ell}, \dots, K^{e}_{(i + 1) \cdot \ell - 1}\})$\;
-        }
-     
-        $A \leftarrow \textsc{SubBytes}(A)$\;
-        $A \leftarrow \textsc{ShiftRows}(A)$\;
-        $A \leftarrow \textsc{AddRoundKey}(A,
-            \{K^{e}_{n_r \cdot \ell}, \dots, K^{e}_{(n_r + 1) \cdot \ell - 1}\})$\;
-    
-        $c \leftarrow A$\;
-    \end{algorithm}
+
 \end{frame}
 
 \begin{frame}
