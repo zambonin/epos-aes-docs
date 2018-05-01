@@ -101,6 +101,7 @@
             \item $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
             \item Deslocamentos de linhas e permutas de elementos
             \item Operações sobre bytes análogas a cálculos em $\mathbb{F}_{2^8}$
+            \item Adição equivalente a $\oplus$, multiplicação $\pmod{x^8 + x^4 + x^3 + x + 1}$
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -252,7 +253,7 @@
       k_{i - 1}, \text{ caso contrário.}
     \end{cases}
 \end{equation*}
-        \item \emph{AddRoundKey}: $A\' = A + (k_{i}, \dots, )$
+        \item \emph{AddRoundKey}: $A' = A + (k_{i}, \dots, k_{i + \ell}), 0 \leq i \leq n_r$
           \end{itemize}
 \end{frame}
 
