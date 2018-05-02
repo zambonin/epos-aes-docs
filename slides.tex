@@ -121,7 +121,6 @@
 		%% Permutation layer
 		\foreach \z [evaluate=\z as \zz using {int(mod(11*\z,15))}] in {0,...,14} {
 			\draw[thick] (xor\z)  -- (o\z.center)  -- (ii\zz.center) -- (xorr\zz) -- (oo\zz);
-			\draw[thick] (oo\z.north)  -- (t\zz.south) -- +(0,-0.5em);
 		}
 		\draw[thick] (xor15) -- (o15.center) -- (ii15.center) -- (xorr15) -- (oo15);
 		\draw[thick] (oo15.north) -- (t15.south) -- +(0,-0.5em);	
