@@ -90,8 +90,7 @@
     \frametitle{AES}
     \framesubtitle{Definições II}
     \begin{itemize}
-        \item Opera sobre uma matriz de estado $A$
-        \item $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
+        \item Opera sobre uma matriz de estado $A$, $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
         \begin{itemize}
             \item Para uma mensagem $m$ de $\length{K}$ bits, $A_{i,j} = m_{i+4j}$
             \item Operações sobre bytes análogas a cálculos em $\mathbb{F}_{2^8}$
@@ -99,14 +98,6 @@
             \item Multiplicação equivalente a $\oplus$, módulo o polinômio irredutível $x^8 + x^4 + x^3 + x + 1$
         \end{itemize}
     \end{itemize}
-    
-    \begin{figure}
-        \centering
-        \includegraphics{img}
-        \caption{Caption}
-        \label{fig:my_label}
-    \end{figure}
-    
 \end{frame}
 
 \begin{frame}
