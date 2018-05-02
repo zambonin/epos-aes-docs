@@ -5,7 +5,7 @@
 \usepackage[portuguese, onelanguage]{algorithm2e}
 \usepackage{amsmath, graphicx, hyperref, mathtools, subcaption, tikz-qtree}
 
-\usetikzlibrary{positioning, matrix, arrows, decorations.markings}
+\usetikzlibrary{positioning, calc, matrix, arrows, decorations.markings}
 
 \usetheme{CambridgeUS}
 \usecolortheme{seagull}
@@ -127,18 +127,16 @@
 		\draw[thick] (oo15.north) -- (t15.south) -- +(0,-0.5em);	
 		
 		%% SBoxes
-		\foreach \z in {0,...,3} {
-			\node[draw,thick,minimum width=2.75em,minimum height=2em,fill=white] (p4) at ($\z*(3em,0) + (1.1em,-2em)$) {$S$};
-			\node[draw,thick,minimum width=2.75em,minimum height=2em,fill=white] (p4) at ($\z*(3em,0) + (1.1em,-11em)$) {$S$};
-		}
+% 		\foreach \z in {0,...,3} {
+			\node[draw,thick,minimum width=2.75em,minimum height=2em,fill=white] (p4) at ($(3em,0) + (1.1em,-2em)$) {$S$};
+			\node[draw,thick,minimum width=11em,minimum height=2em,fill=white] (p4) at ($(3em,0) + (1.1em,-11em)$) {$S$};
+% 		}
 		
 		\node[left = 0em of xor0] {$k_{1}$};
 		\node[left = 0em of xorr0] {$k_{2}$};
 		
 	\end{tikzpicture}
 \end{frame}
-
-\usetikzlibrary{calc}
 
 \begin{frame}
     \frametitle{AES}
