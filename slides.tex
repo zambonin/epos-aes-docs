@@ -89,28 +89,56 @@
 \begin{frame}
     \frametitle{AES}
     \framesubtitle{Definições II}
-    \begin{itemize}
-        \item Opera sobre uma matriz de estado $A$, $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
-        \begin{itemize}
-            \item Para uma mensagem $m$ de $\length{K}$ bits, $A_{i,j} = m_{i+4j}$
-        \end{itemize}
-        \item Operações sobre bytes análogas a cálculos em $\mathbb{F}_{2^8}$
-        \begin{itemize}
-            \item Adição equivalente a $\oplus$
-            \item Multiplicação usual, módulo o polinômio irredutível $x^8 + x^4 + x^3 + x + 1$
-        \end{itemize}
-        
-        \begin{align*}
-            m = \texttt{000102030405060708090A0B0C0D0E0F} \\
-            \begin{smallmatrix}
-            00 & 04 & 08 & 0C \\
-            01 & 05 & 09 & 0D \\
-            02 & 06 & 0A & 0E \\
-            03 & 07 & 0B & 0F \\
-            \end{smallmatrix}
-        \end{align*}
-    \end{itemize}
+    % \begin{itemize}
+    %     \item Opera sobre uma matriz de estado $A$, $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
+    %     \begin{itemize}
+    %         \item Para uma mensagem $m$ de $\length{K}$ bits, $A_{i,j} = m_{i+4j}$
+    %     \end{itemize}
+    %     \item Operações sobre bytes análogas a cálculos em $\mathbb{F}_{2^8}$
+    %     \begin{itemize}
+    %         \item Adição equivalente a $\oplus$
+    %         \item Multiplicação usual, módulo o polinômio irredutível $x^8 + x^4 + x^3 + x + 1$
+    %     \end{itemize}
+    % \end{itemize}
+    
+    	\begin{tikzpicture}
+		%% Subkey XORs
+		\foreach \z in {0,...,15} {
+			\node[XOR, scale=0.8] (xor\z) at ($\z*(0.75em, 0)$) {};
+			\node[XOR, scale=0.8] (xorr\z) at ($\z*(0.75em, 0)+(0,-9em)$) {};
+		}
+		
+		%% Nodes positions
+		\foreach \z in {0,...,15} {
+			\node (i\z) [above = 0.75em of xor\z] {};
+			\node (o\z) [below = 2.5em of xor\z] {};
+			\node (ii\z) [above = 0.25em of xorr\z] {};
+			\node (oo\z) [below = 3em of xorr\z] {};
+			\node (t\z) [below = 4em of oo\z] {};
+			\draw[thick] (i\z) -- (xor\z);
+		}
+		
+		%% Permutation layer
+		\foreach \z [evaluate=\z as \zz using {int(mod(11*\z,15))}] in {0,...,14} {
+			\draw[thick] (xor\z)  -- (o\z.center)  -- (ii\zz.center) -- (xorr\zz) -- (oo\zz);
+			\draw[thick] (oo\z.north)  -- (t\zz.south) -- +(0,-0.5em);
+		}
+		\draw[thick] (xor15) -- (o15.center) -- (ii15.center) -- (xorr15) -- (oo15);
+		\draw[thick] (oo15.north) -- (t15.south) -- +(0,-0.5em);	
+		
+		%% SBoxes
+		\foreach \z in {0,...,3} {
+			\node[draw,thick,minimum width=2.75em,minimum height=2em,fill=white] (p4) at ($\z*(3em,0) + (1.1em,-2em)$) {$S$};
+			\node[draw,thick,minimum width=2.75em,minimum height=2em,fill=white] (p4) at ($\z*(3em,0) + (1.1em,-11em)$) {$S$};
+		}
+		
+		\node[left = 0em of xor0] {$k_{1}$};
+		\node[left = 0em of xorr0] {$k_{2}$};
+		
+	\end{tikzpicture}
 \end{frame}
+
+\usetikzlibrary{calc}
 
 \begin{frame}
     \frametitle{AES}
