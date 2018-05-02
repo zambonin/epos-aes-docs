@@ -125,10 +125,12 @@
 \begin{frame}
     \frametitle{AES}
     \framesubtitle{Definições I}
+    \begin{itemize}
         \begin{itemize}
+            \item Conceito de rede de substituição-permutação
             \item $\length{K} \in \{128, 192, 256\}$
             \item 10, 12 ou 14 rodadas ($n_r$), respectivamente
-            \item $P$ é composta de dois passos
+            \item Deslocamentos de linhas e permutas de elementos
         \end{itemize}
          \begin{itemize}
         \item Modifica uma matriz de estado $A$, $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
@@ -137,6 +139,7 @@
             \item Adição equivalente a $\oplus$
             \item Multiplicação usual, módulo o polinômio irredutível $x^8 + x^4 + x^3 + x + 1$
         \end{itemize}
+    \end{itemize}
     \end{itemize}
 \end{frame}
 
