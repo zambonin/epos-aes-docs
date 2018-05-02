@@ -92,7 +92,7 @@
     
     
      \begin{columns}[T]
-    \begin{column}{.4\textwidth}
+    \begin{column}{.6\textwidth}
       
     \begin{itemize}
         \item Opera sobre uma matriz de estado $A$, $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
@@ -106,7 +106,7 @@
         \end{itemize}
     \end{itemize}
     \end{column}
-    \begin{column}{.4\textwidth}
+    \begin{column}{.3\textwidth}
       \begin{figure}[ht]
       \centering
     \begin{tikzpicture}[scale=0.75]
@@ -120,7 +120,7 @@
 			\node (o\z) [below = 2.5em of xor\z] {};
 			\node (ii\z) [above = 0.25em of xorr\z] {};
 			\node (oo\z) [below = 0.5em of xorr\z] {};
-			\node (t\z) [below = 4em of oo\z] {};
+% 			\node (t\z) [below = 4em of oo\z] {};
 			\draw[thick] (i\z) -- (xor\z);
 		}
 		
@@ -137,7 +137,7 @@
 		\node[left = 0em of xorr0] {$k_{1} \rightarrow$};
 	\end{tikzpicture}
         \captionsetup{font=scriptsize}
-        \caption*{Seja $\mathcal{D}_n$ um dado qualquer. Uma árvore de Merkle é construída recursivamente através da concatenação dos resumos dos filhos de um nó.}
+        \caption*{Exemplo de uma rede de substituição-permutação com apenas uma rodada. Note que $P$ pode ser substituída por vários passos de difusão.}
       \end{figure}
     \end{column}
   \end{columns}
