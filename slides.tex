@@ -143,57 +143,6 @@
     \end{itemize}
 \end{frame}
 
-% \begin{frame}
-%     \frametitle{AES}
-%     \framesubtitle{Definições II}
-%     \begin{columns}[T]
-%     \begin{column}{.5\textwidth}
-      
-%     \begin{itemize}
-%         \item Modifica uma matriz de estado $A$, $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
-%         \item Operações sobre bytes análogas a cálculos em $\mathbb{F}_{2^8}$
-%         \begin{itemize}
-%             \item Adição equivalente a $\oplus$
-%             \item Multiplicação usual, módulo o polinômio irredutível $x^8 + x^4 + x^3 + x + 1$
-%         \end{itemize}
-%     \end{itemize}
-%     \end{column}
-%     \begin{column}{.5\textwidth}
-%       \begin{figure}[ht]
-%       \centering
-%     \begin{tikzpicture}[scale=0.75]
-% 		\foreach \z in {0,...,15} {
-% 			\node[XOR, scale=0.5] (xor\z) at ($\z*(0.75em, 0)$) {};
-% 			\node[XOR, scale=0.5] (xorr\z) at ($\z*(0.75em, 0)+(0,-9em)$) {};
-% 		}
-		
-% 		\foreach \z in {0,...,15} {
-% 			\node (i\z) [above = 0.5em of xor\z] {};
-% 			\node (o\z) [below = 2.5em of xor\z] {};
-% 			\node (ii\z) [above = 0.25em of xorr\z] {};
-% 			\node (oo\z) [below = 0.5em of xorr\z] {};
-% 			\draw[thick] (i\z) -- (xor\z);
-% 		}
-		
-% 		\foreach \z [evaluate=\z as \zz using {int(mod(11*\z,15))}] in {0,...,14} {
-% 			\draw[thick] (xor\z)  -- (o\z.center)  -- (ii\zz.center) -- (xorr\zz) -- (oo\zz);
-% 		}
-% 		\draw[thick] (xor15) -- (o15.center) -- (ii15.center) -- (xorr15) -- (oo15);
-		
-% 		\node[scale=0.75,draw,thick,minimum width=12em,minimum height=2em,fill=white] (p4) at ($(5.625em, -1.75em)$) {$S$};
-% 		\node[scale=0.75,draw,dashed,minimum width=12em,minimum height=5em] (p5) at ($(5.625em, -5.625em)$) {};
-
-% 		\node[left = 0em of p5] {$P$};
-% 		\node[left = 0em of xor0] {$k_{0} \rightarrow$};
-% 		\node[left = 0em of xorr0] {$k_{1} \rightarrow$};
-% 	\end{tikzpicture}
-%         \captionsetup{font=scriptsize}
-%         \caption*{Exemplo de rede de substituição-permutação com apenas uma rodada. Note que $P$ pode ser substituída por vários passos de difusão.}
-%       \end{figure}
-%     \end{column}
-%   \end{columns}
-% \end{frame}
-
 \begin{frame}
     \frametitle{AES}
     \framesubtitle{Etapa \emph{SubBytes}}
