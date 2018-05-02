@@ -101,7 +101,7 @@
     %     \end{itemize}
     % \end{itemize}
     
-    	\begin{tikzpicture}
+    	\begin{tikzpicture}[scale=1]
 		%% Subkey XORs
 		\foreach \z in {0,...,15} {
 			\node[XOR, scale=0.8] (xor\z) at ($\z*(0.75em, 0)$) {};
@@ -127,10 +127,10 @@
 		\draw[thick] (oo15.north) -- (t15.south) -- +(0,-0.5em);	
 		
 		%% SBoxes
-% 		\foreach \z in {0,...,3} {
-			\node[draw,thick,minimum width=2.75em,minimum height=2em,fill=white] (p4) at ($(3em,0) + (1.1em,-2em)$) {$S$};
-			\node[draw,thick,minimum width=11em,minimum height=2em,fill=white] (p4) at ($(3em,0) + (1.1em,-11em)$) {$S$};
-% 		}
+		\foreach \z in {0,...,3} {
+			\node[draw,thick,minimum width=2.75em,minimum height=2em,fill=white] (p4) at ($\z*(3em,0) + (1.1em,-2em)$) {$S$};
+			\node[draw,thick,minimum width=2.75em,minimum height=2em,fill=white] (p4) at ($\z*(3em,0) + (1.1em,-11em)$) {$S$};
+		}
 		
 		\node[left = 0em of xor0] {$k_{1}$};
 		\node[left = 0em of xorr0] {$k_{2}$};
