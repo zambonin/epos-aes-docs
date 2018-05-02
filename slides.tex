@@ -69,7 +69,7 @@
 
 \begin{frame}
     \frametitle{AES}
-    \framesubtitle{Definições}
+    \framesubtitle{Definições I}
     \begin{itemize}
         \item Versão padronizada pelo NIST do algoritmo Rjindael \cite{Daemen:2002:DR:560131}
         \begin{itemize}
@@ -84,11 +84,16 @@
             \item Deslocamentos de linhas e permutas de elementos
         \end{itemize}
         \item Opera sobre uma matriz de estado $A$
-        \begin{itemize}
-            \item $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
-            \item Operações sobre bytes análogas a cálculos em $\mathbb{F}_{2^8}$
-            \item Adição equivalente a \texttt{AND}, multiplicação a $\oplus \pmod{x^8 + x^4 + x^3 + x + 1}$
-        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{AES}
+    \framesubtitle{Definições II}
+    \begin{itemize}
+        \item $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
+        \item Operações sobre bytes análogas a cálculos em $\mathbb{F}_{2^8}$
+        \item Adição equivalente a \texttt{AND}, multiplicação a $\oplus \pmod{x^8 + x^4 + x^3 + x + 1}$
     \end{itemize}
 \end{frame}
 
