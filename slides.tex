@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese, onelanguage]{algorithm2e}
-\usepackage{amsmath, graphicx, hyperref, mathtools, subcaption, tikz, tikz-qtree}
+\usepackage{amsmath, graphicx, hyperref, mathtools, subcaption, tikz-qtree}
 
 \usetikzlibrary{matrix, arrows, decorations.markings}
 
@@ -36,19 +36,12 @@
 \newcommand{\fhash}[1]{\hh{} : \binwds{*} \longrightarrow \binwds{#1}}
 
 \tikzset{
-  filled/.style={fill=circle area, draw=circle edge, thick},
-  outline/.style={draw=circle edge, thick},
-  SpongePerm/.style={rounded corners=4pt},
   XOR/.style={draw,circle,append after command={
     [shorten >=\pgflinewidth, shorten <=\pgflinewidth,]
     (\tikzlastnode.north) edge (\tikzlastnode.south)
     (\tikzlastnode.east) edge (\tikzlastnode.west)}},
   edge/.style={->},
-  edgee/.style={<->},
-  level distance=45pt,
-  sibling distance=25pt
 }
-
 
 \begin{document}
 
@@ -414,9 +407,9 @@
 		\node [abox] (yt1) {$y_i$}; \\
     };
 
-	\node[above = 5pt of xt1] (X) {$x_i \in X:$};
-	\node[above = 5pt of st1] (S) {$\sigma_i \in \sigma:$};
-	\node[above = 5pt of yt1] (Y) {$y_i \in Y:$};
+% 	\node[above = 5pt of xt1] (X) {$x_i \in X:$};
+% 	\node[above = 5pt of st1] (S) {$\sigma_i \in \sigma:$};
+% 	\node[above = 5pt of yt1] (Y) {$y_i \in Y:$};
 
  	\path[arrowline, postaction={decorate}] (xt1)      --      (xt1 -| fst1.west);
  	\path[arrowline, postaction={decorate}] (fst1.east |- st1)      --      (st1);
