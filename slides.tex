@@ -33,6 +33,14 @@
 \newcommand{\length}[1]{\vert #1 \vert}
 \newcommand{\fhash}[1]{\hh{} : \binwds{*} \longrightarrow \binwds{#1}}
 
+\tikzset{
+  XOR/.style={draw,circle,append after command={
+    [shorten >=\pgflinewidth, shorten <=\pgflinewidth,]
+    (\tikzlastnode.north) edge (\tikzlastnode.south)
+    (\tikzlastnode.east) edge (\tikzlastnode.west)}},
+  edge/.style={->},
+}
+
 \begin{document}
 
 \begin{frame}[plain,noframenumbering]
@@ -402,8 +410,7 @@
   \frametitle{Winternitz OTS}
   \framesubtitle{Utilizando AES como $f$}
   \begin{itemize}
-      \item Função $f$ derivada de uma cifra de bloco
-      \item Construção Matyas-Meyer-Oseas \cite[9.41]{Menezes:1996:HAC:548089}
+      \item Construção Matyas-Meyer-Oseas \cite[Sec. 9.41]{Menezes:1996:HAC:548089}
       \begin{itemize}
         \item Entrada $x$, saída $h_k$, cifra $E_K$ com bloco de $n$ bits e chave $K$
         \item Tome um valor inicial $IV$, $\length{IV} = n$, e uma função $g$ que gere chaves válidas para $E$
@@ -415,6 +422,24 @@
         \item Multicolisões em WOTS simples, redução da segurança
       \end{itemize}
   \end{itemize}
+  \begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[scale=0.25]
+    \draw (-2, 5) rectangle node {$g$} ++(2, 2);
+    \draw (0, 0) rectangle node {$E$} ++(4, 4);
+    \draw (1.5, 4) -- ++(0.5,-0.7) -- ++(0.5, +0.7);
+    \node[XOR] (x0) at (7,2) {};
+    \draw[edge] (-4,2) node[left] {$x_{i}$} -- ++(4,0);
+    \draw[edge] (4,2) -- (x0);
+    \draw[edge] (x0) -- ++(3,0) node[right] {$h_{i}$};
+    \draw[edge] (-2,2) -- ++(0,-3) -- ++(9,0) -- (x0);
+    \draw[edge] (-4,6) node[left] {$h_{i-1}$} -- ++(2, 0);
+    \draw[edge] (0, 6) -- ++(2, 0) -- ++(0, -2);
+  \end{tikzpicture}
+  \caption{Representação gráfica da construção Matyas-Meyer-Oseas,
+    adaptado de~\cite{TikZ:for:Cryptographers}.}
+  \label{fig:6}
+\end{figure}
 \end{frame}
 
 \begin{frame}
