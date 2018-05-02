@@ -124,11 +124,11 @@
 		}
 		\draw[thick] (xor15) -- (o15.center) -- (ii15.center) -- (xorr15) -- (oo15);
 		
-		%% SBoxes
-% 		\foreach \z in {0,...,3} {
-		\node[draw,thick,minimum width=12em,minimum height=2em,fill=white] (p4) at ($(5.625em, -2em)$) {$S$};
-% 		}
+		\node[draw,thick,minimum width=12em,minimum height=2em,fill=white] (p4) at ($(5.625em, -1.75em)$) {$S$};
 		
+		\node[draw,dashed,minimum width=12em,minimum height=5em] (p5) at ($(5.625em, -5.625em)$) {};
+		\node[left = 0em of p5] {$k_{1} \rightarrow$};
+
 		\node[left = 0em of xor0] {$k_{1} \rightarrow$};
 		\node[left = 0em of xorr0] {$k_{2} \rightarrow$};
 		
