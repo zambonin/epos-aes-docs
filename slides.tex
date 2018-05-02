@@ -3,7 +3,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese, onelanguage]{algorithm2e}
-\usepackage{amsmath, graphicx, hyperref, mathtools, subcaption, tikz-qtree}
+\usepackage{amsmath, graphicx, hyperref, mathtools, subcaption, tikz, tikz-qtree}
+
+\usetikzlibrary{matrix, arrows, decorations.markings}
 
 \usetheme{CambridgeUS}
 \usecolortheme{seagull}
@@ -34,12 +36,19 @@
 \newcommand{\fhash}[1]{\hh{} : \binwds{*} \longrightarrow \binwds{#1}}
 
 \tikzset{
+  filled/.style={fill=circle area, draw=circle edge, thick},
+  outline/.style={draw=circle edge, thick},
+  SpongePerm/.style={rounded corners=4pt},
   XOR/.style={draw,circle,append after command={
     [shorten >=\pgflinewidth, shorten <=\pgflinewidth,]
     (\tikzlastnode.north) edge (\tikzlastnode.south)
     (\tikzlastnode.east) edge (\tikzlastnode.west)}},
   edge/.style={->},
+  edgee/.style={<->},
+  level distance=45pt,
+  sibling distance=25pt
 }
+
 
 \begin{document}
 
@@ -385,6 +394,38 @@
   \begin{align*}
     \forall \sigma_i \in \sigma, f^{2^w - 1 - \epsilon_{i}}(\sigma_i) &= \mathcal{P}_{k_i}
   \end{align*}
+  Resumidamente,
+  \begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[
+    decoration={
+      markings,
+      mark= at position 0.5 with {\node[font=\scriptsize] {/};},
+      mark= at position 0.5 with {\node[font=\scriptsize, yshift=10pt] {m};}
+    }]
+	\tikzstyle{arrowline}=[draw, -latex']
+	\tikzstyle{abox}=[draw, minimum width=30pt, minimum height=30pt]
+
+    \matrix[matrix of nodes, column sep=35pt, row sep=30pt] {
+		\node [abox] (xt1) {$x_i$}; &
+		\node (fst1) {$f(x_i)$}; &
+		\node [abox] (st1) {$\sigma_i$}; &
+		\node (fvt1) {$f(\sigma_i)$}; &
+		\node [abox] (yt1) {$y_i$}; \\
+    };
+
+	\node[above = 5pt of xt1] (X) {$x_i \in X:$};
+	\node[above = 5pt of st1] (S) {$\sigma_i \in \sigma:$};
+	\node[above = 5pt of yt1] (Y) {$y_i \in Y:$};
+
+ 	\path[arrowline, postaction={decorate}] (xt1)      --      (xt1 -| fst1.west);
+ 	\path[arrowline, postaction={decorate}] (fst1.east |- st1)      --      (st1);
+    \path[->] (fst1) edge  [loop above] node {\scriptsize$b_i$} ();
+ 	\path[arrowline, postaction={decorate}] (st1)      --      (st1 -| fvt1.west);
+ 	\path[arrowline, postaction={decorate}] (fvt1.east |- yt1)      --      (yt1);
+    \path[->] (fvt1) edge  [loop above] node {\scriptsize$2^w - 1-b_i$} ();
+  \end{tikzpicture}
+\end{figure}
 \end{frame}
 
 \begin{frame}
