@@ -408,7 +408,7 @@
 
 \begin{frame}
   \frametitle{Winternitz OTS}
-  \framesubtitle{Utilizando AES como $f$}
+  \framesubtitle{Utilizando AES como $f_k$ em WOTS+}
   \begin{itemize}
       \item Construção Matyas-Meyer-Oseas \cite[Sec. 9.41]{Menezes:1996:HAC:548089}
       \begin{itemize}
@@ -416,10 +416,6 @@
         \item Tome um valor inicial $IV$, $\length{IV} = n$, e uma função $g$ que gere chaves válidas para $E$
         \item $X = (x_0, \dots, x_{k - 1}), \forall x_i \in X, \length{x_i} = n$
         \item $h_0 = IV, h_i = E_{g(h_{i-1})}(x_i) \oplus x_i, 1 \leq i \leq k$
-      \end{itemize}
-      \item Assim, AES pode ser integrado ao WOTS+
-      \begin{itemize}
-        \item Multicolisões em WOTS simples, redução da segurança
       \end{itemize}
   \end{itemize}
   \begin{figure}[ht]
