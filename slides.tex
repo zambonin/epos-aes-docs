@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese, onelanguage]{algorithm2e}
-\usepackage{amsmath, graphicx, hyperref, mathtools, subcaption, tikz-qtree}
+\usepackage{amsmath, graphicx, mathtools, subcaption, tikz-qtree}
 
 \usetikzlibrary{positioning, calc, matrix, arrows, decorations.markings}
 
@@ -77,10 +77,9 @@
         \end{itemize}
         \item Cifra de blocos iterativa parametrizada por uma chave $K$
         \begin{itemize}
-            \item Conceito de rede de substituição-permutação (\href{https://www.iacr.org/authors/tikz/tikz/Construction/spn.pdf}{SPN})
+            \item Conceito de rede de substituição-permutação
             \item $\length{K} \in \{128, 192, 256\}$
             \item 10, 12 ou 14 rodadas ($n_r$), respectivamente
-
             \item Deslocamentos de linhas e permutas de elementos
         \end{itemize}
     \end{itemize}
@@ -101,11 +100,11 @@
     %     \end{itemize}
     % \end{itemize}
     
-    	\begin{tikzpicture}[scale=1]
+    	\begin{tikzpicture}
 		%% Subkey XORs
 		\foreach \z in {0,...,15} {
-			\node[XOR, scale=0.8] (xor\z) at ($\z*(0.75em, 0)$) {};
-			\node[XOR, scale=0.8] (xorr\z) at ($\z*(0.75em, 0)+(0,-9em)$) {};
+			\node[XOR, scale=0.7] (xor\z) at ($\z*(0.75em, 0)$) {};
+			\node[XOR, scale=0.7] (xorr\z) at ($\z*(0.75em, 0)+(0,-9em)$) {};
 		}
 		
 		%% Nodes positions
