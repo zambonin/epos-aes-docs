@@ -390,16 +390,17 @@
     \end{itemize}
     \item Máscaras de bits aleatórias em cada iteração
     \begin{align*}
-      r = (r_0, \dots, r_{2^w - 1}) \stackrel{\$}{\longleftarrow} \binwds{n} \\
-      c^0(x) &= x \\
-      c^i(x) &= f_k(c^{i-1}(x) \oplus b_i)
+      r &= (r_0, \dots, r_{2^w - 1}) \stackrel{\$}{\longleftarrow} \binwds{n} \\
+      c^{0}_{k}(x, r) &= x \\
+      c^{i}_{k}(x, r) &= f_k(c^{i-1}_{k}(x, r) \oplus r_i).
     \end{align*}
+    \item Derivação de $f$ a partir de uma cifra de bloco
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Winternitz OTS}
-  \framesubtitle{Utilizando $f$ como AES}
+  \framesubtitle{Utilizando AES como $f$}
   \begin{itemize}
       \item Função $f$ derivada de uma cifra de bloco
       \item Construção Matyas-Meyer-Oseas \cite[9.41]{Menezes:1996:HAC:548089}
