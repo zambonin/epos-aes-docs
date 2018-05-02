@@ -414,7 +414,6 @@
       \begin{itemize}
         \item Tome uma cifra $E_K$ com bloco de $n$ bits
         \item Divida a entrada em $k$ blocos de $n$ bits, $X = (x_0, \dots, x_{k - 1})$
-        \item Entrada $X = (x_0, \dots, x_{k - 1})$, saída $h_k$, cifra $E_K$ com bloco de $n$ bits e chave $K$
         \item Tome um valor inicial $IV$ e uma função $g$ que gere chaves válidas para $E$
         \item $h_0 = IV, h_i = E_{g(h_{i-1})}(x_i) \oplus x_i, 1 \leq i \leq k$
       \end{itemize}
