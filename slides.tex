@@ -89,6 +89,8 @@
 \begin{frame}
     \frametitle{AES}
     \framesubtitle{Definições II}
+      \begin{columns}[T]
+        \begin{column}{.4\textwidth}
     \begin{itemize}
         \item Opera sobre uma matriz de estado $A$
         \item $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
@@ -99,13 +101,15 @@
             \item Multiplicação equivalente a $\oplus$, módulo o polinômio irredutível $x^8 + x^4 + x^3 + x + 1$
         \end{itemize}
     \end{itemize}
-    
+            \end{column}
+        \begin{column}{.24\textwidth}
     \begin{figure}
         \centering
-        \includegraphics[scale=0.1]{spn}
-        \caption{Caption}
+        \includegraphics[scale=0.3]{spn}
     \end{figure}
-    
+                \end{column}
+            \end{columns}
+
 \end{frame}
 
 \begin{frame}
