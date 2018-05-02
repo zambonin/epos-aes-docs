@@ -5,7 +5,7 @@
 \usepackage[portuguese, onelanguage]{algorithm2e}
 \usepackage{amsmath, graphicx, hyperref, mathtools, subcaption, tikz-qtree}
 
-\usetikzlibrary{matrix, arrows, decorations.markings}
+\usetikzlibrary{positioning, matrix, arrows, decorations.markings}
 
 \usetheme{CambridgeUS}
 \usecolortheme{seagull}
@@ -71,7 +71,7 @@
     \frametitle{AES}
     \framesubtitle{Definições}
     \begin{itemize}
-        \item Versão padronizada do algoritmo Rjindael \cite{Daemen:2002:DR:560131}
+        \item Versão padronizada pelo NIST do algoritmo Rjindael \cite{Daemen:2002:DR:560131}
         \begin{itemize}
             \item Principais escolhas de design: inversibilidade e eficiência
         \end{itemize}
@@ -399,24 +399,24 @@
 	\tikzstyle{arrowline}=[draw, -latex']
 	\tikzstyle{abox}=[draw, minimum width=30pt, minimum height=30pt]
 
-    \matrix[matrix of nodes, column sep=35pt, row sep=30pt] {
-		\node [abox] (xt1) {$x_i$}; &
-		\node (fst1) {$f(x_i)$}; &
-		\node [abox] (st1) {$\sigma_i$}; &
-		\node (fvt1) {$f(\sigma_i)$}; &
+    \matrix[matrix of nodes, column sep=35pt, row sep=30pt, ampersand replacement=\&] {
+		\node [abox] (xt1) {$x_i$}; \&
+		\node (fst1) {$f(x_i)$}; \&
+		\node [abox] (st1) {$\sigma_i$}; \&
+		\node (fvt1) {$f(\sigma_i)$}; \&
 		\node [abox] (yt1) {$y_i$}; \\
     };
 
-% 	\node[above = 5pt of xt1] (X) {$x_i \in X:$};
-% 	\node[above = 5pt of st1] (S) {$\sigma_i \in \sigma:$};
-% 	\node[above = 5pt of yt1] (Y) {$y_i \in Y:$};
+	\node[above = 5pt of xt1] (X) {$x_i \in X:$};
+	\node[above = 5pt of st1] (S) {$\sigma_i \in \sigma:$};
+	\node[above = 5pt of yt1] (Y) {$y_i \in Y:$};
 
  	\path[arrowline, postaction={decorate}] (xt1)      --      (xt1 -| fst1.west);
  	\path[arrowline, postaction={decorate}] (fst1.east |- st1)      --      (st1);
-    \path[->] (fst1) edge  [loop above] node {\scriptsize$b_i$} ();
+    \path[->] (fst1) edge  [loop above] node {\scriptsize$\epsilon_i$} ();
  	\path[arrowline, postaction={decorate}] (st1)      --      (st1 -| fvt1.west);
  	\path[arrowline, postaction={decorate}] (fvt1.east |- yt1)      --      (yt1);
-    \path[->] (fvt1) edge  [loop above] node {\scriptsize$2^w - 1-b_i$} ();
+    \path[->] (fvt1) edge  [loop above] node {\scriptsize$2^w - 1 - \epsilon_i$} ();
   \end{tikzpicture}
 \end{figure}
 \end{frame}
