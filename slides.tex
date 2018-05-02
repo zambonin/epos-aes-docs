@@ -453,7 +453,7 @@
       \begin{figure}[ht]
   \centering
   \begin{tikzpicture}
-    \tikzset{every tree node/.style={align=center,anchor=north}}
+    \tikzset{every tree node/.style={align=center,anchor=north,font=\tiny}}
     \Tree
       [.\node{$T_{0,0}$ \\ $\hash{T_{1,0} \concat T_{1,1}}$};
         [.\node{$T_{1, 0}$ \\ $\hash{T_{2, 0} \concat T_{2, 1}}$};
@@ -474,8 +474,6 @@
         ]
       ]
   \end{tikzpicture}
-  \label{fig:4}
-\end{figure}
         \captionsetup{font=scriptsize}
         \caption*{Seja $\mathcal{D}_n$ um dado qualquer. Uma árvore de Merkle é construída recursivamente através da concatenação dos resumos dos filhos de um nó.}
       \end{figure}
