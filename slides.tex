@@ -69,7 +69,7 @@
 
 \begin{frame}
     \frametitle{AES}
-    \framesubtitle{Definições}
+    \framesubtitle{Definições I}
  \begin{columns}[T]
     \begin{column}{.5\textwidth}
        \begin{itemize}
@@ -124,18 +124,17 @@
 
 \begin{frame}
     \frametitle{AES}
-    \framesubtitle{Definições}
+    \framesubtitle{Definições I}
         \begin{itemize}
             \item $\length{K} \in \{128, 192, 256\}$
             \item 10, 12 ou 14 rodadas ($n_r$), respectivamente
-            \item $P$ é composta de dois passos
-        \item Modifica uma matriz de estado $A$, $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
-        \begin{itemize}
-            \item Para uma mensagem $m$, $A_{i,j} = m_{i + 4j}$
+            \item $P$ é composta de 
         \end{itemize}
+         \begin{itemize}
+        \item Modifica uma matriz de estado $A$, $A_{i,j} \in \mathbb{F}_{2^8}, 0 \leq i, j \leq 3$
         \item Operações sobre bytes análogas a cálculos em $\mathbb{F}_{2^8}$
         \begin{itemize}
-            \item Adição equivalente a ``ou exclusivo''
+            \item Adição equivalente a $\oplus$
             \item Multiplicação usual, módulo o polinômio irredutível $x^8 + x^4 + x^3 + x + 1$
         \end{itemize}
     \end{itemize}
