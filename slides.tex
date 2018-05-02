@@ -450,33 +450,29 @@
       \end{itemize}
     \end{column}
     \begin{column}{.4\textwidth}
-      \begin{figure}[ht]
-  \centering
-  \begin{tikzpicture}
-    \tikzset{every tree node/.style={align=center,anchor=north}}
-    \Tree
-      [.\node{$T_{0,0}$ \\ $\hash{T_{1,0} \concat T_{1,1}}$};
-        [.\node{$T_{1, 0}$ \\ $\hash{T_{2, 0} \concat T_{2, 1}}$};
-          [.{$T_{2, 0}$ \\ $\hash{\mathcal{D}_{0}}$}
-            \edge[dashed, style={<-}] node {}; $\mathcal{D}_{0}$
-          ]
-          [.{$T_{2, 1}$ \\ $\hash{\mathcal{D}_{1}}$}
-            \edge[dashed, style={<-}] node {}; $\mathcal{D}_{1}$
-          ]
-        ]
-        [.\node{$T_{1, 1}$ \\ $\hash{T_{2, 2} \concat T_{2, 3}}$};
-          [.{$T_{2, 2}$ \\ $\hash{\mathcal{D}_{2}}$}
-            \edge[dashed, style={<-}] node {}; $\mathcal{D}_{2}$
-          ]
-          [.{$T_{2, 3}$ \\ $\hash{\mathcal{D}_{3}}$}
-            \edge[dashed, style={<-}] node {}; $\mathcal{D}_{3}$
-          ]
-        ]
-      ]
-  \end{tikzpicture}
-  \caption{Representação gráfica de uma árvore $T$, com altura $h = 2$.}
-  \label{fig:4}
-\end{figure}
+      \begin{figure}
+        \begin{tikzpicture}
+          \tikzset{every tree node/.style={align=center,anchor=north,font=\tiny}}
+          \Tree
+            [.\node{$T_{r}$ \\ $\hash{T_{0} \concat T_{1}}$};
+              [.\node{$T_{0}$ \\ $\mathcal{H}(T_{0, 0} \concat T_{0, 1})$};
+                [.{$T_{0, 0}$ \\ $\mathcal{H}(\mathcal{D}_{0})$}
+                  \edge[dashed, style={<-}] node {}; $\mathcal{D}_{0}$
+                ]
+                [.{$T_{0, 1}$ \\ $\mathcal{H}(\mathcal{D}_{1})$}
+                  \edge[dashed, style={<-}] node {}; $\mathcal{D}_{1}$
+                ]
+              ]
+              [.\node{$T_{1}$ \\ $\mathcal{H}(T_{1, 0} \concat T_{1, 1})$};
+                [.{$T_{1, 0}$ \\ $\mathcal{H}(\mathcal{D}_{2})$}
+                  \edge[dashed, style={<-}] node {}; $\mathcal{D}_{2}$
+                ]
+                [.{$T_{1, 1}$ \\ $\mathcal{H}(\mathcal{D}_{3})$}
+                  \edge[dashed, style={<-}] node {}; $\mathcal{D}_{3}$
+                ]
+              ]
+            ]
+        \end{tikzpicture}
         \captionsetup{font=scriptsize}
         \caption*{Seja $\mathcal{D}_n$ um dado qualquer. Uma árvore de Merkle é construída recursivamente através da concatenação dos resumos dos filhos de um nó.}
       \end{figure}
