@@ -26,14 +26,14 @@ calculations or precise timing. Hence, reduced energy consumption and increased
 performance goals need careful consideration.
 
 A \emph{cryptographic accelerator} can be used to help with these constraints,
-operating in a more efficient way, by means of calculating steps of a
+operating in a more efficient way, through the calculation of steps of a
 cryptographic algorithm on the hardware itself. Yet, using these features
 requires a deep understanding of the processor used, and may not be available
 or enabled on a given operating system.
 
-We also point that these implementations can be attacked non-invasively through
-power analysis, \emph{i.e.} measuring power consumption and checking for
-patterns in which secret data may be revealed. Ergo, \emph{constant-time}
+We also point out that these implementations can be attacked non-invasively
+through power analysis, \emph{i.e.} measuring power consumption and checking
+for patterns in which secret data may be revealed. Ergo, \emph{constant-time}
 algorithm implementations can be employed to prevent this undesired behaviour.
 While these are usually very complex to implement, it is still useful to know
 if current implementations using accelerators are prone to leak important data.
@@ -74,27 +74,107 @@ simpler alternatives, such as the thread scheduler).
 
 \begin{enumerate}
   \item Elaborate a detailed project plan;
+  \begin{enumerate}
+    \item Present a synopsis of the knowledge vital to understanding the
+        project;
+    \item Write on the project's progress periodically.
+  \end{enumerate}
   \item Demonstrate the project's viability;
+  \begin{enumerate}
+    \item Use an external implementation that provides working examples for
+        the AES cipher (suggestion:
+          \href{https://github.com/contiki-os/contiki}{Contiki});
+    \item Customize the traits file for a simple application, focusing on
+        producing less background noise from EPOS\@;
+    \item Manipulate the AES cryptographic core in the context of an EPOS'
+        application;
+    \item Describe the process and materials needed to execute a simple power
+        analysis on the AES implementations.
+  \end{enumerate}
   \item Implement a driver based on the cryptographic accelerator for AES on
-  EPOS\@;
+      EPOS\@;
+  \begin{enumerate}
+    \item Provide a faster way to calculate AES operations in the form of a
+        driver, with the current software implementation acting as fallback;
+    \item Assert its correctness with
+        \href{https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Algorithm-Validation-Program/documents/aes/AESAVS.pdf}{test
+          vectors validated by NIST};
+    \item Build tests in the context of the Poly1305 algorithm.
+  \end{enumerate}
   \item Benchmark the previous AES implementation inside EPOS against code
-  using hardware accelerated routines;
-  \item Reduce the operating system footprint and measure the power profile for
-  the hardware accelerated implementation;
+      using hardware accelerated routines;
+  \begin{enumerate}
+    \item Create applications that measure the execution time for both
+        implementations through repeated executions of the algorithm;
+    \item Quantify the power consumption for both algorithms.
+  \end{enumerate}
+  \item Reduce the operating system footprint and measure the power profile
+      for the hardware accelerated implementation;
+  \begin{enumerate}
+    \item Simplify the EPOS instance as much as possible for this particular
+        setting through its traits file;
+    \item Make use of an oscilloscope to profile the new implementation's
+        inner workings;
+    \item Optionally, analyse the software implementation as well.
+  \end{enumerate}
   \item Compare all implementations and display practical results.
+  \begin{enumerate}
+    \item Simulate real, secure communications between motes, making use of
+        the driver inside Poly1305.
+  \end{enumerate}
 \end{enumerate}
 
 \section{Deliverables}
 
 \begin{enumerate}
   \item Project plan (this document);
+  \begin{enumerate}
+    \item Update this page constantly with the project's advancements.
+  \end{enumerate}
   \item Report consisting of a simple demonstration of technological viability;
+  \begin{enumerate}
+    \item Present, through the project plan, the concepts of cryptographic hash
+        functions, message authentication codes, the AES cipher, and power
+          analysis;
+    \item Display any working mechanisms from the cryptographic accelerator
+        inside EPOS through an application file;
+  \end{enumerate}
   \item Code that talks to the AES cryptographic accelerator through EPOS\@;
+  \begin{enumerate}
+    \item Provide an API-compatible hardware accelerated implementation for the
+        AES cipher with 128-bit keys;
+    \item Feature Electronic Code Book (ECB) and Cipher Block Chaining (CBC)
+        modes working through polling;
+    \item Maintain the existing software implementation, as a fallback mode,
+        for devices that do not provide the CC2538's cryptographic accelerator;
+    \item Document the effort through the project plan;
+    \item Optionally, implement interruption management for this driver;
+    \item Optionally, add other AES modes, such as CBC-MAC (Cipher Block
+        Chaining Message Authentication Code), CTR (Counter), GCM
+          (Galois/Counter Mode) and CCM (Counter with CBC-MAC);
+    \item Optionally, extend the key size to 192 and 256 bits.
+  \end{enumerate}
   \item Report with performance comparison between software and hardware AES
-  implementations on EPOS\@;
+    implementations on EPOS\@;
+  \begin{enumerate}
+    \item Compare the two implementations with stress testing, by means of
+        repeated ciphering and deciphering, with the intent of measuring the
+          execution time and power consumption;
+    \item Graph these comparisons and exhibit these on the project plan.
+  \end{enumerate}
   \item Report on power analysis, observed through an oscilloscope, for the new
-  driver implementation;
+    driver implementation;
+  \begin{enumerate}
+    \item Reduce EPOS' footprint by streamlining some of its core components,
+        \emph{e.g.} the thread scheduler;
+    \item Operate an oscilloscope with the aid of specially designed circuitry
+        to observe the power consumption and check for information leaks;
+    \item Register the experiment's results on the project plan.
+  \end{enumerate}
   \item Project demonstration.
+  \begin{enumerate}
+    \item Show results obtained through a presentation to the class.
+  \end{enumerate}
 \end{enumerate}
 
 \section{Schedule}
@@ -126,7 +206,7 @@ simpler alternatives, such as the thread scheduler).
   \end{tabular}
 \end{table}
 
-\section{E1 --- Basic concepts and technological viability}
+\section{Basic concepts}
 
 We start by explaining the concepts related to cryptography needed to
 understand the body of this work. Namely, we talk about cryptographic hash
@@ -203,8 +283,8 @@ to~\cite{Daemen:book:2002} for detailed explanations.
 
 AES is an example of symmetric cryptography, \emph{i.e.} it uses a single key
 for encryption and decryption. Hence, the routines above need to be easily
-inverted, but only with the master key. We present the pseudocode for the
-decryption algorithm and discuss the new routines.
+inverted, but only if one provides the master key. We present the pseudocode
+for the decryption algorithm and discuss the new routines.
 
 \begin{algorithm}
   \begin{algorithmic}
@@ -316,10 +396,11 @@ information may be retrieved if it can be finely measured and physically
 exploited. Cache and timing attacks, introduction of faults by placing the
 device under extreme conditions, acoustic and electromagnetic monitoring etc.
 are various forms of side-channel attacks. We focus on the concept of power
-analysis, in which the power consumption may be studied to obtain sensitive
-data from a given device, and further restrict our scope to simple power
-analysis, where one can directly measure and visualize the power consumption
-collected from cryptographic operations.
+analysis, introduced in~\cite{Kocher:inproc:1999:aug}, in which the power
+consumption may be studied to obtain sensitive data from a given device, and
+further restrict our scope to simple power analysis, where one can directly
+measure and visualize the power consumption collected from cryptographic
+operations.
 
 Consider the example of a RSA cipher, that works with multiplications and
 squaring modulo prime numbers. These can be distinguished by looking at the
@@ -327,7 +408,7 @@ measurements through a standard digital oscilloscope. Statistical analysis of
 the values and removal of background electrical noise may be required to
 enhance the observation results.
 
-\subsection{Results}
+\section{Technological viability}
 
 We now introduce these concepts to the EPOS environment. First, to ensure that
 a meaningful test bench is used to test the new driver implementation, we
@@ -390,7 +471,7 @@ manages to enable the AES core, and discuss the code in detail.
 
   int main() {
     // enable AES peripheral
-    HWREG(SYS_CTRL_RCGCSEC) = 0x00000010;
+    HWREG(SYS_CTRL_RCGCSEC) = 0x00000002;
 
     // mimic start of aes.cc@AESLoadKey
     unsigned char *pui8Key = sAESexample[0].ui8AESKey;
@@ -462,7 +543,58 @@ and a protoboard to implement an amplifier circuit. Finally, when the scope is
 able to sense it, the measurements can be taken (this circuit design is subject
 to changes). One can also disable certain parts of the SoC by making use of the
 deep sleep feature~\cite[Sec. 3.5.1, pp. 132]{Texas:report:2013:may}, and
-further simplify the application's traits file, to reduce background noise.
+simplify the application's traits file, to reduce background noise.
+
+\section{Driver implementation}
+
+One of the core features of EPOS is that it supports multiple computer
+architectures. Hence, one needs to ensure that applications that need to
+instantiate the AES cipher may do so at any time even if there is no
+cryptographic accelerator available. Therefore, the current software
+implementation is kept for compatibility and comparison purposes, and the
+challenge lies in adding a hardware driver in such a way that no conflicts are
+caused, and the operating system uses hardware availability as criteria to
+choose the correct implementation.
+
+In the last section, examples were presented that already included directives
+to talk directly with the cryptographic core, but their backbone was not
+correctly integrated with the operating system and lacked generality and scope
+(since the AES cipher is used on a core component of EPOS, the Trustful
+Space-Time Protocol). Additionally, the file dependency graph created did not
+consider that there could be low-level features already integrated on EPOS,
+such as dealing with the \verb!SYS_CTRL! registers.
+
+With these issues in mind, files and functions from the previous example were
+deemed irrelevant. As per \verb!aes_example.c!, setting the clocks to 32MHz is
+not needed since EPOS already runs in that frequency, according to the source
+code located in \verb!src/machine/cortex/emote3_init.cc!. Enabling the
+peripheral may be achieved through a write to the \verb!SYS_CTRL_RCGCSEC!
+register (or variants if the device is on sleep, or deep sleep mode), and
+inside EPOS, this is done through \verb!power_aes(const Power_Mode&)!, called
+from \verb!src/machine/cortex/machine_init.cc!.
+
+All declarations and definitions for the driver are inside the
+\verb!include/machine/cortes/aes.h! mediator file. This implementation is only
+compiled (and consequently, the peripheral enabled) if EPOS is compiled with a
+Cortex-M3 target. Implementation hints were taken from the firmware provided by
+Texas Instruments and heavy use of~\cite{Texas:report:2013:may} was made to
+ascertain semantics of the code. Electronic Code Book and Cipher Block Chaining
+modes are supported, with the key size of 128 bits, as needed by EPOS\@. Other
+modes and key sizes may be added with some non-trivial modifications to the
+code.
+
+API compatibility is provided through the use of default parameters, but
+altogether, six parameters can be passed to \verb!encrypt! and \verb!decrypt!
+methods: pointers to the key, input data, output data, initialization vector,
+mode of operation (as per the \verb!AES_AES_CTRL! register) and key store
+location (eight 128-bit available memory areas). As in the software
+implementation, AES-ECB-128 mode of operation is the default. Tests with the
+standalone cipher and a Poly1305-AES instantiation are provided in the form of
+the files \verb!app/aes_test.cc! and \verb!app/poly1305_test.cc!, respectively.
+These were originally located inside the \verb!src/component! folder, but
+failed to compile originally. We refer to the branch containing the modified
+codebase for further details:
+\href{https://epos.lisha.ufsc.br/svn/makers/aes-driver/}{aes-driver}.
 
 \bibliographystyle{alpha}
 \bibliography{wiki}

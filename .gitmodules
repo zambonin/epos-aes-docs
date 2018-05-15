@@ -1,3 +1,6 @@
 [submodule "sftex"]
 	path = sftex
 	url = git@github.com:zambonin/sftex.git
+[submodule "epos-aes-driver"]
+	path = epos-aes-driver
+	url = git@github.com:zambonin/epos-aes-driver.git
