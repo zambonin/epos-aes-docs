@@ -1,6 +1,6 @@
 \documentclass{../sftex/sftex}
 
-\usepackage{algorithm, algorithmic, listings, parskip}
+\usepackage{algorithm, algorithmic, gnuplottex, listings, parskip}
 
 \newcommand{\binwds}[1]{\{0, 1\}^{#1}}
 \renewcommand{\algorithmiccomment}[1]{\hfill $\triangleright$ #1}
@@ -564,7 +564,7 @@ Space-Time Protocol). Additionally, the file dependency graph created did not
 consider that there could be low-level features already integrated on EPOS,
 such as dealing with the \verb!SYS_CTRL! registers.
 
-With these issues in mind, files and functions from the previous example were
+With these issues in mind, files and functions from the former example were
 deemed irrelevant. As per \verb!aes_example.c!, setting the clocks to 32MHz is
 not needed since EPOS already runs in that frequency, according to the source
 code located in \verb!src/machine/cortex/emote3_init.cc!. Enabling the
@@ -595,6 +595,90 @@ These were originally located inside the \verb!src/component! folder, but
 failed to compile originally. We refer to the branch containing the modified
 codebase for further details:
 \href{https://epos.lisha.ufsc.br/svn/makers/aes-driver/}{aes-driver}.
+
+Furthermore, messages with arbitrary length are now supported. It is reasonable
+to consider implementing this feature, since the execution time for ciphering
+and deciphering various amounts of blocks can be finely measured, enabling a
+deeper understanding of the cost associated with the cryptographic core setup
+and the operation modes themselves. We point out that~\cite[Sec.
+22.2.4]{Texas:report:2013:may} presents the basis for performance calculations.
+In special, we emphasize the footnotes 1 and 2 from~\cite[Table
+22--88]{Texas:report:2013:may}:
+
+\begin{itemize}
+
+  \item ``The performance assumes full programming of the engine, loading keys
+      and setting up the DMA engine via the DMA slave. If the context is reused
+        (mode and/or keys) the performance is increased. The maximum number of
+        cycles overhead per packet is between 100 and 150 for the various modes
+        and algorithms.''
+
+   \item (\ldots) ``The performance scales linearly with the clock frequency.''
+
+\end{itemize}
+
+We note that messages which length is not divisible by the block size,
+\emph{i.e.} 16, are also partially supported. A correct padding strategy must
+be implemented, such as the one described in~\cite{Kaliski:report:1998:mar}.
+
+\section{Benchmarks}
+
+To achieve meaningful performance results, some metrics such as execution time
+and energy consumption were considered. However, time measurements were not
+significant, and to achieve relevant energy metrics, the apparatus discussed in
+the section about power analysis would have to be built. Hence, these
+quantities will be discussed on any account, and need not be measured now.
+Performance-oriented algorithm implementations are generally measured in
+instruction cycles, arguably the strictest operational criteria, and these may
+be consequently translated to the aforementioned metrics. Ergo, we chose to
+count cycles for our hardware accelerated implementations.
+
+Accordingly, we make use of the Cortex-M3 integrated system timer, SysTick,
+which provides a 24-bit counter, useful for various tasks. We program this
+timer in accordance to~\cite[Sec. 3.4]{Texas:report:2013:may}, namely by
+enabling it through the \verb!STCTRL! register, loading the \verb!STRELOAD!
+register with the maximum counter possible (that is, $2^{24} - 1$), and reading
+the \verb!STCURRENT! register whenever desired to check how many cycles were
+counted.
+
+We enclosed \verb!crypt(...):include/machine/cortex/aes.h! with these
+directives and took notes of a dozen executions for various message sizes,
+ciphered and deciphered with ECB and CBC\@. More executions were not needed,
+since the clock counts varied by approximately 50 cycles.
+
+\begin{figure}[ht]
+  \centering
+  \begin{gnuplot}[terminal=pdf]
+    set key autotitle columnhead
+    set key bottom inside
+    set title "Execution data from AES driver for CC2538"
+    set xlabel "Message size (bytes)"
+    set logscale x
+    set grid
+    set ylabel "Instruction cycles"
+    plot for [col=2:5] "support/cycles-aes.txt" \
+      using 1:col:xtic(1) with linespoints
+  \end{gnuplot}
+\end{figure}
+
+Note that this graph presents a logarithmic scale, but the message size
+increases exponentially. Hence, it is useful to look at the delta measurements
+between each pair of variables to check if this visual representation is
+inappropriate. Indeed, we note that the differences double with each step,
+ergo, this behavior can be considered linear. However, it is useful to look at
+the variations with small message sizes, emphasized in this scale. We firmly
+believe that this behavior can be explained by the setup cost for the
+cryptographic core, again based on the delta measurements, and confirm the
+first footnote from~\cite[Table 22-88]{Texas:report:2013:may}.
+
+In~\cite[Table 1]{Schwabe:inproc:2016:aug}, the total cost for an AES-128
+simple encryption and decryption routine is $\sim 2750$ cycles. Our
+implementation is almost twice as fast, depending on the chosen operation mode,
+simply due to the cryptographic core usage. The cost for the naïve AES software
+implementation inside EPOS is not shown on the graph for simplicity. However,
+the measurements showed $\sim 14000$ and $\sim 20000$ cycles for encryption and
+decryption, respectively. Therefore, it can be argued that our hardware
+implementation may be used to save energy and increase performance.
 
 \bibliographystyle{alpha}
 \bibliography{wiki}
