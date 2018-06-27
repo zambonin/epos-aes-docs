@@ -1,0 +1,7 @@
+Documents supporting the project inside the first submodule. A LaTeX version of
+[1] is available inside the `wiki/` folder.
+
+A report and slides containing discussion on post-quantum digital signatures
+based on AES may be found inside 'pqc-aes/'.
+
+[1] https://epos.lisha.ufsc.br/Power+analysis+of+a+hardware+accelerated+AES+implementation
