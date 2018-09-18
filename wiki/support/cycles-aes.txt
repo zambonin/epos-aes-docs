@@ -1,4 +1,4 @@
-        ecb-128-enc     ecb-128-dec     cbc-128-enc     cbc-128-dec
+size    ecb-128-enc     ecb-128-dec     cbc-128-enc     cbc-128-dec
 16      683             685             722             801
 32      719             734             776             896
 64      830             903             860             940
